@@ -17,12 +17,12 @@ const ServicesSection = () => {
           </div>
         </FadeIn>
 
-        <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {t.services.items.map((service, i) => {
             const Icon = serviceIcons[i];
             return (
               <FadeIn key={i} delay={i * 0.08}>
-                <div className="p-8 rounded-2xl bg-card border border-border hover:border-accent/30 transition-all hover:shadow-lg group w-[290px] h-[230px] mx-auto">
+                <div className="p-8 rounded-2xl bg-card border border-border hover:border-accent/30 transition-all hover:shadow-lg group h-[240px]">
                   <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent/20 transition-colors">
                     <Icon size={22} className="text-accent" />
                   </div>
