@@ -26,8 +26,8 @@ const ServicesSection = () => {
                   <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent/20 transition-colors">
                     <Icon size={22} className="text-accent" />
                   </div>
-                  <h3 className="text-xl font-semibold">{service.name}</h3>
-                  <p className="mt-2 text-muted-foreground">{service.desc}</p>
+                  <h3 className="text-base font-semibold">{service.name}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{service.desc}</p>
                 </div>
               </FadeIn>
             );
