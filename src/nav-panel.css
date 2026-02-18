@@ -1,0 +1,40 @@
+.nav-panel-border {
+  background: transparent !important;
+  border: 1.5px solid var(--border-color, #fff2);
+}
+
+.dark .nav-panel-border {
+  border-color: #fff1;
+}
+
+.nav-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 64px;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 9999px;
+  background: transparent;
+  border: 1.5px solid var(--border-color, #fff2);
+  transition: background 0.2s, border 0.2s;
+  position: relative;
+}
+
+.nav-panel.active {
+  background: var(--accent-color, #ffc107);
+  color: var(--accent-foreground, #222);
+  font-weight: bold;
+  border-color: var(--accent-color, #ffc107);
+}
+
+.dark .nav-panel {
+  background: transparent;
+  border-color: #fff1;
+}
+
+.dark .nav-panel.active {
+  background: var(--accent-color, #ffc107);
+  color: var(--accent-foreground, #222);
+  border-color: var(--accent-color, #ffc107);
+}
