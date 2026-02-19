@@ -37,9 +37,9 @@ const Layout = () => {
           <div className="nav-panel-border" style={{ marginRight: 8, minWidth: 120, height: 40, borderRadius: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Link
               to="/"
-              className="text-xl font-bold tracking-tight"
+              className="flex items-center h-full"
             >
-              VANTA <span className="text-accent">LAB</span>
+              <img src="/logo.png" alt="VANTA LAB Logo" style={{ height: 48, width: 'auto', display: 'block' }} />
             </Link>
           </div>
 
