@@ -1,61 +1,65 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation, Outlet } from 'react-router-dom';
-import { useLanguage } from '@/lib/i18n';
-import { useTheme } from 'next-themes';
-import { Moon, Sun, Menu, X } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
-import '../nav-panel.css';
+import { useState, useEffect } from 'react'
+import { Link, useLocation, Outlet } from 'react-router-dom'
+import { useLanguage } from '@/lib/i18n'
+import { useTheme } from 'next-themes'
+import { Moon, Sun, Menu, X } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
+import '../nav-panel.css'
 
 const Layout = () => {
-  const { t, lang, setLang } = useLanguage();
-  const { theme, setTheme } = useTheme();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
+  const { t, lang, setLang } = useLanguage()
+  const { theme, setTheme } = useTheme()
+  const [menuOpen, setMenuOpen] = useState(false)
+  const location = useLocation()
 
-  // Scroll to top on route change
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+    window.scrollTo(0, 0)
+  }, [location.pathname])
 
   const navLinks = [
     { path: '/', label: t.nav.home },
     { path: '/cases', label: t.nav.cases },
     { path: '/about', label: t.nav.about },
     { path: '/contacts', label: t.nav.contacts },
-  ];
+  ]
 
   const isActive = (path: string) => {
-    if (path === '/') return location.pathname === '/';
-    return location.pathname.startsWith(path);
-  };
+    if (path === '/') return location.pathname === '/'
+    return location.pathname.startsWith(path)
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Panels for logo, nav, and color switcher */}
       <header className="fixed top-0 left-0 right-0 z-50">
         <nav className="container mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="nav-panel-border" style={{ marginRight: 8, minWidth: 120, height: 40, borderRadius: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Link
-              to="/"
-              className="flex items-center h-full"
-            >
-              <img src="/logo.png" alt="VANTA LAB Logo" style={{ height: 48, width: 'auto', display: 'block' }} />
-            </Link>
+
+          {/* LEFT — LOGO */}
+          <div className="flex items-center">
+            <div className="nav-panel-border nav-item p-0 overflow-hidden">
+              <Link to="/" className="w-full h-full flex items-center justify-center">
+                <img
+                  src="/logo.png"
+                  alt="VANTA LAB Logo"
+                  className="h-full w-auto object-contain"
+                />
+              </Link>
+            </div>
           </div>
 
-          <div className="hidden md:flex items-center gap-8">
+          {/* CENTER — NAVIGATION */}
+          <div className="hidden md:flex items-center gap-3">
             {navLinks.map(link => (
               <div
                 key={link.path}
-                className={`nav-panel${isActive(link.path) ? ' active' : ''}`}
-                style={{ marginRight: 8 }}
+                className={`nav-panel nav-item ${isActive(link.path) ? 'active' : ''}`}
               >
                 <Link
                   to={link.path}
-                  className={`text-sm font-medium transition-colors hover:text-accent ${
-                    isActive(link.path) ? 'text-foreground' : 'text-muted-foreground'
+                  className={`w-full text-center text-sm font-medium transition-colors ${
+                    isActive(link.path)
+                      ? 'text-foreground'
+                      : 'text-muted-foreground hover:text-foreground'
                   }`}
-                  style={{ width: '100%', textAlign: 'center' }}
                 >
                   {link.label}
                 </Link>
@@ -63,52 +67,53 @@ const Layout = () => {
             ))}
           </div>
 
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-0.5 text-xs border border-border rounded-lg overflow-hidden">
+          {/* RIGHT — LANGUAGE + THEME + BURGER */}
+          <div className="flex items-center gap-3">
+
+            {/* Language Switcher */}
+            <div className="nav-panel-border lang-switcher nav-item px-0">
               {(['ru', 'en', 'uz'] as const).map(l => (
                 <button
                   key={l}
                   onClick={() => setLang(l)}
-                  className={`px-2.5 py-1.5 transition-colors ${
-                    lang === l
-                      ? 'bg-accent text-accent-foreground font-bold'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                  }`}
+                  className={lang === l ? 'active' : ''}
                 >
                   {l.toUpperCase()}
                 </button>
               ))}
             </div>
 
-            <div className="nav-panel-border md:flex hidden" style={{ minWidth: 112, height: 40, borderRadius: 9999, alignItems: 'center', justifyContent: 'center', padding: 0 }}>
-              <button
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
-                aria-label="Toggle theme"
-                style={{ width: '100%', height: '100%', borderRadius: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0, background: 'transparent', border: 'none' }}
-              >
-                {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-              </button>
-            </div>
+            {/* Theme Toggle (desktop) */}
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-2 rounded-lg hover:bg-muted transition-colors text-muted-foreground hover:text-foreground md:hidden nav-panel-border"
+              className="nav-icon-button hidden md:flex"
               aria-label="Toggle theme"
-              style={{ marginLeft: 0 }}
             >
               {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </button>
 
+            {/* Theme Toggle (mobile) */}
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="nav-icon-button md:hidden"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+
+            {/* Burger */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden p-2 text-muted-foreground nav-panel-border"
+              className="nav-icon-button md:hidden"
               aria-label="Toggle menu"
             >
               {menuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
+
           </div>
         </nav>
 
+        {/* MOBILE MENU */}
         <AnimatePresence>
           {menuOpen && (
             <motion.div
@@ -125,7 +130,9 @@ const Layout = () => {
                     to={link.path}
                     onClick={() => setMenuOpen(false)}
                     className={`text-sm font-medium py-2 ${
-                      isActive(link.path) ? 'text-foreground' : 'text-muted-foreground'
+                      isActive(link.path)
+                        ? 'text-foreground'
+                        : 'text-muted-foreground'
                     }`}
                   >
                     {link.label}
@@ -148,14 +155,18 @@ const Layout = () => {
               <p className="text-xl font-bold">
                 VANTA <span className="text-accent">LAB</span>
               </p>
-              <p className="text-sm text-muted-foreground mt-1">{t.footer.tagline}</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                {t.footer.tagline}
+              </p>
             </div>
-            <p className="text-sm text-muted-foreground">{t.footer.rights}</p>
+            <p className="text-sm text-muted-foreground">
+              {t.footer.rights}
+            </p>
           </div>
         </div>
       </footer>
     </div>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

@@ -1,40 +1,146 @@
-.nav-panel-border {
-  background: transparent !important;
-  border: 1.5px solid var(--border-color, #fff2);
-}
+/* =======================================================
+   BASE NAV ITEM (единый контейнер для всех элементов)
+======================================================= */
 
-.dark .nav-panel-border {
-  border-color: #fff1;
-}
+.nav-item {
+  height: 40px;
+  min-width: 110px;
+  padding: 0 18px;
 
-.nav-panel {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 64px;
-  height: 40px;
-  padding: 0 18px;
+
   border-radius: 9999px;
   background: transparent;
-  border: 1.5px solid var(--border-color, #fff2);
-  transition: background 0.2s, border 0.2s;
-  position: relative;
+
+  border: 1.5px solid var(--border-color, rgba(255,255,255,0.15));
+
+  transition: 
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
+
+/* Тёмная тема */
+.dark .nav-item {
+  border-color: rgba(255,255,255,0.1);
+}
+
+
+/* =======================================================
+   NAV LINK PANEL (пункты меню)
+======================================================= */
+
+.nav-panel {
+  cursor: pointer;
+}
+
+.nav-panel:hover {
+  background: rgba(255,255,255,0.04);
+}
+
+.dark .nav-panel:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+
+/* =======================================================
+   ACTIVE STATE
+======================================================= */
 
 .nav-panel.active {
   background: var(--accent-color, #ffc107);
-  color: var(--accent-foreground, #222);
-  font-weight: bold;
   border-color: var(--accent-color, #ffc107);
-}
-
-.dark .nav-panel {
-  background: transparent;
-  border-color: #fff1;
+  color: var(--accent-foreground, #222);
+  font-weight: 600;
 }
 
 .dark .nav-panel.active {
   background: var(--accent-color, #ffc107);
-  color: var(--accent-foreground, #222);
   border-color: var(--accent-color, #ffc107);
+  color: var(--accent-foreground, #222);
+}
+
+
+/* =======================================================
+   BORDER-ONLY ELEMENTS (logo / theme switch / lang wrapper)
+======================================================= */
+
+.nav-panel-border {
+  height: 40px;
+  min-width: 110px;
+  padding: 0 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9999px;
+  background: transparent;
+
+  border: 1.5px solid var(--border-color, rgba(255,255,255,0.15));
+
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.dark .nav-panel-border {
+  border-color: rgba(255,255,255,0.1);
+}
+
+
+/* =======================================================
+   LANGUAGE SWITCHER FIX
+======================================================= */
+
+.lang-switcher {
+  height: 40px;
+  display: flex;
+  overflow: hidden;
+  border-radius: 9999px;
+}
+
+.lang-switcher button {
+  flex: 1;
+  height: 100%;
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  transition: background 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+}
+
+.lang-switcher button.active {
+  background: var(--accent-color, #ffc107);
+  color: var(--accent-foreground, #222);
+  font-weight: 600;
+}
+
+
+/* =======================================================
+   ICON BUTTON FIX (theme / burger)
+======================================================= */
+
+.nav-icon-button {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9999px;
+  background: transparent;
+  border: 1.5px solid var(--border-color, rgba(255,255,255,0.15));
+
+  transition: background 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.nav-icon-button:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.dark .nav-icon-button {
+  border-color: rgba(255,255,255,0.1);
 }
