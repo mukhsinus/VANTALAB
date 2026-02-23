@@ -1,3 +1,4 @@
+// Layout component with header, main content, and footer. Handles navigation, theme switching, and language selection.
 import { useState, useEffect } from 'react'
 import { Link, useLocation, Outlet } from 'react-router-dom'
 import { useLanguage } from '@/lib/i18n'
@@ -12,6 +13,7 @@ const Layout = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [navHeroDark, setNavHeroDark] = useState(false)
   const location = useLocation()
+  const hasHero = location.pathname === '/'
 
   // Scroll to top on route change
   useEffect(() => {
@@ -147,27 +149,27 @@ const Layout = () => {
         <AnimatePresence>
           {menuOpen && (
             <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden border-t border-border overflow-hidden bg-black/80 backdrop-blur-md"
+              className="md:hidden border-t border-border backdrop-blur-md"
             >
-              <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
+              <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
+
                 {navLinks.map(link => (
                   <Link
                     key={link.path}
                     to={link.path}
                     onClick={() => setMenuOpen(false)}
-                    className={`text-sm font-medium py-2 ${
-                      isActive(link.path)
-                        ? 'text-foreground'
-                        : 'text-muted-foreground'
+                    className={`nav-item nav-panel text-sm font-medium ${
+                      isActive(link.path) ? 'active' : ''
                     }`}
                   >
                     {link.label}
                   </Link>
                 ))}
+
               </div>
             </motion.div>
           )}
@@ -175,7 +177,7 @@ const Layout = () => {
       </header>
 
       {/* MAIN */}
-      <main>
+      <main className={hasHero ? '' : 'pt-16'}>
         <Outlet />
       </main>
 

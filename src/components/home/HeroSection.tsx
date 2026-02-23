@@ -52,14 +52,14 @@ const HeroSection = () => {
             href="https://t.me/LLC_VANTALAB"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-5 py-3 sm:px-8 sm:py-4 rounded-2xl bg-[hsl(42,100%,50%)] text-black font-bold text-base sm:text-lg shadow-lg hover:bg-yellow-400 transition"
+            className="px-5 py-3 sm:px-8 sm:py-4 rounded-full bg-[hsl(42,100%,50%)] text-black font-bold text-base sm:text-lg shadow-lg hover:bg-yellow-400 transition"
           >
-            📨 {t.hero.cta1}
+             {t.hero.cta1}
           </a>
 
           <a
             href="/contacts"
-            className="px-5 py-3 sm:px-8 sm:py-4 rounded-2xl border border-gray-400 text-white font-bold text-base sm:text-lg shadow-lg hover:bg-gray-800 transition flex items-center gap-2 justify-center"
+            className="px-5 py-3 sm:px-8 sm:py-4 rounded-full border border-gray-400 text-white font-bold text-base sm:text-lg shadow-lg hover:bg-gray-800 transition flex items-center gap-2 justify-center"
           >
             {t.hero.cta2}
             <ArrowRight size={20} />
