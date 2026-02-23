@@ -8,7 +8,7 @@ const HeroSection = () => {
   const [titleLine1, titleLine2] = t.hero.title.split('\n');
 
   return (
-    <section className="relative min-h-[85vh] md:min-h-screen flex flex-col items-center justify-start md:justify-center">
+    <section className="relative min-h-[90vh] md:min-h-screen flex flex-col items-center justify-start md:justify-center">
       <picture>
         <source srcSet={heroBgMobile} media="(max-width: 767px)" />
         <source srcSet={heroBg} media="(min-width: 768px)" />
