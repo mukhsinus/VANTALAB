@@ -11,7 +11,7 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-start md:justify-center"
+      className="relative min-h-[100svh] flex flex-col items-center justify-start "
     >
       {/* Background image */}
       <picture>
@@ -30,19 +30,19 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-black/70" />
 
       {/* Content */}
-      <div className="relative z-10 w-full flex flex-col items-center justify-start md:justify-center px-4 pt-[28vh] md:pt-0 pb-8 md:py-24">
+      <div className="relative z-10 w-full flex flex-col items-center justify-start  px-4 pt-72 md:pt-60 pb-8">
 
         {/* Title */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight text-white text-center">
+        {/* <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight text-white text-center">
           <span>{titleLine1}</span>
           <br />
           <span className="block text-[hsl(42,100%,50%)]">
             {titleLine2}
           </span>
-        </h1>
+        </h1> */}
 
         {/* Subtitle */}
-        <p className="mt-6 text-lg md:text-xl text-gray-300 text-center max-w-2xl">
+        <p className="mt-6 text-lg md:text-xl lg:text-5xl xl:text-2xl text-gray-300 text-center max-w-5xl leading-relaxed">
           {t.hero.subtitle}
         </p>
 

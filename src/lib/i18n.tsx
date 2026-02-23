@@ -223,7 +223,7 @@ const translations = {
     nav: { home: 'Bosh sahifa', cases: 'Loyihalar', about: 'Biz haqimizda', contacts: 'Aloqa', quote: 'Narx olish' },
     hero: {
       title: '',
-      subtitle: "Agar raqamli transformatsiya kerak emas deb o'ylasangiz — siz allaqachon pul yo'qotyapsiz.",
+      subtitle: "Raqamlashtirish kerak emas deb o'ylasangiz — siz allaqachon pul yo'qotyapsiz.",
       cta1: 'Telegramda yozish',
       cta2: 'Narx olish',
     },
