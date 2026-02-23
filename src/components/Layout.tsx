@@ -29,8 +29,10 @@ const Layout = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <header className="fixed top-0 left-0 right-0 z-50">
+    <div className="min-h-screen text-foreground">
+
+      {/* HEADER */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md">
         <nav className="container mx-auto px-6 h-16 flex items-center justify-between">
 
           {/* LEFT — LOGO */}
@@ -83,7 +85,7 @@ const Layout = () => {
               ))}
             </div>
 
-            {/* Theme Toggle (desktop) */}
+            {/* Theme Toggle Desktop */}
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className="nav-icon-button hidden md:flex"
@@ -92,7 +94,7 @@ const Layout = () => {
               {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </button>
 
-            {/* Theme Toggle (mobile) */}
+            {/* Theme Toggle Mobile */}
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className="nav-icon-button md:hidden"
@@ -121,7 +123,7 @@ const Layout = () => {
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden border-t border-border overflow-hidden bg-background"
+              className="md:hidden border-t border-border overflow-hidden bg-black/80 backdrop-blur-md"
             >
               <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
                 {navLinks.map(link => (
@@ -144,10 +146,12 @@ const Layout = () => {
         </AnimatePresence>
       </header>
 
-      <main className="pt-16">
+      {/* MAIN */}
+      <main>
         <Outlet />
       </main>
 
+      {/* FOOTER */}
       <footer className="border-t border-border py-12 mt-20">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
@@ -165,6 +169,7 @@ const Layout = () => {
           </div>
         </div>
       </footer>
+
     </div>
   )
 }

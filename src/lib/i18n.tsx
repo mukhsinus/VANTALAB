@@ -8,8 +8,8 @@ const translations = {
   ru: {
     nav: { home: 'Главная', cases: 'Кейсы', about: 'О нас', contacts: 'Контакты', quote: 'Получить оценку' },
     hero: {
-      title: 'Создаём сайты,\nкоторые продают',
-      subtitle: 'Если вы думаете, что вам не нужен сайт — вы уже теряете деньги.',
+      title: '',
+      subtitle: 'Если вы думаете, что вам не нужна цифровизация — вы уже теряете деньги.',
       cta1: 'Написать в Telegram',
       cta2: 'Получить оценку',
     },
@@ -116,8 +116,8 @@ const translations = {
   en: {
     nav: { home: 'Home', cases: 'Cases', about: 'About', contacts: 'Contacts', quote: 'Get a Quote' },
     hero: {
-      title: 'We build websites\nthat sell',
-      subtitle: "If you think you don't need a website — you're already losing money.",
+      title: '',
+      subtitle: "If you think you don't need digitalization — you're already losing money.",
       cta1: 'Message on Telegram',
       cta2: 'Get a Quote',
     },
@@ -218,11 +218,12 @@ const translations = {
       tagline: 'Premium software development from Uzbekistan',
     },
   },
+
   uz: {
     nav: { home: 'Bosh sahifa', cases: 'Loyihalar', about: 'Biz haqimizda', contacts: 'Aloqa', quote: 'Narx olish' },
     hero: {
-      title: 'Sotadigan saytlar\nyaratamiz',
-      subtitle: "Agar sayt kerak emas deb o'ylasangiz — siz allaqachon pul yo'qotyapsiz.",
+      title: '',
+      subtitle: "Agar raqamli transformatsiya kerak emas deb o'ylasangiz — siz allaqachon pul yo'qotyapsiz.",
       cta1: 'Telegramda yozish',
       cta2: 'Narx olish',
     },

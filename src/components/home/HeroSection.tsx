@@ -1,15 +1,20 @@
 import { useLanguage } from '@/lib/i18n';
 import { ArrowRight } from 'lucide-react';
+import heroBg from '@/assets/hero-bg.png';
 
 const HeroSection = () => {
   const { t } = useLanguage();
-
-  // Разделяем title по \n
   const [titleLine1, titleLine2] = t.hero.title.split('\n');
 
   return (
-    <section className="min-h-[90vh] flex flex-col items-center justify-center bg-gradient-to-b from-[#18191c] to-[#232325]">
-      <div className="w-full flex flex-col items-center justify-center px-4 py-24">
+    <section
+      className="relative min-h-screen flex flex-col items-center justify-center bg-cover bg-center"
+      style={{ backgroundImage: `url(${heroBg})` }}
+    >
+      {/* Затемняющий слой */}
+      <div className="absolute inset-0 bg-black/70"></div>
+
+      <div className="relative z-10 w-full flex flex-col items-center justify-center px-4 py-24">
 
         {/* Title */}
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight text-white text-center">
