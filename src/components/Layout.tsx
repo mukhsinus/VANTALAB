@@ -1,4 +1,3 @@
-// Layout.tsx — основной компонент, который оборачивает все страницы. Содержит шапку с навигацией, переключателем языка и темы, а также футер. В центре рендерится контент текущей страницы через <Outlet />.
 import { useState, useEffect } from 'react'
 import { Link, useLocation, Outlet } from 'react-router-dom'
 import { useLanguage } from '@/lib/i18n'
@@ -11,10 +10,32 @@ const Layout = () => {
   const { t, lang, setLang } = useLanguage()
   const { theme, setTheme } = useTheme()
   const [menuOpen, setMenuOpen] = useState(false)
+  const [navHeroDark, setNavHeroDark] = useState(false)
   const location = useLocation()
 
+  // Scroll to top on route change
   useEffect(() => {
     window.scrollTo(0, 0)
+  }, [location.pathname])
+
+  // Hero scroll detection
+  useEffect(() => {
+    const hero = document.getElementById('hero')
+
+    if (!hero) {
+      setNavHeroDark(false)
+      return
+    }
+
+    const handleScroll = () => {
+      const heroBottom = hero.getBoundingClientRect().bottom
+      setNavHeroDark(heroBottom > 64) // 64 = header height
+    }
+
+    handleScroll()
+    window.addEventListener('scroll', handleScroll)
+
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [location.pathname])
 
   const navLinks = [
@@ -33,7 +54,11 @@ const Layout = () => {
     <div className="min-h-screen text-foreground">
 
       {/* HEADER */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md">
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 ${
+          navHeroDark ? 'nav-hero-dark' : ''
+        }`}
+      >
         <nav className="container mx-auto px-6 h-16 flex items-center justify-between">
 
           {/* LEFT — LOGO */}
@@ -54,7 +79,9 @@ const Layout = () => {
             {navLinks.map(link => (
               <div
                 key={link.path}
-                className={`nav-panel nav-item ${isActive(link.path) ? 'active' : ''}`}
+                className={`nav-panel nav-item ${
+                  isActive(link.path) ? 'active' : ''
+                }`}
               >
                 <Link
                   to={link.path}
