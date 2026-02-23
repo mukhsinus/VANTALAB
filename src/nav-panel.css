@@ -45,6 +45,7 @@
 }
 
 
+
 /* =======================================================
    ACTIVE STATE
 ======================================================= */
@@ -143,4 +144,22 @@
 
 .dark .nav-icon-button {
   border-color: rgba(255,255,255,0.1);
+}
+
+/* =======================================================
+   LOGO WHITE BACKGROUND (OVERRIDE)
+======================================================= */
+
+.logo-wrapper {
+  background: #FFC107;
+  border-color: #FFC107;
+}
+
+.dark .logo-wrapper {
+  background: #FFC107;
+  border-color: #FFC107;
+}
+
+.logo-wrapper img {
+  filter: brightness(0);
 }

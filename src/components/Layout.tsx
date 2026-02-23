@@ -1,3 +1,4 @@
+// Layout.tsx — основной компонент, который оборачивает все страницы. Содержит шапку с навигацией, переключателем языка и темы, а также футер. В центре рендерится контент текущей страницы через <Outlet />.
 import { useState, useEffect } from 'react'
 import { Link, useLocation, Outlet } from 'react-router-dom'
 import { useLanguage } from '@/lib/i18n'
@@ -37,7 +38,7 @@ const Layout = () => {
 
           {/* LEFT — LOGO */}
           <div className="flex items-center">
-            <div className="nav-panel-border nav-item p-0 overflow-hidden">
+            <div className="nav-panel-border nav-item logo-wrapper p-0 overflow-hidden">
               <Link to="/" className="w-full h-full flex items-center justify-center">
                 <img
                   src="/logo.png"

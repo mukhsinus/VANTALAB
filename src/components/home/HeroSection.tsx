@@ -1,6 +1,7 @@
 import { useLanguage } from '@/lib/i18n';
 import { ArrowRight } from 'lucide-react';
 import heroBg from '@/assets/hero-bg.png';
+import heroBgMobile from '@/assets/hero-bg-mobile.png';
 
 const HeroSection = () => {
   const { t } = useLanguage();
