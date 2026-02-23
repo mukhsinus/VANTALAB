@@ -42,7 +42,7 @@ const HeroSection = () => {
         </h1> */}
 
         {/* Subtitle */}
-        <p className="mt-6 text-lg md:text-xl lg:text-5xl xl:text-2xl text-gray-300 text-center max-w-5xl leading-relaxed">
+        <p className="mt-6 text-lg md:text-xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-gray-300 text-center max-w-5xl leading-relaxed">
           {t.hero.subtitle}
         </p>
 
