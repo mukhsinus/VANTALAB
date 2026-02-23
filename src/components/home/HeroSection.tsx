@@ -21,7 +21,7 @@ const HeroSection = () => {
         />
       </picture>
       <div className="absolute inset-0 bg-black/70"></div>
-      <div className="relative z-10 w-full flex flex-col items-center justify-start md:justify-center px-4 pt-[27vh] md:pt-0 pb-8 md:py-24">
+      <div className="relative z-10 w-full flex flex-col items-center justify-start md:justify-center px-4 pt-[32vh] md:pt-0 pb-8 md:py-24">
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight text-white text-center">
           <span>{titleLine1}</span><br />
           <span className="block text-[hsl(42,100%,50%)]">
@@ -36,13 +36,13 @@ const HeroSection = () => {
             href="https://t.me/LLC_VANTALAB"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-3 py-1 sm:px-8 sm:py-4 rounded-2xl bg-[hsl(42,100%,50%)] text-black font-bold text-base sm:text-lg shadow-lg hover:bg-yellow-400 transition"
+            className="px-5 py-3 sm:px-8 sm:py-4 rounded-2xl bg-[hsl(42,100%,50%)] text-black font-bold text-base sm:text-lg shadow-lg hover:bg-yellow-400 transition"
           >
             📨 {t.hero.cta1}
           </a>
           <a
             href="/contacts"
-            className="px-3 py-1 sm:px-8 sm:py-4 rounded-2xl border border-gray-400 text-white font-bold text-base sm:text-lg shadow-lg hover:bg-gray-800 transition flex items-center gap-2 justify-center"
+            className="px-5 py-3 sm:px-8 sm:py-4 rounded-2xl border border-gray-400 text-white font-bold text-base sm:text-lg shadow-lg hover:bg-gray-800 transition flex items-center gap-2 justify-center"
           >
             {t.hero.cta2} <ArrowRight size={20} />
           </a>
