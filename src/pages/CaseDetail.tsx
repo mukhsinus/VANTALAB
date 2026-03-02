@@ -11,6 +11,7 @@ import pitstopImg from '@/assets/pitstop.webp';
 import mazzoImg from '@/assets/mazzo.webp';
 import luxlightImg from '@/assets/luxlight.webp';
 import essenzaImg from '@/assets/essenza.webp';
+import bekhzodImg from '@/assets/bekhzod.webp';
 
 const caseDetails: Record<string, { 
   name: string;
@@ -247,6 +248,71 @@ const caseDetails: Record<string, {
     timeline: '2 weeks',
     teamSize: 2,
   },
+
+  bekhzod: {
+    name: 'Kodbekhzod',
+    image: bekhzodImg,
+    goal: { 
+      ru: 'Разработать цифровую платформу для международного конкурса при поддержке Министерства культуры Узбекистана с удобной подачей заявок и имиджевым позиционированием.', 
+      en: 'Develop a digital platform for an international competition supported by the Ministry of Culture of Uzbekistan with streamlined submissions and strong institutional positioning.', 
+      uz: "O'zbekiston Madaniyat vazirligi ko'magidagi xalqaro tanlov uchun ariza topshirishni qulay va imidj jihatdan kuchli raqamli platforma yaratish." 
+    },
+    built: { 
+      ru: 'Имиджевый конкурсный портал с многоязычным интерфейсом, системой номинаций, этапами конкурса, личным кабинетом и административной панелью управления заявками.', 
+      en: 'A branded competition portal with multilingual interface, nomination system, competition stages, user accounts, and admin panel for submission management.', 
+      uz: "Ko'p tilli interfeys, nominatsiyalar tizimi, tanlov bosqichlari, shaxsiy kabinet va arizalarni boshqarish admin paneli bilan imidjli tanlov portali." 
+    },
+    features: { 
+      ru: [
+        '7 конкурсных номинаций',
+        'Многоязычный интерфейс (RU / EN)',
+        'Подача заявок онлайн',
+        'Личный кабинет участника',
+        'Административная панель',
+        'Адаптивная версия'
+      ], 
+      en: [
+        '7 competition categories',
+        'Multilingual interface (RU / EN)',
+        'Online submission system',
+        'Participant dashboard',
+        'Admin panel',
+        'Responsive design'
+      ], 
+      uz: [
+        '7 ta tanlov nominatsiyasi',
+        "Ko'p tilli interfeys (RU / EN)",
+        'Onlayn ariza topshirish',
+        'Ishtirokchi shaxsiy kabineti',
+        'Admin panel',
+        'Moslashuvchan dizayn'
+      ] 
+    },
+    stack: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Netlify'],
+    results: { 
+      ru: [
+        'Создана цифровая инфраструктура конкурса',
+        'Упрощён процесс подачи заявок',
+        'Повышено международное присутствие проекта',
+        'Обеспечено централизованное администрирование'
+      ], 
+      en: [
+        'Digital infrastructure established',
+        'Submission process streamlined',
+        'Increased international visibility',
+        'Centralized administration enabled'
+      ], 
+      uz: [
+        'Tanlov uchun raqamli infratuzilma yaratildi',
+        'Ariza topshirish jarayoni soddalashtirildi',
+        'Loyihaning xalqaro ko‘rinishi oshirildi',
+        'Markazlashtirilgan boshqaruv ta’minlandi'
+      ] 
+    },
+    timeline: '2 weeks',
+    teamSize: 2,
+},
+
 };
 
 

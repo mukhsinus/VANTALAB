@@ -11,6 +11,7 @@ import mazzo from '@/assets/mazzo.webp';
 import medicare from '@/assets/medicare.webp';
 import modulbino from '@/assets/modulbino.webp';
 import pitstop from '@/assets/pitstop.webp';
+import bekhzod from '@/assets/bekhzod.webp';
 
 const casesData = [
   {
@@ -78,12 +79,12 @@ const casesData = [
     image: essenza,
   },
   {
-    id: '9',
-    name: 'Coming Soon',
-    type: { ru: 'Веб-приложение', en: 'Web App', uz: 'Veb-ilova' },
-    url: '',
+    id: 'bekhzod',
+    name: 'Kodbekhzod',
+    type: { ru: 'Веб-сайт', en: 'Web Site', uz: 'Veb-Sayt' },
+    url: 'https://kodbekhzod.netlify.app',
     featured: false,
-    image: null,
+    image: bekhzod,
   },
   {
     id: '10',
