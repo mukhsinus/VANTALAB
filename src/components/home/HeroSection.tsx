@@ -1,7 +1,7 @@
 // HeroSection.tsx
 import { useLanguage } from '@/lib/i18n'
 import { ArrowRight } from 'lucide-react'
-import heroBg from '@/assets/hero-bg.png'
+import heroBg from '@/assets/hero-bg2.webp'
 import heroBgMobile from '@/assets/hero-bg-mobile.png'
 
 const HeroSection = () => {
@@ -27,7 +27,7 @@ const HeroSection = () => {
       </picture>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/70" />
+      <div className="absolute inset-0 bg-black/30" />
 
       {/* Content */}
       <div className="relative z-10 w-full flex flex-col items-center justify-start  px-4 pt-72 md:pt-72 pb-8">
