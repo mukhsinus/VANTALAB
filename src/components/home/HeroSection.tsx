@@ -3,6 +3,7 @@ import { useLanguage } from '@/lib/i18n'
 import { ArrowRight } from 'lucide-react'
 import heroBg from '@/assets/hero-bg2.webp'
 import heroBgMobile from '@/assets/hero-bg-mobile.png'
+import CountUp from '../ui/countUp'
 
 const HeroSection = () => {
   const { t } = useLanguage()
@@ -11,7 +12,7 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-[100svh] flex flex-col items-center justify-start "
+      className="relative min-h-[100svh] md:min-h-[100h] flex flex-col items-center justify-start "
     >
       {/* Background image */}
       <picture>
@@ -30,7 +31,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-black/30" />
 
       {/* Content */}
-      <div className="relative z-10 w-full flex flex-col items-center justify-start  px-4 pt-72 md:pt-72 pb-8">
+      <div className="relative z-10 w-full flex flex-col items-center justify-start  px-4 pt-72 md:pt-48 pb-8">
 
         {/* Title */}
         {/* <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight text-white text-center">
@@ -71,7 +72,7 @@ const HeroSection = () => {
 
           <div className="text-center">
             <p className="text-2xl md:text-4xl font-bold text-[hsl(42,100%,50%)]">
-              10+
+              <CountUp end={10} suffix="+" />
             </p>
             <p className="text-sm text-gray-300 mt-1">
               {t.stats.projects}
@@ -80,7 +81,7 @@ const HeroSection = () => {
 
           <div className="text-center">
             <p className="text-2xl md:text-4xl font-bold text-[hsl(42,100%,50%)]">
-              6+
+              <CountUp end={6} suffix="+" />
             </p>
             <p className="text-sm text-gray-300 mt-1">
               {t.stats.clients}
@@ -89,7 +90,7 @@ const HeroSection = () => {
 
           <div className="text-center">
             <p className="text-2xl md:text-4xl font-bold text-[hsl(42,100%,50%)]">
-              1+
+              <CountUp end={1} suffix="+" />
             </p>
             <p className="text-sm text-gray-300 mt-1">
               {t.stats.years}
@@ -98,7 +99,7 @@ const HeroSection = () => {
 
           <div className="text-center">
             <p className="text-2xl md:text-4xl font-bold text-[hsl(42,100%,50%)]">
-              40%
+              <CountUp end={40} suffix="%" />
             </p>
             <p className="text-xs sm:text-sm text-gray-300 mt-1">
               {t.stats.conversion}

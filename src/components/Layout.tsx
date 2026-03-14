@@ -87,7 +87,7 @@ const Layout = () => {
               >
                 <Link
                   to={link.path}
-                  className={`w-full text-center text-sm font-medium transition-colors ${
+                  className={`w-full text-center text-sm font-medium transition-colors nav-white${
                     isActive(link.path)
                       ? 'text-foreground'
                       : 'text-muted-foreground hover:text-foreground'
@@ -182,7 +182,7 @@ const Layout = () => {
       </main>
 
       {/* FOOTER */}
-      <footer className="border-t border-border py-12 mt-20">
+      <footer className="border-t border-border py-6 mt-20">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div>

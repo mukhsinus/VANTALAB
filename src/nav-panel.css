@@ -14,7 +14,7 @@
   border-radius: 9999px;
   background: transparent;
 
-  border: 1.5px solid var(--border-color, rgba(255,255,255,0.15));
+  border: 1.5px solid #141414;
 
   transition: 
     background 0.2s ease,
@@ -79,7 +79,7 @@
   border-radius: 9999px;
   background: transparent;
 
-  border: 1.5px solid var(--border-color, rgba(255,255,255,0.15));
+  border: 1.5px solid  #141414;
 
   transition: border-color 0.2s ease, background 0.2s ease;
 }
@@ -112,7 +112,7 @@
 
 .lang-switcher button.active {
   background: var(--accent-color, #ffc107);
-  color: var(--accent-foreground, #222);
+  color: #F8F8F6;
   font-weight: 600;
 }
 
@@ -131,7 +131,7 @@
 
   border-radius: 9999px;
   background: transparent;
-  border: 1.5px solid var(--border-color, rgba(255,255,255,0.15));
+  border: 1.5px solid var( rgba(255,255,255,0.15));
 
   transition: background 0.2s ease, border-color 0.2s ease;
   cursor: pointer;
@@ -176,7 +176,7 @@
   border-color: rgba(255,255,255,0.25);
 }
 
-.nav-hero-dark .nav-panel {
+.nav-hero-dark .nav-panel, .nav-hero-dark .nav-item {
   color: white;
 }
 

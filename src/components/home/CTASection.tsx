@@ -19,7 +19,7 @@ const CTASection = () => {
               <p className="mt-4 text-lg text-primary-foreground/60 max-w-lg mx-auto">
                 {t.cta.subtitle}
               </p>
-              <Button variant="hero" size="xl" className="mt-8" asChild>
+              <Button variant="hero" size="xl" className="mt-8 rounded-full" asChild>
                 <a href="https://t.me/LLC_VANTALAB" target="_blank" rel="noopener noreferrer">
                   <Send size={18} />
                   {t.cta.button}

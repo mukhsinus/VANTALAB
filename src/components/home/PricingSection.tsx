@@ -41,7 +41,7 @@ const PricingSection = () => {
                     </li>
                   ))}
                 </ul>
-                <Button variant="outline" className="mt-6 w-full" asChild>
+                <Button variant="outline" className="mt-6 w-full rounded-full" asChild>
                   <a href="/contacts">{t.hero.cta2}</a>
                 </Button>
               </div>

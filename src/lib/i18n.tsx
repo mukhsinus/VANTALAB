@@ -61,8 +61,8 @@ const translations = {
       subtitle: 'Маленькая студия. Большие результаты.',
       desc: 'Мы — компактная команда из двух сильных разработчиков. Каждый проект получает 100% нашего внимания.',
       members: [
-        { name: 'Ген директор', role: 'Front-end Разработчик', bio: 'Главный визионер и архитектор решений. Отвечает за качество и видение каждого проекта.' },
-        { name: 'Соучредитель', role: 'Full-stack Разработчик', bio: 'Специалист по разработке и сложным интеграциям. Превращает дизайн в идеальный код.' },
+        { name: 'Ген директор', role: 'Front-end Разработчик', bio: 'Главный визионер и архитектор решений. Отвечает за качество и видение каждого проекта.', portfolioLink: 'https://mukhsinus.dev/', portfolio: 'mukhsinus.dev' },
+        { name: 'Соучредитель', role: 'Full-stack Разработчик', bio: 'Специалист по разработке и сложным интеграциям. Превращает дизайн в идеальный код.', portfolioLink: 'https://pakhlavon.dev/', portfolio: 'pakhlavon.dev' },
       ],
     },
     cta: {
@@ -169,8 +169,8 @@ const translations = {
       subtitle: 'Small studio. Big results.',
       desc: "We're a compact team of two strong developers. Every project gets 100% of our attention.",
       members: [
-        { name: 'Founder', role: 'Front-end Developer', bio: 'Major visionary and solutions architect. Responsible for the quality and vision of each project.' },
-        { name: 'Co-Founder', role: 'Full-stack Developer', bio: 'Specialist in development and complex integrations. Turns design into perfect code.' },
+        { name: 'Founder', role: 'Front-end Developer', bio: 'Major visionary and solutions architect. Responsible for the quality and vision of each project.', portfolioLink: 'https://mukhsinus.dev/', portfolio: 'mukhsinus.dev'},
+        { name: 'Co-Founder', role: 'Full-stack Developer', bio: 'Specialist in development and complex integrations. Turns design into perfect code.', portfolioLink: 'https://pakhlavon.dev/', portfolio: 'pakhlavon.dev' },
       ],
     },
     cta: {
@@ -275,8 +275,8 @@ const translations = {
       subtitle: 'Kichik studiya. Katta natijalar.',
       desc: "Biz ikki kuchli dasturchidan iborat ixcham jamoamiz. Har bir loyiha 100% e'tiborimizni oladi.",
       members: [
-        { name: 'Asoschi', role: 'Front-end Developer', bio: 'Bosh Vizyoner va Yechim Arxitektori. Har bir loyihaning sifati va qarashlari uchun javobgar.' },
-        { name: 'Hammuassis', role: 'Full-stack Developer', bio: "Rivojlanish va murakkab integratsiya bo'yicha mutaxassis. Dizaynni mukammal kodga aylantirish." },
+        { name: 'Asoschi', role: 'Front-end Developer', bio: 'Bosh Vizyoner va Yechim Arxitektori. Har bir loyihaning sifati va qarashlari uchun javobgar.', portfolioLink: 'https://mukhsinus.dev/', portfolio: 'mukhsinus.dev' },
+        { name: 'Hammuassis', role: 'Full-stack Developer', bio: "Rivojlanish va murakkab integratsiya bo'yicha mutaxassis. Dizaynni mukammal kodga aylantirish.", portfolioLink: 'https://pakhlavon.dev/', portfolio: 'pakhlavon.dev' },
       ],
     },
     cta: {

@@ -22,11 +22,11 @@ const Contacts = () => {
     <section>
       <div className="container mx-auto px-6">
         <FadeIn>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight">{t.contact.title}</h1>
-          <p className="mt-4 text-lg text-muted-foreground max-w-xl">{t.contact.subtitle}</p>
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-center">{t.contact.title}</h1>
+          <p className="mt-4 text-lg text-muted-foreground max-w-xl text-center mx-auto">{t.contact.subtitle}</p>
         </FadeIn>
 
-        <div className="mt-16 grid lg:grid-cols-2 gap-12 max-w-5xl">
+        <div className="mt-16 grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
           <FadeIn delay={0.1}>
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
@@ -34,7 +34,7 @@ const Contacts = () => {
                 <Input
                   value={form.name}
                   onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                  className="h-12"
+                  className="h-12 rounded-full"
                   required
                   maxLength={100}
                 />
@@ -45,7 +45,7 @@ const Contacts = () => {
                   type="email"
                   value={form.email}
                   onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                  className="h-12"
+                  className="h-12 rounded-full"
                   required
                   maxLength={255}
                 />
@@ -55,12 +55,13 @@ const Contacts = () => {
                 <Textarea
                   value={form.message}
                   onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                  rows={5}
+                  className="rounded-2xl"
+                  rows={4}
                   required
                   maxLength={1000}
                 />
               </div>
-              <Button type="submit" size="xl" className="w-full">
+              <Button type="submit" size="xl" className="w-full rounded-full">
                 {t.contact.form.send}
               </Button>
             </form>
@@ -74,7 +75,7 @@ const Contacts = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-5 rounded-2xl border border-border bg-card hover:border-accent/30 transition-colors group"
               >
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
                   <Send size={20} className="text-accent" />
                 </div>
                 <div>
@@ -89,7 +90,7 @@ const Contacts = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-5 rounded-2xl border border-border bg-card hover:border-accent/30 transition-colors group"
               >
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
                   <MessageCircle size={20} className="text-accent" />
                 </div>
                 <div>
@@ -102,7 +103,7 @@ const Contacts = () => {
                 href="mailto:info@vantalab.uz"
                 className="flex items-center gap-4 p-5 rounded-2xl border border-border bg-card hover:border-accent/30 transition-colors group"
               >
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
                   <Mail size={20} className="text-accent" />
                 </div>
                 <div>

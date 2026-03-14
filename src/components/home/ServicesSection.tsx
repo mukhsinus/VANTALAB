@@ -1,6 +1,6 @@
-import { useLanguage } from '@/lib/i18n';
-import FadeIn from '@/components/FadeIn';
-import { Layout, Building2, ShoppingCart, Code2, Bot } from 'lucide-react';
+import { useLanguage } from "@/lib/i18n";
+import FadeIn from "@/components/FadeIn";
+import { Layout, Building2, ShoppingCart, Code2, Bot } from "lucide-react";
 
 const serviceIcons = [Layout, Building2, ShoppingCart, Code2, Bot];
 
@@ -12,8 +12,12 @@ const ServicesSection = () => {
       <div className="container mx-auto px-6">
         <FadeIn>
           <div className="max-w-2xl">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">{t.services.title}</h2>
-            <p className="mt-4 text-lg text-muted-foreground">{t.services.subtitle}</p>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+              {t.services.title}
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              {t.services.subtitle}
+            </p>
           </div>
         </FadeIn>
 
@@ -27,7 +31,9 @@ const ServicesSection = () => {
                     <Icon size={22} className="text-accent" />
                   </div>
                   <h3 className="text-base font-semibold">{service.name}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{service.desc}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {service.desc}
+                  </p>
                 </div>
               </FadeIn>
             );
@@ -37,18 +43,23 @@ const ServicesSection = () => {
         {/* Process */}
         <div className="mt-32">
           <FadeIn>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">{t.process.title}</h2>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+              {t.process.title}
+            </h2>
           </FadeIn>
-
-          <div className="mt-16 grid md:grid-cols-5 gap-4">
+          <div className="mt-16 grid md:grid-cols-5 gap-4 items-stretch">
             {t.process.steps.map((step, i) => (
               <FadeIn key={i} delay={i * 0.1}>
-                <div className="relative p-6 rounded-2xl border border-border bg-card group hover:border-accent/30 transition-colors">
+                <div className="relative h-full p-6 rounded-2xl border border-border bg-card group hover:border-accent/30 transition-colors flex flex-col">
                   <span className="text-4xl font-bold text-accent/20 group-hover:text-accent/40 transition-colors">
-                    {String(i + 1).padStart(2, '0')}
+                    {String(i + 1).padStart(2, "0")}
                   </span>
+
                   <h3 className="mt-3 text-lg font-semibold">{step.name}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{step.desc}</p>
+
+                  <p className="mt-2 text-sm text-muted-foreground flex-grow">
+                    {step.desc}
+                  </p>
                 </div>
               </FadeIn>
             ))}
