@@ -11,12 +11,42 @@ const Contacts = () => {
   const { t } = useLanguage();
   const [form, setForm] = useState({ name: '', email: '', message: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) return;
-    toast.success('Message sent!');
-    setForm({ name: '', email: '', message: '' });
-  };
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+    toast.error("Please fill all fields");
+    return;
+  }
+
+  try {
+    const formData = new URLSearchParams();
+    formData.append("name", form.name);
+    formData.append("email", form.email);
+    formData.append("message", form.message);
+
+    const res = await fetch(
+      "/api/contact",
+      {
+        method: "POST",
+        body: formData
+      }
+    );
+
+    const data = await res.json();
+
+    if (data.status === "success") {
+      toast.success("Message sent!");
+      setForm({ name: "", email: "", message: "" });
+    } else {
+      toast.error(data.message || "Failed to send");
+      console.error("Server error:", data);
+    }
+  } catch (err) {
+    console.error("Error:", err);
+    toast.error("Error sending message");
+  }
+};
 
   return (
     <section>

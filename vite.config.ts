@@ -11,6 +11,13 @@ export default defineConfig(({ mode }) => ({
     hmr: {
       overlay: false,
     },
+    proxy: {
+      '/api/contact': {
+        target: 'https://script.google.com/macros/s/AKfycbzR0eBT5AhuMsSFQ-9BDWIQJS3PlZrrYg_PhyDQRRkRg6euhytM1DZLz2jPHJAZ0T6e/exec',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/contact/, ''),
+      }
+    }
   },
   plugins: [react()].filter(Boolean),
   resolve: {

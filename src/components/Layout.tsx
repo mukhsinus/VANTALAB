@@ -1,72 +1,73 @@
 // Layout component with header, main content, and footer. Handles navigation, theme switching, and language selection.
-import { useState, useEffect } from 'react'
-import { Link, useLocation, Outlet } from 'react-router-dom'
-import { useLanguage } from '@/lib/i18n'
-import { useTheme } from 'next-themes'
-import { Moon, Sun, Menu, X } from 'lucide-react'
-import { AnimatePresence, motion } from 'framer-motion'
-import '../nav-panel.css'
+import { useState, useEffect } from "react";
+import { Link, useLocation, Outlet } from "react-router-dom";
+import { useLanguage } from "@/lib/i18n";
+import { useTheme } from "next-themes";
+import { Moon, Sun, Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import "../nav-panel.css";
 
 const Layout = () => {
-  const { t, lang, setLang } = useLanguage()
-  const { theme, setTheme } = useTheme()
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [navHeroDark, setNavHeroDark] = useState(false)
-  const location = useLocation()
-  const hasHero = location.pathname === '/'
+  const { t, lang, setLang } = useLanguage();
+  const { theme, setTheme } = useTheme();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [navHeroDark, setNavHeroDark] = useState(false);
+  const location = useLocation();
+  const hasHero = location.pathname === "/";
 
   // Scroll to top on route change
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [location.pathname])
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   // Hero scroll detection
   useEffect(() => {
-    const hero = document.getElementById('hero')
+    const hero = document.getElementById("hero");
 
     if (!hero) {
-      setNavHeroDark(false)
-      return
+      setNavHeroDark(false);
+      return;
     }
 
     const handleScroll = () => {
-      const heroBottom = hero.getBoundingClientRect().bottom
-      setNavHeroDark(heroBottom > 64) // 64 = header height
-    }
+      const heroBottom = hero.getBoundingClientRect().bottom;
+      setNavHeroDark(heroBottom > 64); // 64 = header height
+    };
 
-    handleScroll()
-    window.addEventListener('scroll', handleScroll)
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [location.pathname])
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [location.pathname]);
 
   const navLinks = [
-    { path: '/', label: t.nav.home },
-    { path: '/cases', label: t.nav.cases },
-    { path: '/about', label: t.nav.about },
-    { path: '/contacts', label: t.nav.contacts },
-  ]
+    { path: "/", label: t.nav.home },
+    { path: "/cases", label: t.nav.cases },
+    { path: "/about", label: t.nav.about },
+    { path: "/contacts", label: t.nav.contacts },
+  ];
 
   const isActive = (path: string) => {
-    if (path === '/') return location.pathname === '/'
-    return location.pathname.startsWith(path)
-  }
+    if (path === "/") return location.pathname === "/";
+    return location.pathname.startsWith(path);
+  };
 
   return (
     <div className="min-h-screen text-foreground">
-
       {/* HEADER */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 ${
-          navHeroDark ? 'nav-hero-dark' : ''
+          navHeroDark ? "nav-hero-dark" : ""
         }`}
       >
         <nav className="container mx-auto px-6 h-16 flex items-center justify-between">
-
           {/* LEFT — LOGO */}
           <div className="flex items-center">
             <div className="nav-panel-border nav-item logo-wrapper p-0 overflow-hidden">
-              <Link to="/" className="w-full h-full flex items-center justify-center">
+              <Link
+                to="/"
+                className="w-full h-full flex items-center justify-center"
+              >
                 <img
                   src="/logo.png"
                   alt="VANTA LAB Logo"
@@ -78,19 +79,19 @@ const Layout = () => {
 
           {/* CENTER — NAVIGATION */}
           <div className="hidden md:flex items-center gap-3">
-            {navLinks.map(link => (
+            {navLinks.map((link) => (
               <div
                 key={link.path}
                 className={`nav-panel nav-item ${
-                  isActive(link.path) ? 'active' : ''
+                  isActive(link.path) ? "active" : ""
                 }`}
               >
                 <Link
                   to={link.path}
                   className={`w-full text-center text-sm font-medium transition-colors nav-white${
                     isActive(link.path)
-                      ? 'text-foreground'
-                      : 'text-muted-foreground hover:text-foreground'
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {link.label}
@@ -101,14 +102,13 @@ const Layout = () => {
 
           {/* RIGHT — LANGUAGE + THEME + BURGER */}
           <div className="flex items-center gap-3">
-
             {/* Language Switcher */}
             <div className="nav-panel-border lang-switcher nav-item px-0">
-              {(['ru', 'en', 'uz'] as const).map(l => (
+              {(["ru", "en", "uz"] as const).map((l) => (
                 <button
                   key={l}
                   onClick={() => setLang(l)}
-                  className={lang === l ? 'active' : ''}
+                  className={lang === l ? "active" : ""}
                 >
                   {l.toUpperCase()}
                 </button>
@@ -117,20 +117,72 @@ const Layout = () => {
 
             {/* Theme Toggle Desktop */}
             <button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="nav-icon-button hidden md:flex"
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+              <AnimatePresence mode="wait" initial={false}>
+                {theme === "dark" ? (
+                  <motion.div
+                    key="sun"
+                    initial={{ rotate: -90, scale: 0 }}
+                    animate={{ rotate: 0, scale: 1 }}
+                    exit={{ rotate: 90, scale: 0 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 18,
+                    }}
+                  >
+                    <Sun size={18} />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="moon"
+                    initial={{ rotate: 90, scale: 0 }}
+                    animate={{ rotate: 0, scale: 1 }}
+                    exit={{ rotate: -90, scale: 0 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 18,
+                    }}
+                  >
+                    <Moon size={18} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </button>
 
             {/* Theme Toggle Mobile */}
             <button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="nav-icon-button md:hidden"
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+              <AnimatePresence mode="wait" initial={false}>
+                {theme === "dark" ? (
+                  <motion.div
+                    key="sun"
+                    initial={{ rotate: -90, scale: 0 }}
+                    animate={{ rotate: 0, scale: 1 }}
+                    exit={{ rotate: 90, scale: 0 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 18 }}
+                  >
+                    <Sun size={18} />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="moon"
+                    initial={{ rotate: 90, scale: 0 }}
+                    animate={{ rotate: 0, scale: 1 }}
+                    exit={{ rotate: -90, scale: 0 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 18 }}
+                  >
+                    <Moon size={18} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </button>
 
             {/* Burger */}
@@ -141,7 +193,6 @@ const Layout = () => {
             >
               {menuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
-
           </div>
         </nav>
 
@@ -156,20 +207,18 @@ const Layout = () => {
               className="md:hidden border-t border-border backdrop-blur-md"
             >
               <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
-
-                {navLinks.map(link => (
+                {navLinks.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
                     onClick={() => setMenuOpen(false)}
                     className={`nav-item nav-panel text-sm font-medium ${
-                      isActive(link.path) ? 'active' : ''
+                      isActive(link.path) ? "active" : ""
                     }`}
                   >
                     {link.label}
                   </Link>
                 ))}
-
               </div>
             </motion.div>
           )}
@@ -177,7 +226,7 @@ const Layout = () => {
       </header>
 
       {/* MAIN */}
-      <main className={hasHero ? '' : 'pt-16'}>
+      <main className={hasHero ? "" : "pt-16"}>
         <Outlet />
       </main>
 
@@ -193,15 +242,12 @@ const Layout = () => {
                 {t.footer.tagline}
               </p>
             </div>
-            <p className="text-sm text-muted-foreground">
-              {t.footer.rights}
-            </p>
+            <p className="text-sm text-muted-foreground">{t.footer.rights}</p>
           </div>
         </div>
       </footer>
-
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
