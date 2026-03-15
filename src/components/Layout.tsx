@@ -14,6 +14,14 @@ const Layout = () => {
   const [navHeroDark, setNavHeroDark] = useState(false);
   const location = useLocation();
   const hasHero = location.pathname === "/";
+  const languages = ["ru", "en", "uz"] as const;
+  const activeIndex = languages.indexOf(lang as (typeof languages)[number]);
+  const radius =
+    activeIndex === 0
+      ? "9999px 0 0 9999px"
+      : activeIndex === 2
+        ? "0 9999px 9999px 0"
+        : "0px";
 
   // Scroll to top on route change
   useEffect(() => {
@@ -102,13 +110,25 @@ const Layout = () => {
 
           {/* RIGHT — LANGUAGE + THEME + BURGER */}
           <div className="flex items-center gap-3">
-            {/* Language Switcher */}
-            <div className="nav-panel-border lang-switcher nav-item px-0">
-              {(["ru", "en", "uz"] as const).map((l) => (
+            <div className="relative nav-panel-border lang-switcher nav-item flex p-1">
+              <div
+                className="absolute top-1 bottom-1 bg-accent transition-all duration-300 ease-out"
+                style={{
+                  width: `calc((100% - 0.5rem) / ${languages.length})`,
+                  left: `calc(${activeIndex} * ((100% - 0.5rem) / ${languages.length}) + 0.25rem)`,
+                  borderRadius: radius,
+                }}
+              />
+
+              {languages.map((l) => (
                 <button
                   key={l}
                   onClick={() => setLang(l)}
-                  className={lang === l ? "active" : ""}
+                  className={`relative flex-1 text-sm font-medium transition-colors ${
+                    lang === l
+                      ? "text-black"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
                 >
                   {l.toUpperCase()}
                 </button>
