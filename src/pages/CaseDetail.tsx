@@ -327,7 +327,7 @@ const CaseDetail = () => {
       <div className="py-32 text-center container mx-auto px-6">
         <h1 className="text-4xl font-bold">Case not found</h1>
         <Button variant="outline" className="mt-8" asChild>
-          <Link to="/cases"><ArrowLeft size={16} /> {t.cases.backToList}</Link>
+          <Link to="/portfolio"><ArrowLeft size={16} /> {t.cases.backToList}</Link>
         </Button>
       </div>
     );
@@ -337,7 +337,7 @@ const CaseDetail = () => {
     <section className="py-6 md:py-10">
       <div className="container mx-auto px-6 max-w-4xl">
         <FadeIn>
-          <Link to="/cases" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors mb-8">
+          <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm text-white/45 hover:text-[#B4A9F7] transition-colors mb-8">
             <ArrowLeft size={16} /> {t.cases.backToList}
           </Link>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight">{caseData.name}</h1>
@@ -401,9 +401,9 @@ const CaseDetail = () => {
           </FadeIn>
 
           <FadeIn delay={0.45}>
-            <div className="rounded-2xl hero-gradient p-10 text-center">
-              <h3 className="text-2xl font-bold text-primary-foreground">{t.cases.ctaTitle}</h3>
-              <Button variant="hero" size="xl" className="mt-6" asChild>
+            <div className="vanta-cta-slab p-10 md:p-12 text-center">
+              <h3 className="text-2xl font-semibold text-white">{t.cases.ctaTitle}</h3>
+              <Button variant="vanta" size="xl" className="mt-6 rounded-2xl" asChild>
                 <a href="https://t.me/LLC_VANTALAB" target="_blank" rel="noopener noreferrer">
                   <Send size={18} /> {t.cta.button}
                 </a>

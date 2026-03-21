@@ -1,0 +1,92 @@
+import { useNavigate, Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
+import { useLanguage } from '@/lib/i18n';
+import { portfolioCases } from '@/data/portfolio-cases';
+import FadeIn from '@/components/FadeIn';
+
+export const FeaturedWork = () => {
+  const { t, lang } = useLanguage();
+  const navigate = useNavigate();
+
+  const featured = portfolioCases.filter(c => c.featured && c.image);
+  const filler = portfolioCases.filter(c => !c.featured && c.image);
+  const display = [...featured, ...filler].slice(0, 3);
+
+  return (
+    <section className="py-24 md:py-32 border-t border-white/[0.06]">
+      <div className="container mx-auto px-6">
+        <FadeIn>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6C5CE7]">{t.nav.portfolio}</p>
+          <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight text-white max-w-2xl">
+            {t.home.featuredTitle}
+          </h2>
+          <p className="mt-4 text-base text-white/45 max-w-xl leading-relaxed">{t.home.featuredSubtitle}</p>
+        </FadeIn>
+
+        <div className="mt-14 grid md:grid-cols-3 gap-5 md:gap-6">
+          {display.map((c, i) => (
+            <motion.button
+              key={c.id}
+              type="button"
+              onClick={() => navigate(`/portfolio/${c.id}`)}
+              className="group text-left rounded-[1.25rem] border border-white/[0.08] bg-white/[0.02] overflow-hidden glow-border-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6C5CE7]/50"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <div className="aspect-[16/10] relative overflow-hidden bg-white/[0.04]">
+                {c.image && (
+                  <img
+                    src={c.image}
+                    alt={c.name}
+                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/90 via-transparent to-transparent" />
+                {c.url ? (
+                  <a
+                    href={c.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={e => e.stopPropagation()}
+                    className="absolute top-4 right-4 inline-flex items-center gap-1 rounded-full border border-white/15 bg-black/40 backdrop-blur-md px-3 py-1.5 text-[11px] font-medium text-white/90 hover:border-[#6C5CE7]/40 hover:text-white transition-colors"
+                  >
+                    Live
+                    <ArrowUpRight className="size-3.5 opacity-80" />
+                  </a>
+                ) : null}
+              </div>
+              <div className="p-6 md:p-7">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="text-lg font-semibold text-white group-hover:text-white transition-colors">{c.name}</h3>
+                    <p className="mt-1 text-sm text-white/40">{c.type[lang]}</p>
+                  </div>
+                  <span className="shrink-0 rounded-full bg-[#6C5CE7]/15 border border-[#6C5CE7]/25 px-3 py-1 text-xs font-semibold text-[#B4A9F7] tabular-nums">
+                    {c.metric[lang]}
+                  </span>
+                </div>
+                <p className="mt-4 text-sm text-white/50 leading-relaxed">{c.highlight[lang]}</p>
+                <p className="mt-5 text-xs font-medium uppercase tracking-wider text-[#6C5CE7]/90">
+                  {t.home.metricLabel}
+                </p>
+              </div>
+            </motion.button>
+          ))}
+        </div>
+
+        <FadeIn className="mt-12 flex justify-center md:justify-start">
+          <Link
+            to="/portfolio"
+            className="inline-flex items-center gap-2 text-sm font-medium text-white/55 hover:text-white transition-colors group"
+          >
+            {t.home.viewPortfolio}
+            <ArrowUpRight className="size-4 opacity-60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </Link>
+        </FadeIn>
+      </div>
+    </section>
+  );
+};

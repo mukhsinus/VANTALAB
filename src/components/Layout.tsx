@@ -1,96 +1,57 @@
-// Layout component with header, main content, and footer. Handles navigation, theme switching, and language selection.
-import { useState, useEffect } from 'react'
-import { Link, useLocation, Outlet } from 'react-router-dom'
-import { useLanguage } from '@/lib/i18n'
-import { useTheme } from 'next-themes'
-import { Moon, Sun, Menu, X } from 'lucide-react'
-import { AnimatePresence, motion } from 'framer-motion'
-import '../nav-panel.css'
+import { useState, useEffect } from 'react';
+import { Link, useLocation, Outlet } from 'react-router-dom';
+import { useLanguage } from '@/lib/i18n';
+import { Menu, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import '../nav-panel.css';
 
 const Layout = () => {
-  const { t, lang, setLang } = useLanguage()
-  const { theme, setTheme } = useTheme()
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [navHeroDark, setNavHeroDark] = useState(false)
-  const location = useLocation()
-  const hasHero = location.pathname === '/'
+  const { t, lang, setLang } = useLanguage();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
-  // Scroll to top on route change
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [location.pathname])
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
-  // Hero scroll detection
   useEffect(() => {
-    const hero = document.getElementById('hero')
-
-    if (!hero) {
-      setNavHeroDark(false)
-      return
-    }
-
-    const handleScroll = () => {
-      const heroBottom = hero.getBoundingClientRect().bottom
-      setNavHeroDark(heroBottom > 64) // 64 = header height
-    }
-
-    handleScroll()
-    window.addEventListener('scroll', handleScroll)
-
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [location.pathname])
+    setMenuOpen(false);
+  }, [location.pathname]);
 
   const navLinks = [
     { path: '/', label: t.nav.home },
-    { path: '/cases', label: t.nav.cases },
-    { path: '/about', label: t.nav.about },
-    { path: '/contacts', label: t.nav.contacts },
-  ]
+    { path: '/services', label: t.nav.services },
+    { path: '/portfolio', label: t.nav.portfolio },
+    { path: '/contact', label: t.nav.contact },
+  ];
 
   const isActive = (path: string) => {
-    if (path === '/') return location.pathname === '/'
-    return location.pathname.startsWith(path)
-  }
+    if (path === '/') return location.pathname === '/';
+    return location.pathname === path || location.pathname.startsWith(`${path}/`);
+  };
 
   return (
-    <div className="min-h-screen text-foreground">
+    <div className="min-h-screen bg-[#0A0A0A] text-foreground">
+      <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#0A0A0A]/75 backdrop-blur-xl supports-[backdrop-filter]:bg-[#0A0A0A]/55">
+        <nav className="container mx-auto px-6 h-[4.25rem] flex items-center justify-between gap-4">
+          <Link to="/" className="logo-mark shrink-0" aria-label="VANTA LAB home">
+            <span className="text-sm font-semibold tracking-tight text-white">
+              VANTA<span className="text-white/40 mx-1">·</span>
+              <span className="text-[#6C5CE7]">LAB</span>
+            </span>
+          </Link>
 
-      {/* HEADER */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 ${
-          navHeroDark ? 'nav-hero-dark' : ''
-        }`}
-      >
-        <nav className="container mx-auto px-6 h-16 flex items-center justify-between">
-
-          {/* LEFT — LOGO */}
-          <div className="flex items-center">
-            <div className="nav-panel-border nav-item logo-wrapper p-0 overflow-hidden">
-              <Link to="/" className="w-full h-full flex items-center justify-center">
-                <img
-                  src="/logo.png"
-                  alt="VANTA LAB Logo"
-                  className="h-full w-auto object-contain"
-                />
-              </Link>
-            </div>
-          </div>
-
-          {/* CENTER — NAVIGATION */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center justify-center flex-1 gap-2 max-w-xl">
             {navLinks.map(link => (
               <div
                 key={link.path}
-                className={`nav-panel nav-item ${
-                  isActive(link.path) ? 'active' : ''
-                }`}
+                className={`nav-item nav-panel ${isActive(link.path) ? 'active' : ''}`}
               >
                 <Link
                   to={link.path}
-                  className={`w-full text-center text-sm font-medium transition-colors ${
-                    isActive(link.path)
-                      ? 'text-foreground'
-                      : 'text-muted-foreground hover:text-foreground'
+                  className={`w-full text-center text-[13px] font-medium transition-colors px-1 ${
+                    isActive(link.path) ? 'text-white' : 'text-white/55 hover:text-white/90'
                   }`}
                 >
                   {link.label}
@@ -99,109 +60,110 @@ const Layout = () => {
             ))}
           </div>
 
-          {/* RIGHT — LANGUAGE + THEME + BURGER */}
-          <div className="flex items-center gap-3">
-
-            {/* Language Switcher */}
-            <div className="nav-panel-border lang-switcher nav-item px-0">
-              {(['ru', 'en', 'uz'] as const).map(l => (
-                <button
-                  key={l}
-                  onClick={() => setLang(l)}
-                  className={lang === l ? 'active' : ''}
-                >
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            <div className="nav-panel-border lang-switcher hidden sm:flex p-0">
+              {(['en', 'ru', 'uz'] as const).map(l => (
+                <button key={l} type="button" onClick={() => setLang(l)} className={lang === l ? 'active' : ''}>
                   {l.toUpperCase()}
                 </button>
               ))}
             </div>
 
-            {/* Theme Toggle Desktop */}
-            <button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="nav-icon-button hidden md:flex"
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
+            <Button variant="vanta" size="sm" className="hidden sm:inline-flex h-10 px-5 text-[13px] rounded-full" asChild>
+              <Link to="/contact">{t.nav.startProject}</Link>
+            </Button>
 
-            {/* Theme Toggle Mobile */}
             <button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="nav-icon-button md:hidden"
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
-
-            {/* Burger */}
-            <button
+              type="button"
               onClick={() => setMenuOpen(!menuOpen)}
               className="nav-icon-button md:hidden"
+              aria-expanded={menuOpen}
               aria-label="Toggle menu"
             >
               {menuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
-
           </div>
         </nav>
 
-        {/* MOBILE MENU */}
         <AnimatePresence>
           {menuOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-              className="md:hidden border-t border-border backdrop-blur-md"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="md:hidden overflow-hidden border-t border-white/[0.06] bg-[#0A0A0A]/95 backdrop-blur-xl"
             >
-              <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
-
+              <div className="container mx-auto px-6 py-6 flex flex-col gap-3">
                 {navLinks.map(link => (
                   <Link
                     key={link.path}
                     to={link.path}
-                    onClick={() => setMenuOpen(false)}
-                    className={`nav-item nav-panel text-sm font-medium ${
-                      isActive(link.path) ? 'active' : ''
+                    className={`rounded-2xl border px-4 py-3.5 text-sm font-medium transition-colors ${
+                      isActive(link.path)
+                        ? 'border-[#6C5CE7]/40 bg-[#6C5CE7]/10 text-white'
+                        : 'border-white/10 text-white/70 hover:border-white/16 hover:text-white'
                     }`}
                   >
                     {link.label}
                   </Link>
                 ))}
-
+                <div className="flex gap-2 pt-2">
+                  {(['en', 'ru', 'uz'] as const).map(l => (
+                    <button
+                      key={l}
+                      type="button"
+                      onClick={() => setLang(l)}
+                      className={`flex-1 rounded-xl border py-2 text-xs font-semibold tracking-wide ${
+                        lang === l
+                          ? 'border-[#6C5CE7]/45 bg-[#6C5CE7]/15 text-white'
+                          : 'border-white/10 text-white/55'
+                      }`}
+                    >
+                      {l.toUpperCase()}
+                    </button>
+                  ))}
+                </div>
+                <Button variant="vanta" className="w-full h-12 rounded-2xl mt-1" asChild>
+                  <Link to="/contact">{t.nav.startProject}</Link>
+                </Button>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </header>
 
-      {/* MAIN */}
-      <main className={hasHero ? '' : 'pt-16'}>
+      <main>
         <Outlet />
       </main>
 
-      {/* FOOTER */}
-      <footer className="border-t border-border py-12 mt-20">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div>
-              <p className="text-xl font-bold">
-                VANTA <span className="text-accent">LAB</span>
+      <footer className="border-t border-white/[0.06] mt-24 md:mt-32">
+        <div className="container mx-auto px-6 py-14 md:py-20">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
+            <div className="max-w-md">
+              <p className="text-lg font-semibold tracking-tight text-white">
+                VANTA<span className="text-white/35 mx-1.5">·</span>
+                <span className="text-[#6C5CE7]">LAB</span>
               </p>
-              <p className="text-sm text-muted-foreground mt-1">
-                {t.footer.tagline}
-              </p>
+              <p className="mt-3 text-sm text-white/45 leading-relaxed">{t.footer.tagline}</p>
             </div>
-            <p className="text-sm text-muted-foreground">
-              {t.footer.rights}
-            </p>
+            <div className="flex flex-wrap gap-8 text-sm text-white/45">
+              <Link to="/services" className="hover:text-white transition-colors">
+                {t.nav.services}
+              </Link>
+              <Link to="/portfolio" className="hover:text-white transition-colors">
+                {t.nav.portfolio}
+              </Link>
+              <Link to="/contact" className="hover:text-white transition-colors">
+                {t.nav.contact}
+              </Link>
+            </div>
+            <p className="text-xs text-white/35 lg:text-right max-w-xs leading-relaxed">{t.footer.rights}</p>
           </div>
         </div>
       </footer>
-
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

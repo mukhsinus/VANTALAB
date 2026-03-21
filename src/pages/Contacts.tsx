@@ -19,67 +19,78 @@ const Contacts = () => {
   };
 
   return (
-    <section>
+    <div className="pt-16 md:pt-20 pb-24 md:pb-32">
       <div className="container mx-auto px-6">
         <FadeIn>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight">{t.contact.title}</h1>
-          <p className="mt-4 text-lg text-muted-foreground max-w-xl">{t.contact.subtitle}</p>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6C5CE7]">{t.nav.contact}</p>
+          <h1 className="mt-3 text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white max-w-3xl leading-[1.08]">
+            {t.contact.title}
+          </h1>
+          <p className="mt-5 text-lg text-white/45 max-w-2xl leading-relaxed">{t.contact.subtitle}</p>
         </FadeIn>
 
-        <div className="mt-16 grid lg:grid-cols-2 gap-12 max-w-5xl">
-          <FadeIn delay={0.1}>
-            <form onSubmit={handleSubmit} className="space-y-5">
+        <div className="mt-16 md:mt-20 grid lg:grid-cols-2 gap-12 lg:gap-16 max-w-5xl">
+          <FadeIn delay={0.08}>
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="text-sm font-medium mb-2 block">{t.contact.form.name}</label>
+                <label className="text-xs font-medium uppercase tracking-wider text-white/40 mb-2 block">
+                  {t.contact.form.name}
+                </label>
                 <Input
                   value={form.name}
                   onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                  className="h-12"
+                  className="h-12 rounded-2xl border-white/10 bg-white/[0.03] text-white placeholder:text-white/25 focus-visible:ring-[#6C5CE7]/40"
                   required
                   maxLength={100}
                 />
               </div>
               <div>
-                <label className="text-sm font-medium mb-2 block">{t.contact.form.email}</label>
+                <label className="text-xs font-medium uppercase tracking-wider text-white/40 mb-2 block">
+                  {t.contact.form.email}
+                </label>
                 <Input
                   type="email"
                   value={form.email}
                   onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                  className="h-12"
+                  className="h-12 rounded-2xl border-white/10 bg-white/[0.03] text-white placeholder:text-white/25 focus-visible:ring-[#6C5CE7]/40"
                   required
                   maxLength={255}
                 />
               </div>
               <div>
-                <label className="text-sm font-medium mb-2 block">{t.contact.form.message}</label>
+                <label className="text-xs font-medium uppercase tracking-wider text-white/40 mb-2 block">
+                  {t.contact.form.message}
+                </label>
                 <Textarea
                   value={form.message}
                   onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                   rows={5}
+                  className="rounded-2xl border-white/10 bg-white/[0.03] text-white placeholder:text-white/25 focus-visible:ring-[#6C5CE7]/40 resize-none"
                   required
                   maxLength={1000}
                 />
               </div>
-              <Button type="submit" size="xl" className="w-full">
+              <Button type="submit" variant="vanta" size="lg" className="w-full h-12 rounded-2xl text-[15px]">
                 {t.contact.form.send}
               </Button>
             </form>
           </FadeIn>
 
-          <FadeIn delay={0.2}>
-            <div className="space-y-6">
+          <FadeIn delay={0.12}>
+            <div className="space-y-4">
+              <p className="text-sm text-white/35 leading-relaxed lg:pt-2">{t.contact.directLine}</p>
               <a
                 href="https://t.me/LLC_VANTALAB"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-5 rounded-2xl border border-border bg-card hover:border-accent/30 transition-colors group"
+                className="flex items-center gap-4 p-6 rounded-[1.25rem] border border-white/[0.08] bg-white/[0.02] glow-border-hover transition-colors group"
               >
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                  <Send size={20} className="text-accent" />
+                <div className="w-12 h-12 rounded-2xl border border-[#6C5CE7]/20 bg-[#6C5CE7]/10 flex items-center justify-center">
+                  <Send size={20} className="text-[#B4A9F7]" />
                 </div>
                 <div>
-                  <p className="font-semibold">{t.contact.telegram}</p>
-                  <p className="text-sm text-muted-foreground">@LLC_VANTALAB</p>
+                  <p className="font-semibold text-white">{t.contact.telegram}</p>
+                  <p className="text-sm text-white/40">@LLC_VANTALAB</p>
                 </div>
               </a>
 
@@ -87,34 +98,34 @@ const Contacts = () => {
                 href="https://wa.me/998903173808"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-5 rounded-2xl border border-border bg-card hover:border-accent/30 transition-colors group"
+                className="flex items-center gap-4 p-6 rounded-[1.25rem] border border-white/[0.08] bg-white/[0.02] glow-border-hover transition-colors group"
               >
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                  <MessageCircle size={20} className="text-accent" />
+                <div className="w-12 h-12 rounded-2xl border border-[#6C5CE7]/20 bg-[#6C5CE7]/10 flex items-center justify-center">
+                  <MessageCircle size={20} className="text-[#B4A9F7]" />
                 </div>
                 <div>
-                  <p className="font-semibold">{t.contact.whatsapp}</p>
-                  <p className="text-sm text-muted-foreground">+998 90 317 38 08</p>
+                  <p className="font-semibold text-white">{t.contact.whatsapp}</p>
+                  <p className="text-sm text-white/40">+998 90 317 38 08</p>
                 </div>
               </a>
 
               <a
                 href="mailto:info@vantalab.uz"
-                className="flex items-center gap-4 p-5 rounded-2xl border border-border bg-card hover:border-accent/30 transition-colors group"
+                className="flex items-center gap-4 p-6 rounded-[1.25rem] border border-white/[0.08] bg-white/[0.02] glow-border-hover transition-colors group"
               >
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                  <Mail size={20} className="text-accent" />
+                <div className="w-12 h-12 rounded-2xl border border-[#6C5CE7]/20 bg-[#6C5CE7]/10 flex items-center justify-center">
+                  <Mail size={20} className="text-[#B4A9F7]" />
                 </div>
                 <div>
-                  <p className="font-semibold">{t.contact.emailLabel}</p>
-                  <p className="text-sm text-muted-foreground">info@vantalab.uz</p>
+                  <p className="font-semibold text-white">{t.contact.emailLabel}</p>
+                  <p className="text-sm text-white/40">info@vantalab.uz</p>
                 </div>
               </a>
             </div>
           </FadeIn>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
