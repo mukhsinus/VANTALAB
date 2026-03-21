@@ -47,39 +47,48 @@ const Layout = () => {
     <div className="vanta-app-bg min-h-dvh text-foreground flex flex-col">
       <header className="sticky top-0 z-[100] border-b border-white/[0.06] bg-[#0A0A0A]/72 backdrop-blur-xl supports-[backdrop-filter]:bg-[#0A0A0A]/52">
         <nav
-          className="container flex items-center justify-between gap-2 sm:gap-3 md:gap-4 h-[var(--vanta-header-h)] pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]"
+          className="container flex items-center h-[var(--vanta-header-h)] pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]"
           aria-label="Primary"
         >
-          <Link
-            to="/"
-            className="logo-mark shrink-0 min-h-[40px] min-w-0"
-            aria-label="VANTA LAB home"
-          >
-            <span className="text-xs sm:text-sm font-semibold tracking-tight text-white whitespace-nowrap">
-              VANTA<span className="text-white/40 mx-0.5 sm:mx-1">·</span>
-              <span className="text-[#6C5CE7]">LAB</span>
-            </span>
-          </Link>
-
-          <div className="hidden md:flex items-center justify-center flex-1 gap-2 max-w-xl">
-            {navLinks.map(link => (
-              <div
-                key={link.path}
-                className={`nav-item nav-panel ${isActive(link.path) ? 'active' : ''}`}
-              >
-                <Link
-                  to={link.path}
-                  className={`w-full text-center text-[13px] font-medium transition-colors px-1 ${
-                    isActive(link.path) ? 'text-white' : 'text-white/55 hover:text-white/90'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              </div>
-            ))}
+          {/* Left: Logo */}
+          <div className="flex items-center min-w-[120px]">
+            <Link
+              to="/"
+              className="logo-mark shrink-0 min-h-[40px] min-w-0"
+              aria-label="VANTA LAB home"
+            >
+              <span className="text-xs sm:text-sm font-semibold tracking-tight text-white whitespace-nowrap">
+                VANTA<span className="text-white/40 mx-0.5 sm:mx-1">·</span>
+                <span className="text-[#6C5CE7]">LAB</span>
+              </span>
+            </Link>
           </div>
 
-          <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3 shrink-0 ml-auto">
+          {/* Center: Navigation Items */}
+          <div className="hidden md:flex flex-1 items-center justify-center relative">
+            <div className="flex gap-2 px-4 bg-transparent rounded-full">
+              {navLinks.map(link => (
+                <div
+                  key={link.path}
+                  className={`nav-item nav-panel ${isActive(link.path) ? 'active' : ''}`}
+                >
+                  <Link
+                    to={link.path}
+                    className={`w-full text-center text-[13px] font-medium transition-colors px-1 ${
+                      isActive(link.path) ? 'text-white' : 'text-white/55 hover:text-white/90'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: Language Switcher & CTA */}
+          <div className="flex items-center gap-2 md:gap-3 min-w-[220px] justify-end">
+            {/* Divider */}
+            <div className="hidden md:block h-7 w-px bg-white/10 mx-2" />
             <div className="nav-panel-border lang-switcher lang-switcher--nav-bar flex p-0 shrink-0">
               {(['en', 'ru', 'uz'] as const).map(l => (
                 <button key={l} type="button" onClick={() => setLang(l)} className={lang === l ? 'active' : ''}>
@@ -91,22 +100,23 @@ const Layout = () => {
             <Button
               variant="vanta"
               size="sm"
-              className="hidden sm:inline-flex h-10 px-4 sm:px-5 text-[12px] sm:text-[13px] rounded-full shrink-0"
+              className="hidden sm:inline-flex h-11 px-6 text-[13px] rounded-full shrink-0 shadow-lg shadow-[#6C5CE7]/20 transition-transform hover:scale-[1.045] focus:scale-[1.045]"
               asChild
             >
               <Link to="/contact">{t.nav.startProject}</Link>
             </Button>
-
-            <button
-              type="button"
-              onClick={() => setMenuOpen(o => !o)}
-              className="nav-icon-button md:hidden shrink-0 min-h-[44px] min-w-[44px]"
-              aria-expanded={menuOpen}
-              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            >
-              {menuOpen ? <X size={20} strokeWidth={1.5} /> : <Menu size={20} strokeWidth={1.5} />}
-            </button>
           </div>
+
+          {/* Burger button: always far right on mobile */}
+          <button
+            type="button"
+            onClick={() => setMenuOpen(o => !o)}
+            className="nav-icon-button md:hidden shrink-0 min-h-[44px] min-w-[44px] ml-2"
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          >
+            {menuOpen ? <X size={20} strokeWidth={1.5} /> : <Menu size={20} strokeWidth={1.5} />}
+          </button>
         </nav>
       </header>
 
