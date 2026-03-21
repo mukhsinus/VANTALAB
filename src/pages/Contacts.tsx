@@ -19,19 +19,23 @@ const Contacts = () => {
   };
 
   return (
-    <div className="pt-16 md:pt-20 pb-24 md:pb-32">
-      <div className="container mx-auto px-6">
+    <div className="pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-20 md:pb-28 lg:pb-32">
+      <div className="container min-w-0">
         <FadeIn>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6C5CE7]">{t.nav.contact}</p>
-          <h1 className="mt-3 text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white max-w-3xl leading-[1.08]">
+          <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6C5CE7]">
+            {t.nav.contact}
+          </p>
+          <h1 className="mt-3 text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-white max-w-3xl leading-[1.08]">
             {t.contact.title}
           </h1>
-          <p className="mt-5 text-lg text-white/45 max-w-2xl leading-relaxed">{t.contact.subtitle}</p>
+          <p className="mt-4 sm:mt-5 text-base sm:text-lg text-white/45 max-w-2xl leading-relaxed">
+            {t.contact.subtitle}
+          </p>
         </FadeIn>
 
-        <div className="mt-16 md:mt-20 grid lg:grid-cols-2 gap-12 lg:gap-16 max-w-5xl">
+        <div className="mt-12 sm:mt-16 md:mt-20 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 max-w-5xl min-w-0">
           <FadeIn delay={0.08}>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6 min-w-0">
               <div>
                 <label className="text-xs font-medium uppercase tracking-wider text-white/40 mb-2 block">
                   {t.contact.form.name}
@@ -77,7 +81,7 @@ const Contacts = () => {
           </FadeIn>
 
           <FadeIn delay={0.12}>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4 min-w-0">
               <p className="text-sm text-white/35 leading-relaxed lg:pt-2">{t.contact.directLine}</p>
               <a
                 href="https://t.me/LLC_VANTALAB"

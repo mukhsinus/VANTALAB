@@ -10,17 +10,21 @@ const Portfolio = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="pt-16 md:pt-20 pb-24 md:pb-32">
-      <div className="container mx-auto px-6">
+    <div className="pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-20 md:pb-28 lg:pb-32">
+      <div className="container min-w-0">
         <FadeIn>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6C5CE7]">{t.nav.portfolio}</p>
-          <h1 className="mt-3 text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white max-w-3xl leading-[1.08]">
+          <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6C5CE7]">
+            {t.nav.portfolio}
+          </p>
+          <h1 className="mt-3 text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-white max-w-3xl leading-[1.08]">
             {t.cases.title}
           </h1>
-          <p className="mt-5 text-lg text-white/45 max-w-2xl leading-relaxed">{t.cases.subtitle}</p>
+          <p className="mt-4 sm:mt-5 text-base sm:text-lg text-white/45 max-w-2xl leading-relaxed">
+            {t.cases.subtitle}
+          </p>
         </FadeIn>
 
-        <div className="mt-16 md:mt-20 grid md:grid-cols-2 gap-5 md:gap-6">
+        <div className="mt-12 sm:mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
           {portfolioCases.map((c, i) => (
             <motion.button
               key={c.id}
@@ -56,14 +60,14 @@ const Portfolio = () => {
                   </a>
                 ) : null}
               </div>
-              <div className="p-6 md:p-8 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                <div>
-                  <h2 className="text-xl font-semibold text-white">{c.name}</h2>
-                  <p className="mt-1 text-sm text-white/40">{c.type[lang]}</p>
-                  <p className="mt-4 text-sm text-white/50 leading-relaxed max-w-md">{c.highlight[lang]}</p>
+              <div className="p-5 sm:p-6 md:p-8 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 min-w-0">
+                <div className="min-w-0">
+                  <h2 className="text-lg sm:text-xl font-semibold text-white">{c.name}</h2>
+                  <p className="mt-1 text-xs sm:text-sm text-white/40">{c.type[lang]}</p>
+                  <p className="mt-3 sm:mt-4 text-sm text-white/50 leading-relaxed max-w-md">{c.highlight[lang]}</p>
                 </div>
-                <div className="flex flex-col items-start sm:items-end gap-3 shrink-0">
-                  <span className="rounded-full bg-[#6C5CE7]/15 border border-[#6C5CE7]/25 px-3 py-1.5 text-xs font-semibold text-[#B4A9F7] whitespace-nowrap">
+                <div className="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-start gap-3 shrink-0 w-full sm:w-auto pt-3 border-t border-white/[0.06] sm:border-0 sm:pt-0">
+                  <span className="rounded-full bg-[#6C5CE7]/15 border border-[#6C5CE7]/25 px-3 py-1.5 text-[11px] sm:text-xs font-semibold text-[#B4A9F7] whitespace-nowrap">
                     {c.metric[lang]}
                   </span>
                   <span className="text-xs font-medium text-[#6C5CE7]/90 flex items-center gap-1">

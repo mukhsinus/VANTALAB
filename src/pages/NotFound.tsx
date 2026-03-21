@@ -10,7 +10,7 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#0A0A0A] px-6">
+    <div className="vanta-app-bg flex min-h-dvh items-center justify-center px-6 py-12">
       <div className="text-center max-w-md">
         <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6C5CE7]">404</p>
         <h1 className="mt-3 text-3xl font-semibold text-white tracking-tight">Page not found</h1>

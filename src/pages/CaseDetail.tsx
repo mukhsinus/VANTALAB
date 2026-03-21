@@ -324,7 +324,7 @@ const CaseDetail = () => {
 
   if (!caseData) {
     return (
-      <div className="py-32 text-center container mx-auto px-6">
+      <div className="py-24 sm:py-32 text-center container min-w-0">
         <h1 className="text-4xl font-bold">Case not found</h1>
         <Button variant="outline" className="mt-8" asChild>
           <Link to="/portfolio"><ArrowLeft size={16} /> {t.cases.backToList}</Link>
@@ -334,13 +334,15 @@ const CaseDetail = () => {
   }
 
   return (
-    <section className="py-6 md:py-10">
-      <div className="container mx-auto px-6 max-w-4xl">
+    <section className="py-8 sm:py-10 md:py-12">
+      <div className="container max-w-4xl min-w-0">
         <FadeIn>
           <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm text-white/45 hover:text-[#B4A9F7] transition-colors mb-8">
             <ArrowLeft size={16} /> {t.cases.backToList}
           </Link>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight">{caseData.name}</h1>
+          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white leading-tight">
+            {caseData.name}
+          </h1>
         </FadeIn>
 
         <div className="mt-12 space-y-12">

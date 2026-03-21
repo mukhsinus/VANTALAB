@@ -67,6 +67,14 @@
   cursor: pointer;
 }
 
+@media (max-width: 639px) {
+  .lang-switcher.lang-switcher--nav-bar button {
+    min-width: 36px;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+}
+
 .lang-switcher button.active {
   background: rgba(108, 92, 231, 0.22);
   color: #fafafa;

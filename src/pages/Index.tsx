@@ -18,8 +18,8 @@ const Index = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <div className="container mx-auto px-6">
-          <p className="text-center text-[13px] md:text-sm text-white/35 tracking-wide max-w-2xl mx-auto leading-relaxed">
+        <div className="container min-w-0">
+          <p className="text-center text-xs sm:text-[13px] md:text-sm text-white/35 tracking-wide max-w-2xl mx-auto leading-relaxed px-1">
             {t.home.trusted}
           </p>
         </div>

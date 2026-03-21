@@ -7,17 +7,19 @@ export const FinalCtaBand = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-24 md:py-32">
-      <div className="container mx-auto px-6">
+    <section className="py-16 sm:py-20 md:py-28 lg:py-32">
+      <div className="container min-w-0">
         <motion.div
-          className="vanta-cta-slab px-8 py-14 md:px-16 md:py-16 text-center md:text-left md:flex md:items-center md:justify-between gap-10"
+          className="vanta-cta-slab px-6 py-10 sm:px-8 sm:py-12 md:px-14 md:py-14 lg:px-16 lg:py-16 text-center md:text-left md:flex md:items-center md:justify-between gap-8 md:gap-10"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <div className="max-w-lg">
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">{t.home.finalCtaTitle}</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight text-white leading-tight">
+              {t.home.finalCtaTitle}
+            </h2>
             <p className="mt-3 text-sm md:text-base text-white/45 leading-relaxed">{t.home.finalCtaSub}</p>
           </div>
           <div className="mt-8 md:mt-0 flex flex-col sm:flex-row gap-3 shrink-0 justify-center md:justify-end">

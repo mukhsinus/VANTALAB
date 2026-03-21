@@ -14,17 +14,21 @@ export const FeaturedWork = () => {
   const display = [...featured, ...filler].slice(0, 3);
 
   return (
-    <section className="py-24 md:py-32 border-t border-white/[0.06]">
-      <div className="container mx-auto px-6">
+    <section className="py-16 sm:py-20 md:py-28 lg:py-32 border-t border-white/[0.06]">
+      <div className="container min-w-0">
         <FadeIn>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6C5CE7]">{t.nav.portfolio}</p>
-          <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight text-white max-w-2xl">
+          <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6C5CE7]">
+            {t.nav.portfolio}
+          </p>
+          <h2 className="mt-3 text-2xl xs:text-3xl md:text-4xl font-semibold tracking-tight text-white max-w-2xl leading-tight">
             {t.home.featuredTitle}
           </h2>
-          <p className="mt-4 text-base text-white/45 max-w-xl leading-relaxed">{t.home.featuredSubtitle}</p>
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-white/45 max-w-xl leading-relaxed">
+            {t.home.featuredSubtitle}
+          </p>
         </FadeIn>
 
-        <div className="mt-14 grid md:grid-cols-3 gap-5 md:gap-6">
+        <div className="mt-10 sm:mt-12 md:mt-14 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
           {display.map((c, i) => (
             <motion.button
               key={c.id}
@@ -58,13 +62,15 @@ export const FeaturedWork = () => {
                   </a>
                 ) : null}
               </div>
-              <div className="p-6 md:p-7">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="text-lg font-semibold text-white group-hover:text-white transition-colors">{c.name}</h3>
-                    <p className="mt-1 text-sm text-white/40">{c.type[lang]}</p>
+              <div className="p-5 sm:p-6 md:p-7">
+                <div className="flex flex-col xs:flex-row xs:items-start xs:justify-between gap-3 xs:gap-4">
+                  <div className="min-w-0">
+                    <h3 className="text-base sm:text-lg font-semibold text-white group-hover:text-white transition-colors">
+                      {c.name}
+                    </h3>
+                    <p className="mt-1 text-xs sm:text-sm text-white/40">{c.type[lang]}</p>
                   </div>
-                  <span className="shrink-0 rounded-full bg-[#6C5CE7]/15 border border-[#6C5CE7]/25 px-3 py-1 text-xs font-semibold text-[#B4A9F7] tabular-nums">
+                  <span className="shrink-0 self-start rounded-full bg-[#6C5CE7]/15 border border-[#6C5CE7]/25 px-3 py-1 text-[11px] sm:text-xs font-semibold text-[#B4A9F7] tabular-nums">
                     {c.metric[lang]}
                   </span>
                 </div>
