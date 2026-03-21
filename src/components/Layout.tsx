@@ -2,15 +2,23 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 import { useLanguage } from '@/lib/i18n';
 import { Menu, X } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { LanguageSwitch } from '@/components/LanguageSwitch';
 import '../nav-panel.css';
 
 const menuBackdropTransition = { duration: 0.42, ease: [0.22, 1, 0.36, 1] as const };
 const menuPanelTransition = { type: 'spring' as const, damping: 34, stiffness: 300, mass: 0.88 };
 
+const pageTransition = {
+  initial: { opacity: 0, y: 14 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -10 },
+  transition: { duration: 0.42, ease: [0.22, 1, 0.36, 1] as const },
+};
+
 const Layout = () => {
-  const { t, lang, setLang } = useLanguage();
+  const { t } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -21,15 +29,6 @@ const Layout = () => {
   useEffect(() => {
     setMenuOpen(false);
   }, [location.pathname]);
-
-  useEffect(() => {
-    if (!menuOpen) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, [menuOpen]);
 
   const navLinks = [
     { path: '/', label: t.nav.home },
@@ -50,64 +49,58 @@ const Layout = () => {
           className="container flex items-center h-[var(--vanta-header-h)] pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]"
           aria-label="Primary"
         >
-          {/* Left: Logo */}
-          <div className="flex items-center min-w-[120px]">
-            <Link
-              to="/"
-              className="logo-mark shrink-0 min-h-[40px] min-w-0"
-              aria-label="VANTA LAB home"
-            >
-              <span className="text-xs sm:text-sm font-semibold tracking-tight text-white whitespace-nowrap">
-                VANTA<span className="text-white/40 mx-0.5 sm:mx-1">·</span>
-                <span className="text-[#6C5CE7]">LAB</span>
-              </span>
-            </Link>
+          <div className="flex items-center min-w-0 shrink-0">
+            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
+              <Link
+                to="/"
+                className="logo-mark shrink-0 min-h-[40px] min-w-0 inline-flex"
+                aria-label="VANTA LAB home"
+              >
+                <span className="text-xs sm:text-sm font-semibold tracking-tight text-white whitespace-nowrap">
+                  VANTA<span className="text-white/40 mx-0.5 sm:mx-1">·</span>
+                  <span className="text-[#6C5CE7]">LAB</span>
+                </span>
+              </Link>
+            </motion.div>
           </div>
 
-          {/* Center: Navigation Items */}
-          <div className="hidden md:flex flex-1 items-center justify-center relative">
-            <div className="flex gap-2 px-4 bg-transparent rounded-full">
+          <div className="hidden md:flex flex-1 items-center justify-center relative px-2 min-w-0">
+            <div className="flex gap-2">
               {navLinks.map(link => (
-                <div
-                  key={link.path}
-                  className={`nav-item nav-panel ${isActive(link.path) ? 'active' : ''}`}
-                >
-                  <Link
-                    to={link.path}
-                    className={`w-full text-center text-[13px] font-medium transition-colors px-1 ${
-                      isActive(link.path) ? 'text-white' : 'text-white/55 hover:text-white/90'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </div>
+                <motion.div key={link.path} whileHover={{ y: -1 }} transition={{ type: 'spring', stiffness: 400, damping: 28 }}>
+                  <div className={`nav-item nav-panel ${isActive(link.path) ? 'active' : ''}`}>
+                    <Link
+                      to={link.path}
+                      className={`w-full text-center text-[13px] font-medium transition-colors px-1 ${
+                        isActive(link.path) ? 'text-white' : 'text-white/55 hover:text-white/90'
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </div>
+                </motion.div>
               ))}
             </div>
           </div>
 
-          {/* Right: Language Switcher & CTA */}
-          <div className="flex items-center gap-2 md:gap-3 min-w-[220px] justify-end">
-            {/* Divider */}
-            <div className="hidden md:block h-7 w-px bg-white/10 mx-2" />
-            <div className="nav-panel-border lang-switcher lang-switcher--nav-bar flex p-0 shrink-0">
-              {(['en', 'ru', 'uz'] as const).map(l => (
-                <button key={l} type="button" onClick={() => setLang(l)} className={lang === l ? 'active' : ''}>
-                  {l.toUpperCase()}
-                </button>
-              ))}
-            </div>
+          <div className="flex items-center gap-2 md:gap-3 min-w-0 justify-end shrink-0 ml-auto">
+            <div className="hidden md:block h-7 w-px bg-white/10 mx-1" />
+            <LayoutGroup id="vanta-lang">
+              <LanguageSwitch className="shrink-0" />
+            </LayoutGroup>
 
-            <Button
-              variant="vanta"
-              size="sm"
-              className="hidden sm:inline-flex h-11 px-6 text-[13px] rounded-full shrink-0 shadow-lg shadow-[#6C5CE7]/20 transition-transform hover:scale-[1.045] focus:scale-[1.045]"
-              asChild
-            >
-              <Link to="/contact">{t.nav.startProject}</Link>
-            </Button>
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 450, damping: 28 }}>
+              <Button
+                variant="vanta"
+                size="sm"
+                className="hidden sm:inline-flex h-11 px-6 text-[13px] rounded-full shrink-0 shadow-lg shadow-[#6C5CE7]/20"
+                asChild
+              >
+                <Link to="/contact">{t.nav.startProject}</Link>
+              </Button>
+            </motion.div>
           </div>
 
-          {/* Burger button: always far right on mobile */}
           <button
             type="button"
             onClick={() => setMenuOpen(o => !o)}
@@ -153,11 +146,11 @@ const Layout = () => {
                   {navLinks.map((link, i) => (
                     <motion.div
                       key={link.path}
-                      initial={{ opacity: 0, x: -8 }}
+                      initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{
-                        delay: 0.05 + i * 0.045,
-                        duration: 0.38,
+                        delay: 0.06 + i * 0.05,
+                        duration: 0.42,
                         ease: [0.22, 1, 0.36, 1],
                       }}
                     >
@@ -175,9 +168,9 @@ const Layout = () => {
                     </motion.div>
                   ))}
                   <motion.div
-                    initial={{ opacity: 0, y: 6 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.22, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ delay: 0.2, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <Button variant="vanta" className="w-full h-12 rounded-2xl mt-1 text-[15px]" asChild>
                       <Link to="/contact" onClick={() => setMenuOpen(false)}>
@@ -193,31 +186,56 @@ const Layout = () => {
       </AnimatePresence>
 
       <main className="flex-1 w-full min-w-0 relative z-0 pb-[max(1rem,env(safe-area-inset-bottom))]">
-        <Outlet />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location.pathname}
+            initial={pageTransition.initial}
+            animate={pageTransition.animate}
+            exit={pageTransition.exit}
+            transition={pageTransition.transition}
+            className="w-full min-w-0"
+          >
+            <Outlet />
+          </motion.div>
+        </AnimatePresence>
       </main>
 
       <footer className="border-t border-white/[0.06] mt-16 sm:mt-24 md:mt-32">
-        <div className="container py-12 sm:py-14 md:py-20 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
-            <div className="max-w-md min-w-0">
-              <p className="text-base sm:text-lg font-semibold tracking-tight text-white">
-                VANTA<span className="text-white/35 mx-1.5">·</span>
-                <span className="text-[#6C5CE7]">LAB</span>
-              </p>
-              <p className="mt-3 text-xs sm:text-sm text-white/45 leading-relaxed">{t.footer.tagline}</p>
-            </div>
-            <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm text-white/45">
-              <Link to="/services" className="hover:text-white transition-colors min-h-[44px] flex items-center">
+        <div className="container py-12 sm:py-16 md:py-20 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]">
+          <div className="mx-auto flex max-w-lg flex-col items-center text-center">
+            <p className="text-base sm:text-lg font-semibold tracking-tight text-white">
+              VANTA<span className="text-white/35 mx-1.5">·</span>
+              <span className="text-[#6C5CE7]">LAB</span>
+            </p>
+            <p className="mt-3 max-w-md text-xs sm:text-sm text-white/45 leading-relaxed text-balance">
+              {t.footer.tagline}
+            </p>
+
+            <nav
+              className="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-2 border-t border-white/[0.06] pt-10 w-full max-w-md"
+              aria-label="Footer"
+            >
+              <Link
+                to="/services"
+                className="text-sm text-white/45 transition-colors hover:text-white min-h-[44px] inline-flex items-center"
+              >
                 {t.nav.services}
               </Link>
-              <Link to="/portfolio" className="hover:text-white transition-colors min-h-[44px] flex items-center">
+              <Link
+                to="/portfolio"
+                className="text-sm text-white/45 transition-colors hover:text-white min-h-[44px] inline-flex items-center"
+              >
                 {t.nav.portfolio}
               </Link>
-              <Link to="/contact" className="hover:text-white transition-colors min-h-[44px] flex items-center">
+              <Link
+                to="/contact"
+                className="text-sm text-white/45 transition-colors hover:text-white min-h-[44px] inline-flex items-center"
+              >
                 {t.nav.contact}
               </Link>
-            </div>
-            <p className="text-[11px] sm:text-xs text-white/35 lg:text-right max-w-xs leading-relaxed min-w-0">
+            </nav>
+
+            <p className="mt-10 max-w-sm text-[11px] sm:text-xs leading-relaxed text-white/30 text-balance">
               {t.footer.rights}
             </p>
           </div>

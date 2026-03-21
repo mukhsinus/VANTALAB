@@ -14,7 +14,7 @@ export const FinalCtaBand = () => {
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.58, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="max-w-lg">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight text-white leading-tight">
@@ -23,14 +23,18 @@ export const FinalCtaBand = () => {
             <p className="mt-3 text-sm md:text-base text-white/45 leading-relaxed">{t.home.finalCtaSub}</p>
           </div>
           <div className="mt-8 md:mt-0 flex flex-col sm:flex-row gap-3 shrink-0 justify-center md:justify-end">
-            <Button variant="vanta" size="lg" className="h-12 px-8 rounded-2xl" asChild>
-              <Link to="/contact">{t.nav.startProject}</Link>
-            </Button>
-            <Button variant="vanta-ghost" size="lg" className="h-12 px-8 rounded-2xl" asChild>
-              <a href="https://t.me/LLC_VANTALAB" target="_blank" rel="noopener noreferrer">
-                {t.hero.cta1}
-              </a>
-            </Button>
+            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} transition={{ type: 'spring', stiffness: 400, damping: 22 }}>
+              <Button variant="vanta" size="lg" className="h-12 px-8 rounded-2xl" asChild>
+                <Link to="/contact">{t.nav.startProject}</Link>
+              </Button>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} transition={{ type: 'spring', stiffness: 400, damping: 22 }}>
+              <Button variant="vanta-ghost" size="lg" className="h-12 px-8 rounded-2xl" asChild>
+                <a href="https://t.me/LLC_VANTALAB" target="_blank" rel="noopener noreferrer">
+                  {t.hero.cta1}
+                </a>
+              </Button>
+            </motion.div>
           </div>
         </motion.div>
       </div>

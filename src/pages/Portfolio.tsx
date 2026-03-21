@@ -35,6 +35,8 @@ const Portfolio = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-30px' }}
               transition={{ duration: 0.5, delay: (i % 6) * 0.04, ease: [0.25, 0.46, 0.45, 0.94] }}
+              whileHover={{ y: -4, transition: { type: 'spring', stiffness: 340, damping: 24 } }}
+              whileTap={{ scale: 0.993 }}
             >
               <div className="aspect-video relative overflow-hidden bg-white/[0.04]">
                 {c.image ? (

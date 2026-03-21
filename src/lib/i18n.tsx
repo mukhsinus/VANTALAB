@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, ReactNode } from 'react';
 
-type Lang = 'ru' | 'en' | 'uz';
+export type Lang = 'ru' | 'en' | 'uz';
 
 const translations = {
   ru: {
@@ -132,9 +132,13 @@ const translations = {
       rights: '© 2026 VANTA LAB LLC. Все права защищены.',
       tagline: 'Премиум софтверная разработка из Узбекистана',
     },
+    seo: {
+      title: 'VANTA LAB — премиальная цифровая студия | сайты, e‑commerce и веб‑приложения',
+      description:
+        'Стратегия, премиальный дизайн и разработка сайтов, интернет‑магазинов и веб‑продуктов. Фокус на доверие и конверсию. VANTA LAB, Узбекистан.',
+      ogLocale: 'ru_RU',
+    },
   },
-
-
 
   en: {
     nav: {
@@ -262,6 +266,12 @@ const translations = {
     footer: {
       rights: '© 2026 VANTA LAB LLC. All rights reserved.',
       tagline: 'Premium software development from Uzbekistan',
+    },
+    seo: {
+      title: 'VANTA LAB — premium digital studio | websites, e‑commerce & web apps',
+      description:
+        'Strategy, refined UI, and development for high-trust websites, online stores, and web products. Conversion-led execution. VANTA LAB, Uzbekistan.',
+      ogLocale: 'en_US',
     },
   },
 
@@ -392,6 +402,12 @@ const translations = {
       rights: '© 2026 VANTA LAB LLC. Barcha huquqlar himoyalangan.',
       tagline: "O'zbekistondan premium dasturiy ta'minot ishlab chiqish",
     },
+    seo: {
+      title: "VANTA LAB — premium raqamli studiya | saytlar, e‑commerce va veb‑ilovalar",
+      description:
+        "Strategiya, zamonaviy dizayn va saytlar, onlayn do'konlar hamda veb‑mahsulotlarni ishlab chiqish. Ishonch va konversiya. VANTA LAB, O'zbekiston.",
+      ogLocale: 'uz_UZ',
+    },
   },
 } as const;
 
@@ -406,7 +422,7 @@ interface I18nContextType {
 const I18nContext = createContext<I18nContextType | null>(null);
 
 export const I18nProvider = ({ children }: { children: ReactNode }) => {
-  const [lang, setLang] = useState<Lang>('en');
+  const [lang, setLang] = useState<Lang>('ru');
   const t = translations[lang] as Translations;
   return (
     <I18nContext.Provider value={{ lang, setLang, t }}>

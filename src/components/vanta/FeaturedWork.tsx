@@ -39,6 +39,8 @@ export const FeaturedWork = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
+              whileHover={{ y: -5, transition: { type: 'spring', stiffness: 320, damping: 22 } }}
+              whileTap={{ scale: 0.992 }}
             >
               <div className="aspect-[16/10] relative overflow-hidden bg-white/[0.04]">
                 {c.image && (
