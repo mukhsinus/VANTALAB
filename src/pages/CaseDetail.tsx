@@ -16,6 +16,7 @@ import karolinaImg from '@/assets/karolina.webp';
 
 export const caseDetails: Record<string, { 
   name: string;
+  url: string;
   goal: Record<string, string>;
   built: Record<string, string>;
   features: Record<string, string[]>;
@@ -29,6 +30,7 @@ export const caseDetails: Record<string, {
   medicare: {
     name: 'Medicare Uzbekistan',
     image: medicareImg,
+    url: 'https://medicare.uz',
     goal: { 
       ru: 'Создать современный интернет-магазин медицинских товаров с удобной навигацией и быстрым оформлением заказа.', 
       en: 'Build a modern e-commerce store for medical products with intuitive navigation and fast checkout.', 
@@ -57,6 +59,7 @@ export const caseDetails: Record<string, {
   manaku: {
     name: 'Manaku Furniture',
     image: manakuImg,
+    url: 'https://manaku.uz',
     goal: { 
       ru: 'Разработать премиальный мебельный интернет-магазин с акцентом на визуальную подачу и UX.', 
       en: 'Develop a premium furniture e-commerce store focused on visual presentation and UX.', 
@@ -85,6 +88,7 @@ export const caseDetails: Record<string, {
   modulbino: {
     name: 'ModulBino',
     image: modulbinoImg,
+    url: 'https://modulbino.uz',
     goal: {
       ru: 'Создать продающий лендинг для компании модульного строительства.',
       en: 'Build a conversion-focused landing page for a modular construction company.',
@@ -113,6 +117,7 @@ export const caseDetails: Record<string, {
   ecolife: {
     name: 'Eco Life Resort',
     image: ecolifeImg,
+    url: 'https://eco-life-etiqod.com',
     goal: {
       ru: 'Создать минималистичный сайт горного курорта с удобной навигацией.',
       en: 'Develop a minimalistic mountain resort website.',
@@ -141,6 +146,7 @@ export const caseDetails: Record<string, {
   pitstop: {
     name: 'PitStop Service Platform',
     image: pitstopImg,
+    url: 'https://pitstop-one.netlify.app',
     goal: {
       ru: 'Разработать веб-приложение для управления автосервисом.',
       en: 'Develop a web platform for auto service management.',
@@ -169,6 +175,7 @@ export const caseDetails: Record<string, {
   mazzo: {
     name: 'Mazzo Premium',
     image: mazzoImg,
+    url: 'https://mazzo-premium.netlify.app',
     goal: {
       ru: 'Создать премиальный интернет-магазин постельного белья.',
       en: 'Build a premium bedding e-commerce store.',
@@ -197,6 +204,7 @@ export const caseDetails: Record<string, {
   luxlight: {
     name: 'LuxLight LED',
     image: luxlightImg,
+    url: 'https://luxlight-demo.netlify.app',
     goal: {
       ru: 'Создать лендинг для компании LED-освещения.',
       en: 'Develop a landing page for LED lighting solutions.',
@@ -225,6 +233,7 @@ export const caseDetails: Record<string, {
   essenza: {
     name: 'Essenza Perfumes',
     image: essenzaImg,
+    url: 'https://perfume-demo.netlify.app',
     goal: {
       ru: 'Создать премиальный сайт для бренда Essenza.',
       en: 'Build a premium website for the Essenza brand.',
@@ -253,6 +262,7 @@ export const caseDetails: Record<string, {
   bekhzod: {
     name: 'Kodbekhzod',
     image: bekhzodImg,
+    url: 'https://kodbekhzod.netlify.app',
     goal: { 
       ru: 'Разработать цифровую платформу для международного конкурса при поддержке Министерства культуры Узбекистана с удобной подачей заявок и имиджевым позиционированием.', 
       en: 'Develop a digital platform for an international competition supported by the Ministry of Culture of Uzbekistan with streamlined submissions and strong institutional positioning.', 
@@ -318,6 +328,7 @@ export const caseDetails: Record<string, {
   karolina: {
     name: 'Karolina Beauty Room',
     image: karolinaImg,
+    url: 'https://karolina-beauty.netlify.app/',
 
     goal: {
       ru: 'Создать современный продающий сайт для салона красоты с онлайн-записью, упором на премиальный визуал и автоматизацию записи клиентов.',

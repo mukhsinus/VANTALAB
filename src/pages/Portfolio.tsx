@@ -54,6 +54,16 @@ const Portfolio = () => {
                   <div className="flex h-full items-center justify-center text-white/30 text-sm">—</div>
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/85 via-transparent to-transparent" />
+                <a
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={e => e.stopPropagation()}
+                  className="absolute top-4 right-4 inline-flex items-center gap-1 rounded-full border border-white/15 bg-black/45 backdrop-blur-md px-3 py-1.5 text-[11px] font-medium text-white/90 hover:border-[#6C5CE7]/40 transition-colors"
+                >
+                  {t.cases.liveDemo}
+                  <ArrowUpRight className="size-3.5 opacity-80" />
+                </a>
               </div>
               <div className="p-5 sm:p-6 md:p-8 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 min-w-0">
                 <div className="min-w-0">

@@ -52,6 +52,16 @@ export const FeaturedWork = () => {
                   />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/90 via-transparent to-transparent" />
+                <a
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={e => e.stopPropagation()}
+                  className="absolute top-4 right-4 inline-flex items-center gap-1 rounded-full border border-white/15 bg-black/45 backdrop-blur-md px-3 py-1.5 text-[11px] font-medium text-white/90 hover:border-[#6C5CE7]/40 transition-colors"
+                >
+                  {t.cases.liveDemo}
+                  <ArrowUpRight className="size-3.5 opacity-80" />
+                </a>
               </div>
               <div className="p-5 sm:p-6 md:p-7">
                 <div className="flex flex-col xs:flex-row xs:items-start xs:justify-between gap-3 xs:gap-4">
