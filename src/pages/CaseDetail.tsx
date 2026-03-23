@@ -12,8 +12,9 @@ import mazzoImg from '@/assets/mazzo.webp';
 import luxlightImg from '@/assets/luxlight.webp';
 import essenzaImg from '@/assets/essenza.webp';
 import bekhzodImg from '@/assets/bekhzod.webp';
+import karolinaImg from '@/assets/karolina.webp';
 
-const caseDetails: Record<string, { 
+export const caseDetails: Record<string, { 
   name: string;
   goal: Record<string, string>;
   built: Record<string, string>;
@@ -312,6 +313,93 @@ const caseDetails: Record<string, {
     timeline: '2 weeks',
     teamSize: 2,
 },
+
+
+  karolina: {
+    name: 'Karolina Beauty Room',
+    image: karolinaImg,
+
+    goal: {
+      ru: 'Создать современный продающий сайт для салона красоты с онлайн-записью, упором на премиальный визуал и автоматизацию записи клиентов.',
+      en: 'Build a modern conversion-focused website for a beauty salon with online booking, premium visuals, and client automation.',
+      uz: 'Premium dizayn va onlayn yozilish bilan go‘zallik saloni uchun zamonaviy sotuvga yo‘naltirilgan sayt yaratish.'
+    },
+
+    built: {
+      ru: 'Полноценный сайт салона красоты с системой онлайн-записи, выбором филиала, категории услуг, мастера, даты и времени. Реализована удобная логика записи, адаптивный интерфейс и мультиязычность.',
+      en: 'A full-featured beauty salon website with online booking system including branch selection, service categories, master level, date and time. Includes responsive UI and multilingual support.',
+      uz: 'Filial, xizmat, usta va vaqt tanlash bilan to‘liq onlayn yozilish tizimiga ega go‘zallik saloni sayti.'
+    },
+
+    features: {
+      ru: [
+        'Онлайн-запись (услуга → мастер → дата → время)',
+        'Разделение по уровням мастеров (Master / Top / Premium)',
+        'Динамический прайс (зависит от мастера)',
+        'Мультиязычность (RU / UZ / EN)',
+        'Адаптивный дизайн (mobile-first)',
+        'Интерактивный выбор филиалов',
+        'UI/UX ориентирован на конверсию',
+        'Быстрая загрузка (<2 сек)'
+      ],
+      en: [
+        'Online booking flow (service → master → date → time)',
+        'Master levels (Master / Top / Premium)',
+        'Dynamic pricing system',
+        'Multilingual (RU / UZ / EN)',
+        'Mobile-first responsive design',
+        'Branch selection system',
+        'Conversion-focused UI/UX',
+        'Fast loading (<2s)'
+      ],
+      uz: [
+        'Onlayn yozilish (xizmat → usta → sana → vaqt)',
+        'Usta darajalari (Master / Top / Premium)',
+        'Dinamik narx tizimi',
+        'Ko‘p tilli (RU / UZ / EN)',
+        'Mobilga mos dizayn',
+        'Filial tanlash',
+        'Konversiyaga yo‘naltirilgan UX/UI',
+        'Tez yuklanish (<2s)'
+      ]
+    },
+
+    stack: [
+      'React',
+      'TypeScript',
+      'TailwindCSS',
+      'Framer Motion',
+      'Node.js',
+      'MongoDB'
+    ],
+
+    results: {
+      ru: [
+        'Автоматизация записи клиентов (снижение нагрузки на админа)',
+        'Упрощение процесса записи в 3 клика',
+        'Рост конверсии записи',
+        'Премиальное восприятие бренда',
+        'Готовая система масштабирования под новые филиалы'
+      ],
+      en: [
+        'Client booking fully automated',
+        '3-click booking flow',
+        'Higher conversion rate',
+        'Premium brand perception',
+        'Scalable for multiple branches'
+      ],
+      uz: [
+        'Yozilish jarayoni avtomatlashtirildi',
+        '3 bosqichli yozilish',
+        'Konversiya oshdi',
+        'Premium brend ko‘rinishi',
+        'Filiallar uchun kengaytirish imkoniyati'
+      ]
+    },
+
+    timeline: '7 days',
+    teamSize: 2,
+  },
 
 };
 

@@ -2,16 +2,17 @@ import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '@/lib/i18n';
-import { portfolioCases } from '@/data/portfolio-cases';
+import { caseDetails } from '@/data/caseDetails';
 import FadeIn from '@/components/FadeIn';
 
 export const FeaturedWork = () => {
   const { t, lang } = useLanguage();
   const navigate = useNavigate();
 
-  const featured = portfolioCases.filter(c => c.featured && c.image);
-  const filler = portfolioCases.filter(c => !c.featured && c.image);
-  const display = [...featured, ...filler].slice(0, 3);
+  const display = Object.entries(caseDetails)
+    .map(([id, c]) => ({ id, ...c }))
+    .filter(c => c.image)
+    .slice(0, 3);
 
   return (
     <section className="py-16 sm:py-20 md:py-28 lg:py-32 border-t border-white/[0.06]">
@@ -51,18 +52,6 @@ export const FeaturedWork = () => {
                   />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/90 via-transparent to-transparent" />
-                {c.url ? (
-                  <a
-                    href={c.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={e => e.stopPropagation()}
-                    className="absolute top-4 right-4 inline-flex items-center gap-1 rounded-full border border-white/15 bg-black/40 backdrop-blur-md px-3 py-1.5 text-[11px] font-medium text-white/90 hover:border-[#6C5CE7]/40 hover:text-white transition-colors"
-                  >
-                    Live
-                    <ArrowUpRight className="size-3.5 opacity-80" />
-                  </a>
-                ) : null}
               </div>
               <div className="p-5 sm:p-6 md:p-7">
                 <div className="flex flex-col xs:flex-row xs:items-start xs:justify-between gap-3 xs:gap-4">
@@ -70,13 +59,13 @@ export const FeaturedWork = () => {
                     <h3 className="text-base sm:text-lg font-semibold text-white group-hover:text-white transition-colors">
                       {c.name}
                     </h3>
-                    <p className="mt-1 text-xs sm:text-sm text-white/40">{c.type[lang]}</p>
+                    <p className="mt-1 text-xs sm:text-sm text-white/40">{c.features[lang]?.[0] ?? ''}</p>
                   </div>
                   <span className="shrink-0 self-start rounded-full bg-[#6C5CE7]/15 border border-[#6C5CE7]/25 px-3 py-1 text-[11px] sm:text-xs font-semibold text-[#B4A9F7] tabular-nums">
-                    {c.metric[lang]}
+                    {c.results[lang]?.[1] ?? c.results[lang]?.[0] ?? ''}
                   </span>
                 </div>
-                <p className="mt-4 text-sm text-white/50 leading-relaxed">{c.highlight[lang]}</p>
+                <p className="mt-4 text-sm text-white/50 leading-relaxed">{c.results[lang]?.[0] ?? ''}</p>
                 <p className="mt-5 text-xs font-medium uppercase tracking-wider text-[#6C5CE7]/90">
                   {t.home.metricLabel}
                 </p>

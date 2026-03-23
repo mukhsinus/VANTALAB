@@ -3,11 +3,16 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/i18n';
 import FadeIn from '@/components/FadeIn';
 import { ArrowUpRight } from 'lucide-react';
-import { portfolioCases } from '@/data/portfolio-cases';
+import { caseDetails } from '@/data/caseDetails';
 
 const Portfolio = () => {
   const { t, lang } = useLanguage();
   const navigate = useNavigate();
+
+  const portfolioCases = Object.entries(caseDetails).map(([id, c]) => ({
+    id,
+    ...c,
+  }));
 
   return (
     <div className="pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-20 md:pb-28 lg:pb-32">
@@ -49,28 +54,16 @@ const Portfolio = () => {
                   <div className="flex h-full items-center justify-center text-white/30 text-sm">—</div>
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/85 via-transparent to-transparent" />
-                {c.url ? (
-                  <a
-                    href={c.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={e => e.stopPropagation()}
-                    className="absolute top-4 right-4 inline-flex items-center gap-1 rounded-full border border-white/15 bg-black/45 backdrop-blur-md px-3 py-1.5 text-[11px] font-medium text-white/90 hover:border-[#6C5CE7]/40 transition-colors"
-                  >
-                    Live
-                    <ArrowUpRight className="size-3.5 opacity-80" />
-                  </a>
-                ) : null}
               </div>
               <div className="p-5 sm:p-6 md:p-8 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 min-w-0">
                 <div className="min-w-0">
                   <h2 className="text-lg sm:text-xl font-semibold text-white">{c.name}</h2>
-                  <p className="mt-1 text-xs sm:text-sm text-white/40">{c.type[lang]}</p>
-                  <p className="mt-3 sm:mt-4 text-sm text-white/50 leading-relaxed max-w-md">{c.highlight[lang]}</p>
+                  <p className="mt-1 text-xs sm:text-sm text-white/40">{c.features[lang]?.[0] ?? ''}</p>
+                  <p className="mt-3 sm:mt-4 text-sm text-white/50 leading-relaxed max-w-md">{c.results[lang]?.[0] ?? ''}</p>
                 </div>
                 <div className="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-start gap-3 shrink-0 w-full sm:w-auto pt-3 border-t border-white/[0.06] sm:border-0 sm:pt-0">
                   <span className="rounded-full bg-[#6C5CE7]/15 border border-[#6C5CE7]/25 px-3 py-1.5 text-[11px] sm:text-xs font-semibold text-[#B4A9F7] whitespace-nowrap">
-                    {c.metric[lang]}
+                    {c.results[lang]?.[1] ?? c.results[lang]?.[0] ?? ''}
                   </span>
                   <span className="text-xs font-medium text-[#6C5CE7]/90 flex items-center gap-1">
                     {t.cases.viewCase}
