@@ -12,9 +12,11 @@ import mazzoImg from '@/assets/mazzo.webp';
 import luxlightImg from '@/assets/luxlight.webp';
 import essenzaImg from '@/assets/essenza.webp';
 import bekhzodImg from '@/assets/bekhzod.webp';
+import karolinaImg from '@/assets/karolina.webp';
 
-const caseDetails: Record<string, { 
+export const caseDetails: Record<string, { 
   name: string;
+  url: string;
   goal: Record<string, string>;
   built: Record<string, string>;
   features: Record<string, string[]>;
@@ -28,6 +30,7 @@ const caseDetails: Record<string, {
   medicare: {
     name: 'Medicare Uzbekistan',
     image: medicareImg,
+    url: 'https://medicare.uz',
     goal: { 
       ru: 'Создать современный интернет-магазин медицинских товаров с удобной навигацией и быстрым оформлением заказа.', 
       en: 'Build a modern e-commerce store for medical products with intuitive navigation and fast checkout.', 
@@ -56,6 +59,7 @@ const caseDetails: Record<string, {
   manaku: {
     name: 'Manaku Furniture',
     image: manakuImg,
+    url: 'https://manaku.uz',
     goal: { 
       ru: 'Разработать премиальный мебельный интернет-магазин с акцентом на визуальную подачу и UX.', 
       en: 'Develop a premium furniture e-commerce store focused on visual presentation and UX.', 
@@ -84,6 +88,7 @@ const caseDetails: Record<string, {
   modulbino: {
     name: 'ModulBino',
     image: modulbinoImg,
+    url: 'https://modulbino.uz',
     goal: {
       ru: 'Создать продающий лендинг для компании модульного строительства.',
       en: 'Build a conversion-focused landing page for a modular construction company.',
@@ -112,6 +117,7 @@ const caseDetails: Record<string, {
   ecolife: {
     name: 'Eco Life Resort',
     image: ecolifeImg,
+    url: 'https://eco-life-etiqod.com',
     goal: {
       ru: 'Создать минималистичный сайт горного курорта с удобной навигацией.',
       en: 'Develop a minimalistic mountain resort website.',
@@ -140,6 +146,7 @@ const caseDetails: Record<string, {
   pitstop: {
     name: 'PitStop Service Platform',
     image: pitstopImg,
+    url: 'https://pitstop-one.netlify.app',
     goal: {
       ru: 'Разработать веб-приложение для управления автосервисом.',
       en: 'Develop a web platform for auto service management.',
@@ -168,6 +175,7 @@ const caseDetails: Record<string, {
   mazzo: {
     name: 'Mazzo Premium',
     image: mazzoImg,
+    url: 'https://mazzo-premium.netlify.app',
     goal: {
       ru: 'Создать премиальный интернет-магазин постельного белья.',
       en: 'Build a premium bedding e-commerce store.',
@@ -196,6 +204,7 @@ const caseDetails: Record<string, {
   luxlight: {
     name: 'LuxLight LED',
     image: luxlightImg,
+    url: 'https://luxlight-demo.netlify.app',
     goal: {
       ru: 'Создать лендинг для компании LED-освещения.',
       en: 'Develop a landing page for LED lighting solutions.',
@@ -224,6 +233,7 @@ const caseDetails: Record<string, {
   essenza: {
     name: 'Essenza Perfumes',
     image: essenzaImg,
+    url: 'https://perfume-demo.netlify.app',
     goal: {
       ru: 'Создать премиальный сайт для бренда Essenza.',
       en: 'Build a premium website for the Essenza brand.',
@@ -252,6 +262,7 @@ const caseDetails: Record<string, {
   bekhzod: {
     name: 'Kodbekhzod',
     image: bekhzodImg,
+    url: 'https://kodbekhzod.netlify.app',
     goal: { 
       ru: 'Разработать цифровую платформу для международного конкурса при поддержке Министерства культуры Узбекистана с удобной подачей заявок и имиджевым позиционированием.', 
       en: 'Develop a digital platform for an international competition supported by the Ministry of Culture of Uzbekistan with streamlined submissions and strong institutional positioning.', 
@@ -313,6 +324,94 @@ const caseDetails: Record<string, {
     teamSize: 2,
 },
 
+
+  karolina: {
+    name: 'Karolina Beauty Room',
+    image: karolinaImg,
+    url: 'https://karolina-beauty.netlify.app/',
+
+    goal: {
+      ru: 'Создать современный продающий сайт для салона красоты с онлайн-записью, упором на премиальный визуал и автоматизацию записи клиентов.',
+      en: 'Build a modern conversion-focused website for a beauty salon with online booking, premium visuals, and client automation.',
+      uz: 'Premium dizayn va onlayn yozilish bilan go‘zallik saloni uchun zamonaviy sotuvga yo‘naltirilgan sayt yaratish.'
+    },
+
+    built: {
+      ru: 'Полноценный сайт салона красоты с системой онлайн-записи, выбором филиала, категории услуг, мастера, даты и времени. Реализована удобная логика записи, адаптивный интерфейс и мультиязычность.',
+      en: 'A full-featured beauty salon website with online booking system including branch selection, service categories, master level, date and time. Includes responsive UI and multilingual support.',
+      uz: 'Filial, xizmat, usta va vaqt tanlash bilan to‘liq onlayn yozilish tizimiga ega go‘zallik saloni sayti.'
+    },
+
+    features: {
+      ru: [
+        'Онлайн-запись (услуга → мастер → дата → время)',
+        'Разделение по уровням мастеров (Master / Top / Premium)',
+        'Динамический прайс (зависит от мастера)',
+        'Мультиязычность (RU / UZ / EN)',
+        'Адаптивный дизайн (mobile-first)',
+        'Интерактивный выбор филиалов',
+        'UI/UX ориентирован на конверсию',
+        'Быстрая загрузка (<2 сек)'
+      ],
+      en: [
+        'Online booking flow (service → master → date → time)',
+        'Master levels (Master / Top / Premium)',
+        'Dynamic pricing system',
+        'Multilingual (RU / UZ / EN)',
+        'Mobile-first responsive design',
+        'Branch selection system',
+        'Conversion-focused UI/UX',
+        'Fast loading (<2s)'
+      ],
+      uz: [
+        'Onlayn yozilish (xizmat → usta → sana → vaqt)',
+        'Usta darajalari (Master / Top / Premium)',
+        'Dinamik narx tizimi',
+        'Ko‘p tilli (RU / UZ / EN)',
+        'Mobilga mos dizayn',
+        'Filial tanlash',
+        'Konversiyaga yo‘naltirilgan UX/UI',
+        'Tez yuklanish (<2s)'
+      ]
+    },
+
+    stack: [
+      'React',
+      'TypeScript',
+      'TailwindCSS',
+      'Framer Motion',
+      'Node.js',
+      'MongoDB'
+    ],
+
+    results: {
+      ru: [
+        'Автоматизация записи клиентов (снижение нагрузки на админа)',
+        'Упрощение процесса записи в 3 клика',
+        'Рост конверсии записи',
+        'Премиальное восприятие бренда',
+        'Готовая система масштабирования под новые филиалы'
+      ],
+      en: [
+        'Client booking fully automated',
+        '3-click booking flow',
+        'Higher conversion rate',
+        'Premium brand perception',
+        'Scalable for multiple branches'
+      ],
+      uz: [
+        'Yozilish jarayoni avtomatlashtirildi',
+        '3 bosqichli yozilish',
+        'Konversiya oshdi',
+        'Premium brend ko‘rinishi',
+        'Filiallar uchun kengaytirish imkoniyati'
+      ]
+    },
+
+    timeline: '7 days',
+    teamSize: 2,
+  },
+
 };
 
 
@@ -324,23 +423,25 @@ const CaseDetail = () => {
 
   if (!caseData) {
     return (
-      <div className="py-32 text-center container mx-auto px-6">
+      <div className="py-24 sm:py-32 text-center container min-w-0">
         <h1 className="text-4xl font-bold">Case not found</h1>
         <Button variant="outline" className="mt-8" asChild>
-          <Link to="/cases"><ArrowLeft size={16} /> {t.cases.backToList}</Link>
+          <Link to="/portfolio"><ArrowLeft size={16} /> {t.cases.backToList}</Link>
         </Button>
       </div>
     );
   }
 
   return (
-    <section className="py-6 md:py-10">
-      <div className="container mx-auto px-6 max-w-4xl">
+    <section className="py-8 sm:py-10 md:py-12">
+      <div className="container max-w-4xl min-w-0">
         <FadeIn>
-          <Link to="/cases" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors mb-8">
+          <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm text-white/45 hover:text-[#B4A9F7] transition-colors mb-8">
             <ArrowLeft size={16} /> {t.cases.backToList}
           </Link>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight">{caseData.name}</h1>
+          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white leading-tight">
+            {caseData.name}
+          </h1>
         </FadeIn>
 
         <div className="mt-12 space-y-12">
@@ -401,9 +502,9 @@ const CaseDetail = () => {
           </FadeIn>
 
           <FadeIn delay={0.45}>
-            <div className="rounded-2xl hero-gradient p-10 text-center">
-              <h3 className="text-2xl font-bold text-primary-foreground">{t.cases.ctaTitle}</h3>
-              <Button variant="hero" size="xl" className="mt-6" asChild>
+            <div className="vanta-cta-slab p-10 md:p-12 text-center">
+              <h3 className="text-2xl font-semibold text-white">{t.cases.ctaTitle}</h3>
+              <Button variant="vanta" size="xl" className="mt-6 rounded-2xl" asChild>
                 <a href="https://t.me/LLC_VANTALAB" target="_blank" rel="noopener noreferrer">
                   <Send size={18} /> {t.cta.button}
                 </a>

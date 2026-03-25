@@ -2,16 +2,38 @@
 
 import { createContext, useContext, useState, ReactNode } from 'react';
 
-type Lang = 'ru' | 'en' | 'uz';
+export type Lang = 'ru' | 'en' | 'uz';
 
 const translations = {
   ru: {
-    nav: { home: 'Главная', cases: 'Кейсы', about: 'О нас', contacts: 'Контакты', quote: 'Получить оценку' },
+    nav: {
+      home: 'Главная',
+      services: 'Услуги',
+      portfolio: 'Портфолио',
+      contact: 'Контакты',
+      startProject: 'Начать проект',
+      quote: 'Получить оценку',
+    },
+    home: {
+      kicker: 'Цифровая студия',
+      headline: 'Сайты, которые продают — с первого экрана',
+      subline:
+        'Стратегия, премиальный дизайн и инженерная разработка для брендов, которым важны доверие и измеримый результат.',
+      trusted: 'Команды, которые инвестируют в качество, выбирают спокойную эстетику и сильную конверсию',
+      featuredTitle: 'Портфолио с метриками',
+      featuredSubtitle: 'Кейсы с конкретными результатами — не декоративные скриншоты.',
+      viewPortfolio: 'Все кейсы',
+      servicesKicker: 'Услуги',
+      servicesLead: 'От лендинга до продукта — единый стандарт: аккуратно, быстро, надёжно.',
+      finalCtaTitle: 'Сайт, который окупается',
+      finalCtaSub: 'Оставьте бриф — ответим с планом и ориентиром по срокам в течение рабочего дня.',
+      metricLabel: 'Ключевой результат',
+    },
     hero: {
       title: '',
       subtitle: 'Если вы думаете, что вам не нужна цифровизация — вы уже теряете деньги.',
       cta1: 'Написать в Telegram',
-      cta2: 'Получить оценку',
+      cta2: 'Обсудить проект',
     },
     stats: { projects: 'Проектов', clients: 'Довольных клиентов', years: 'Года опыта', conversion: 'Рост конверсии' },
     why: {
@@ -71,11 +93,12 @@ const translations = {
       button: 'Написать в Telegram',
     },
     cases: {
-      title: 'Кейсы',
-      subtitle: 'Реальные результаты для реального бизнеса',
+      title: 'Портфолио',
+      subtitle: 'Измеримые результаты: конверсия, выручка, скорость. Откройте кейс — увидите детали.',
       viewCase: 'Подробнее',
       allCases: 'Все кейсы',
       backToList: 'Все кейсы',
+      liveDemo: 'Онлайн демо',
       goal: 'Цель клиента',
       built: 'Что было сделано',
       features: 'Ключевые функции',
@@ -100,6 +123,7 @@ const translations = {
     contact: {
       title: 'Свяжитесь с нами',
       subtitle: 'Расскажите о вашем проекте — мы ответим в течение часа.',
+      directLine: 'Предпочитаете прямой контакт? Мы быстро отвечаем в Telegram и на почте.',
       form: { name: 'Ваше имя', email: 'Email', message: 'Расскажите о проекте', send: 'Отправить' },
       telegram: 'Написать в Telegram',
       whatsapp: 'WhatsApp',
@@ -109,17 +133,43 @@ const translations = {
       rights: '© 2026 VANTA LAB LLC. Все права защищены.',
       tagline: 'Премиум софтверная разработка из Узбекистана',
     },
+    seo: {
+      title: 'VANTA LAB — премиальная цифровая студия | сайты, e‑commerce и веб‑приложения',
+      description:
+        'Стратегия, премиальный дизайн и разработка сайтов, интернет‑магазинов и веб‑продуктов. Фокус на доверие и конверсию. VANTA LAB, Узбекистан.',
+      ogLocale: 'ru_RU',
+    },
   },
 
-
-
   en: {
-    nav: { home: 'Home', cases: 'Cases', about: 'About', contacts: 'Contacts', quote: 'Get a Quote' },
+    nav: {
+      home: 'Home',
+      services: 'Services',
+      portfolio: 'Portfolio',
+      contact: 'Contact',
+      startProject: 'Start a project',
+      quote: 'Get a Quote',
+    },
+    home: {
+      kicker: 'Digital studio',
+      headline: 'Websites engineered for trust — and conversion.',
+      subline:
+        'Strategy, refined UI, and robust development for brands that cannot afford to look ordinary.',
+      trusted: 'Teams who treat their website as revenue infrastructure work with us',
+      featuredTitle: 'Work with outcomes',
+      featuredSubtitle: 'Case studies anchored in metrics, not moodboards.',
+      viewPortfolio: 'View portfolio',
+      servicesKicker: 'Services',
+      servicesLead: 'From landing pages to product-grade builds — one standard of craft.',
+      finalCtaTitle: 'Ready for a site that pays back?',
+      finalCtaSub: 'Share a short brief — we reply with a plan and timeline within one business day.',
+      metricLabel: 'Key result',
+    },
     hero: {
       title: '',
       subtitle: "If you think you don't need digitalization — you're already losing money.",
       cta1: 'Message on Telegram',
-      cta2: 'Get a Quote',
+      cta2: 'Discuss your project',
     },
     stats: { projects: 'Projects', clients: 'Happy Clients', years: 'Years Experience', conversion: 'Conversion Growth' },
     why: {
@@ -179,11 +229,12 @@ const translations = {
       button: 'Message on Telegram',
     },
     cases: {
-      title: 'Cases',
-      subtitle: 'Real results for real business',
-      viewCase: 'View Case',
+      title: 'Portfolio',
+      subtitle: 'Conversion-led outcomes: revenue, retention, and speed. Open a case to see how we work.',
+      viewCase: 'View case',
       allCases: 'All Cases',
       backToList: 'All Cases',
+      liveDemo: 'Live demo',
       goal: 'Client Goal',
       built: 'What Was Built',
       features: 'Key Features',
@@ -208,6 +259,7 @@ const translations = {
     contact: {
       title: 'Get in Touch',
       subtitle: "Tell us about your project — we'll respond within an hour.",
+      directLine: 'Prefer a direct line? We respond quickly on Telegram and email.',
       form: { name: 'Your Name', email: 'Email', message: 'Tell us about your project', send: 'Send' },
       telegram: 'Message on Telegram',
       whatsapp: 'WhatsApp',
@@ -217,15 +269,43 @@ const translations = {
       rights: '© 2026 VANTA LAB LLC. All rights reserved.',
       tagline: 'Premium software development from Uzbekistan',
     },
+    seo: {
+      title: 'VANTA LAB — premium digital studio | websites, e‑commerce & web apps',
+      description:
+        'Strategy, refined UI, and development for high-trust websites, online stores, and web products. Conversion-led execution. VANTA LAB, Uzbekistan.',
+      ogLocale: 'en_US',
+    },
   },
 
   uz: {
-    nav: { home: 'Bosh sahifa', cases: 'Loyihalar', about: 'Biz haqimizda', contacts: 'Aloqa', quote: 'Narx olish' },
+    nav: {
+      home: 'Bosh sahifa',
+      services: 'Xizmatlar',
+      portfolio: 'Portfolio',
+      contact: 'Aloqa',
+      startProject: 'Loyihani boshlash',
+      quote: 'Narx olish',
+    },
+    home: {
+      kicker: 'Raqamli studiya',
+      headline: "Sotadigan saytlar — birinchi ekrandan boshlab",
+      subline:
+        "Strategiya, premium UI va mustahkam ishlab chiqish — ishonch va o'lchanadigan natija qadrini biladigan brendlar uchun.",
+      trusted: "Sifatga investitsiya qiladigan jamoalar tinch estetika va kuchli konversiyani tanlaydi",
+      featuredTitle: 'Metrikali portfolio',
+      featuredSubtitle: "Aniq natijalar — faqat 'chiroyli skrinshotlar' emas.",
+      viewPortfolio: 'Barcha loyihalar',
+      servicesKicker: 'Xizmatlar',
+      servicesLead: "Landingdan mahsulotgacha — bitta standart: puxta, tez, ishonchli.",
+      finalCtaTitle: "O'zini oqlaydigan sayt",
+      finalCtaSub: "Brif yuboring — ish kuni ichida reja va muddat bilan javob beramiz.",
+      metricLabel: 'Asosiy natija',
+    },
     hero: {
       title: '',
       subtitle: "Raqamlashtirish kerak emas deb o'ylasangiz — siz allaqachon pul yo'qotyapsiz.",
       cta1: 'Telegramda yozish',
-      cta2: 'Narx olish',
+      cta2: 'Loyihani muhokama qilish',
     },
     stats: { projects: 'Loyihalar', clients: 'Mamnun mijozlar', years: 'Yillik tajriba', conversion: "Konversiya o'sishi" },
     why: {
@@ -285,11 +365,12 @@ const translations = {
       button: 'Telegramda yozish',
     },
     cases: {
-      title: 'Loyihalar',
-      subtitle: 'Haqiqiy biznes uchun haqiqiy natijalar',
+      title: 'Portfolio',
+      subtitle: "Konversiyaga yo'naltirilgan natijalar: daromad, qaytish va tezlik. Batafsil uchun case oching.",
       viewCase: 'Batafsil',
       allCases: 'Barcha loyihalar',
       backToList: 'Barcha loyihalar',
+      liveDemo: 'Jonli demo',
       goal: 'Mijoz maqsadi',
       built: 'Nima qilindi',
       features: 'Asosiy funksiyalar',
@@ -314,6 +395,7 @@ const translations = {
     contact: {
       title: "Biz bilan bog'laning",
       subtitle: "Loyihangiz haqida ayting — 1 soat ichida javob beramiz.",
+      directLine: "To'g'ridan-to'g'ri aloqa qilasizmi? Telegram va emailda tez javob beramiz.",
       form: { name: 'Ismingiz', email: 'Email', message: 'Loyihangiz haqida ayting', send: 'Yuborish' },
       telegram: 'Telegramda yozish',
       whatsapp: 'WhatsApp',
@@ -322,6 +404,12 @@ const translations = {
     footer: {
       rights: '© 2026 VANTA LAB LLC. Barcha huquqlar himoyalangan.',
       tagline: "O'zbekistondan premium dasturiy ta'minot ishlab chiqish",
+    },
+    seo: {
+      title: "VANTA LAB — premium raqamli studiya | saytlar, e‑commerce va veb‑ilovalar",
+      description:
+        "Strategiya, zamonaviy dizayn va saytlar, onlayn do'konlar hamda veb‑mahsulotlarni ishlab chiqish. Ishonch va konversiya. VANTA LAB, O'zbekiston.",
+      ogLocale: 'uz_UZ',
     },
   },
 } as const;
