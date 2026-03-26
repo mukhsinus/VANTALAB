@@ -24,12 +24,12 @@ export const FinalCtaBand = () => {
           </div>
           <div className="mt-8 md:mt-0 flex flex-col sm:flex-row gap-3 shrink-0 justify-center md:justify-end">
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} transition={{ type: 'spring', stiffness: 400, damping: 22 }}>
-              <Button variant="vanta" size="lg" className="h-12 px-8 rounded-2xl" asChild>
+              <Button variant="vanta" size="lg" className="h-12 px-8 rounded-full" asChild>
                 <Link to="/contact">{t.nav.startProject}</Link>
               </Button>
             </motion.div>
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} transition={{ type: 'spring', stiffness: 400, damping: 22 }}>
-              <Button variant="vanta-ghost" size="lg" className="h-12 px-8 rounded-2xl" asChild>
+              <Button variant="vanta-ghost" size="lg" className="h-12 px-8 rounded-full" asChild>
                 <a href="https://t.me/LLC_VANTALAB" target="_blank" rel="noopener noreferrer">
                   {t.hero.cta1}
                 </a>

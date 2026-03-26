@@ -32,11 +32,9 @@
 }
 
 .nav-panel.active {
-  background: rgba(108, 92, 231, 0.22);
-  border-color: rgba(108, 92, 231, 0.55);
+  border-color: rgba(108, 92, 231, 0.7);
   color: #fafafa;
   font-weight: 600;
-  box-shadow: 0 2px 12px 0 rgba(108,92,231,0.08);
 }
 }
 

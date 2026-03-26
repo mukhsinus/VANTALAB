@@ -12,7 +12,7 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-[100svh] md:min-h-[100h] flex flex-col items-center justify-start "
+      className="relative h-[100svh] md:h-screen flex flex-col items-center justify-center"
     >
       {/* Background image */}
       <picture>
@@ -31,7 +31,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-black/30" />
 
       {/* Content */}
-      <div className="relative z-10 w-full flex flex-col items-center justify-start  px-4 pt-72 md:pt-48 pb-8">
+      <div className="relative z-10 w-full flex flex-col items-center justify-center px-4 pb-8">
 
         {/* Title */}
         {/* <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight text-white text-center">

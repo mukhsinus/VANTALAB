@@ -74,7 +74,7 @@ const Services = () => {
         </div>
 
         <FadeIn className="mt-20 flex justify-center">
-          <Button variant="vanta" size="lg" className="h-12 px-10 rounded-2xl" asChild>
+          <Button variant="vanta" size="lg" className="h-12 px-10 rounded-full" asChild>
             <Link to="/contact">{t.nav.startProject}</Link>
           </Button>
         </FadeIn>

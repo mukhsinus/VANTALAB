@@ -73,7 +73,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 <Input
                   value={form.name}
                   onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                  className="h-12 rounded-2xl border-white/10 bg-white/[0.03] text-white placeholder:text-white/25 focus-visible:ring-[#6C5CE7]/40"
+                  className="h-12 rounded-full border-white/10 bg-white/[0.03] text-white placeholder:text-white/25 focus-visible:ring-[#6C5CE7]/40"
                   required
                   maxLength={100}
                 />
@@ -86,7 +86,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                   type="email"
                   value={form.email}
                   onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                  className="h-12 rounded-2xl border-white/10 bg-white/[0.03] text-white placeholder:text-white/25 focus-visible:ring-[#6C5CE7]/40"
+                  className="h-12 rounded-full border-white/10 bg-white/[0.03] text-white placeholder:text-white/25 focus-visible:ring-[#6C5CE7]/40"
                   required
                   maxLength={255}
                 />
@@ -104,7 +104,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                   maxLength={1000}
                 />
               </div>
-              <Button type="submit" variant="vanta" size="lg" className="w-full h-12 rounded-2xl text-[15px]">
+              <Button type="submit" variant="vanta" size="lg" className="w-full h-12 rounded-full text-[15px]">
                 {t.contact.form.send}
               </Button>
             </form>
@@ -119,7 +119,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-6 rounded-[1.25rem] border border-white/[0.08] bg-white/[0.02] glow-border-hover transition-colors group"
               >
-                <div className="w-12 h-12 rounded-2xl border border-[#6C5CE7]/20 bg-[#6C5CE7]/10 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full border border-[#6C5CE7]/20 bg-[#6C5CE7]/10 flex items-center justify-center">
                   <Send size={20} className="text-[#B4A9F7]" />
                 </div>
                 <div>
@@ -134,7 +134,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-6 rounded-[1.25rem] border border-white/[0.08] bg-white/[0.02] glow-border-hover transition-colors group"
               >
-                <div className="w-12 h-12 rounded-2xl border border-[#6C5CE7]/20 bg-[#6C5CE7]/10 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full border border-[#6C5CE7]/20 bg-[#6C5CE7]/10 flex items-center justify-center">
                   <MessageCircle size={20} className="text-[#B4A9F7]" />
                 </div>
                 <div>
@@ -147,7 +147,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 href="mailto:info@vantalab.uz"
                 className="flex items-center gap-4 p-6 rounded-[1.25rem] border border-white/[0.08] bg-white/[0.02] glow-border-hover transition-colors group"
               >
-                <div className="w-12 h-12 rounded-2xl border border-[#6C5CE7]/20 bg-[#6C5CE7]/10 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full border border-[#6C5CE7]/20 bg-[#6C5CE7]/10 flex items-center justify-center">
                   <Mail size={20} className="text-[#B4A9F7]" />
                 </div>
                 <div>

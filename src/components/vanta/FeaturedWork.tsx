@@ -15,7 +15,7 @@ export const FeaturedWork = () => {
     .slice(0, 3);
 
   return (
-    <section className="py-16 sm:py-20 md:py-28 lg:py-32 border-t border-white/[0.06]">
+    <section className="py-16 sm:py-20 md:py-24 lg:py-26 border-t border-white/[0.06]">
       <div className="container min-w-0">
         <FadeIn>
           <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6C5CE7]">
