@@ -7,9 +7,10 @@ export const AnimatedWireframeBg = () => {
   useEffect(() => {
     if (!ref.current) return;
 
-    const isMobile =
-      /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) ||
-      window.innerWidth < 768;
+    try {
+      const isMobile =
+        /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) ||
+        window.innerWidth < 768;
 
     // ---------- SCENE ----------
     const scene = new THREE.Scene();
@@ -201,27 +202,35 @@ export const AnimatedWireframeBg = () => {
 
     // ---------- CLEANUP ----------
     return () => {
-      cancelAnimationFrame(frameId);
+      try {
+        cancelAnimationFrame(frameId);
 
-      window.removeEventListener("mousemove", onMouse);
-      window.removeEventListener("touchmove", onTouch);
-      window.removeEventListener("resize", onResize);
+        window.removeEventListener("mousemove", onMouse);
+        window.removeEventListener("touchmove", onTouch);
+        window.removeEventListener("resize", onResize);
 
-      geometry.dispose();
-      material.dispose();
-      renderer.dispose();
+        geometry.dispose();
+        material.dispose();
+        renderer.dispose();
 
-      if (renderer.domElement.parentNode) {
-        renderer.domElement.parentNode.removeChild(renderer.domElement);
+        if (renderer.domElement.parentNode) {
+          renderer.domElement.parentNode.removeChild(renderer.domElement);
+        }
+      } catch (e) {
+        console.error("AnimatedWireframeBg cleanup error:", e);
       }
     };
+    } catch (error) {
+      console.error("AnimatedWireframeBg initialization error:", error);
+      return () => {};
+    }
   }, []);
 
   return (
     <div
       ref={ref}
       className="absolute inset-0 pointer-events-none"
-      style={{ overflow: "hidden", background: "black" }}
+      style={{ overflow: "hidden" }}
     />
   );
 };

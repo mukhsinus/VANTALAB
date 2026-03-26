@@ -72,7 +72,7 @@ const Layout = () => {
                     {isActive(link.path) && (
                       <motion.div
                         layoutId="nav-active-bg"
-                        className="absolute inset-0 rounded-full bg-gradient-to-br from-[#6C5CE7]/40 to-[#6C5CE7]/15 border border-[#6C5CE7]/50 -z-10"
+                        className="absolute inset-0 rounded-full bg-gradient-to-br from-[#6C5CE7] to-[#6C5CE7] border border-[#6C5CE7]/50 -z-10"
                         transition={{ type: 'spring', stiffness: 280, damping: 28 }}
                       />
                     )}

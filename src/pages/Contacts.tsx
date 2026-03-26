@@ -49,21 +49,21 @@ const handleSubmit = async (e: React.FormEvent) => {
 };
 
   return (
-    <div className="pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-20 md:pb-28 lg:pb-32">
+    <div className="pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-20 md:pb-24 lg:pb-28">
       <div className="container min-w-0">
         <FadeIn>
-          <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6C5CE7]">
+          <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6C5CE7] text-center">
             {t.nav.contact}
           </p>
-          <h1 className="mt-3 text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-white max-w-3xl leading-[1.08]">
+          <h1 className="mt-3 text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-white max-w-3xl leading-[1.08] text-center mx-auto">
             {t.contact.title}
           </h1>
-          <p className="mt-4 sm:mt-5 text-base sm:text-lg text-white/45 max-w-2xl leading-relaxed">
+          <p className="mt-4 sm:mt-5 text-base sm:text-lg text-white/45 max-w-2xl leading-relaxed text-center mx-auto">
             {t.contact.subtitle}
           </p>
         </FadeIn>
 
-        <div className="mt-12 sm:mt-16 md:mt-20 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 max-w-5xl min-w-0">
+        <div className="mt-12 sm:mt-16 md:mt-20 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 max-w-5xl min-w-0 mx-auto">
           <FadeIn delay={0.08}>
             <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6 min-w-0">
               <div>
@@ -98,7 +98,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 <Textarea
                   value={form.message}
                   onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                  rows={5}
+                  rows={4}
                   className="rounded-2xl border-white/10 bg-white/[0.03] text-white placeholder:text-white/25 focus-visible:ring-[#6C5CE7]/40 resize-none"
                   required
                   maxLength={1000}

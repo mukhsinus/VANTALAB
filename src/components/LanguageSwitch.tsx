@@ -26,7 +26,7 @@ export function LanguageSwitch({ className = '' }: { className?: string }) {
             {lang === code && (
               <motion.span
                 layoutId="vanta-lang-pill"
-                className="absolute inset-0 rounded-full bg-gradient-to-br from-[#6C5CE7]/40 to-[#6C5CE7]/15 border border-[#6C5CE7]/50 shadow-[0_0_20px_rgba(108,92,231,0.4)]"
+                className="absolute inset-0 rounded-full bg-gradient-to-br from-[#6C5CE7] to-[#6C5CE7]   border border-[#6C5CE7]/50 shadow-[0_0_20px_rgba(108,92,231,0.4)]"
                 transition={{ type: 'spring', stiffness: 280, damping: 28 }}
                 style={{ pointerEvents: 'none' }}
               />

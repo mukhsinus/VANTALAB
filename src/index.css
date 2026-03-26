@@ -71,14 +71,19 @@
   }
   body {
     @apply text-foreground antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: "Inter", system-ui, sans-serif;
   }
 }
 
 @layer utilities {
   .text-gradient-vanta {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.72) 45%, #6c5ce7 100%);
+    background-image: linear-gradient(
+      135deg,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0.72) 45%,
+      #6c5ce7 100%
+    );
   }
   .glow-border {
     box-shadow:
@@ -86,7 +91,9 @@
       0 0 40px -12px rgba(108, 92, 231, 0.35);
   }
   .glow-border-hover {
-    transition: box-shadow 0.35s ease, border-color 0.35s ease;
+    transition:
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
   }
   .glow-border-hover:hover {
     box-shadow:
@@ -98,11 +105,33 @@
     min-height: 100dvh;
     background-color: #08080a;
     background-image:
-      radial-gradient(ellipse 120% 70% at 50% -25%, rgba(108, 92, 231, 0.18), transparent 55%),
-      radial-gradient(ellipse 90% 50% at 100% 15%, rgba(108, 92, 231, 0.07), transparent 50%),
-      radial-gradient(ellipse 70% 45% at 0% 85%, rgba(108, 92, 231, 0.05), transparent 45%),
-      radial-gradient(ellipse 80% 40% at 70% 100%, rgba(255, 255, 255, 0.025), transparent 50%),
-      linear-gradient(180deg, #0c0c10 0%, #0a0a0c 22%, #08080a 55%, #0a0a0f 100%);
+      radial-gradient(
+        ellipse 120% 70% at 50% -25%,
+        rgba(108, 92, 231, 0.18),
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 90% 50% at 100% 15%,
+        rgba(108, 92, 231, 0.07),
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse 70% 45% at 0% 85%,
+        rgba(108, 92, 231, 0.05),
+        transparent 45%
+      ),
+      radial-gradient(
+        ellipse 80% 40% at 70% 100%,
+        rgba(255, 255, 255, 0.025),
+        transparent 50%
+      ),
+      linear-gradient(
+        180deg,
+        #0c0c10 0%,
+        #0a0a0c 22%,
+        #08080a 55%,
+        #0a0a0f 100%
+      );
     background-attachment: fixed;
   }
   @media (max-width: 768px) {
@@ -112,12 +141,29 @@
   }
   .mesh-bg {
     background-image:
-      radial-gradient(ellipse 85% 55% at 50% -15%, rgba(108, 92, 231, 0.2), transparent 52%),
-      radial-gradient(ellipse 55% 40% at 100% 0%, rgba(108, 92, 231, 0.09), transparent),
-      radial-gradient(ellipse 45% 35% at 0% 95%, rgba(255, 255, 255, 0.035), transparent);
+      radial-gradient(
+        ellipse 85% 55% at 50% -15%,
+        rgba(108, 92, 231, 0.2),
+        transparent 52%
+      ),
+      radial-gradient(
+        ellipse 55% 40% at 100% 0%,
+        rgba(108, 92, 231, 0.09),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 45% 35% at 0% 95%,
+        rgba(255, 255, 255, 0.035),
+        transparent
+      );
   }
   .vanta-cta-slab {
-    background: linear-gradient(145deg, rgba(108, 92, 231, 0.14) 0%, rgba(14, 14, 14, 0.96) 42%, #0a0a0a 100%);
+    background: linear-gradient(
+      145deg,
+      rgba(108, 92, 231, 0.14) 0%,
+      rgba(14, 14, 14, 0.96) 42%,
+      #0a0a0a 100%
+    );
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 1.25rem;
     box-shadow: 0 0 60px -20px rgba(108, 92, 231, 0.35);
