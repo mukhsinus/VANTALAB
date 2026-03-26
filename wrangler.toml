@@ -1,0 +1,25 @@
+name = "vantalab"
+type = "javascript"
+
+# Required: Add your Cloudflare Account ID below
+account_id = ""
+
+# Set to true if you want to access this project via a *.workers.dev subdomain
+workers_dev = false
+
+[env.production]
+name = "vantalab-production"
+routes = [
+  { pattern = "vantalab.uz", zone_name = "vantalab.uz" },
+  { pattern = "www.vantalab.uz", zone_name = "vantalab.uz" }
+]
+vars = { ENVIRONMENT = "production" }
+
+[build]
+command = "npm run build"
+cwd = "./"
+watch_paths = ["src/**/*.{tsx,ts,css}"]
+
+[triggers.crons]
+crons = []
+
