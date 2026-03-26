@@ -6,7 +6,14 @@
  * allowing React Router to handle client-side navigation.
  */
 
-export const onRequest: PagesFunction = async ({ request, waitUntil }) => {
+interface CloudflareContext {
+  request: Request;
+  env?: Record<string, unknown>;
+  functionPath?: string;
+}
+
+export const onRequest = async (context: CloudflareContext): Promise<Response> => {
+  const { request } = context;
   const url = new URL(request.url);
   const pathname = url.pathname;
 
