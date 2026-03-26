@@ -1,15 +1,4 @@
-# Cloudflare Pages Redirect Rules
-# SPA routing configuration - serve index.html for all routes except assets
+# Cloudflare Pages - SPA Routing Configuration
+# Serve index.html for all non-asset routes (allows React Router to handle client-side navigation)
 
-# Cache busting for assets with hashes (these can be cached long-term)
-/assets/* 200! js,css,webp,png,jpg,jpeg,gif,svg
-
-# Static files
-/public/* 200
-/robots.txt 200
-/sitemap.xml 200
-/*.json 200
-/*.xml 200
-
-# SPA routing - all other routes serve index.html
 /* /index.html 200
