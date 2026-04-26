@@ -197,7 +197,7 @@ export const caseDetails: Record<string, {
       en: ['Sales growth', 'Higher AOV', 'Strong brand identity'],
       uz: ['Savdo oshdi', 'O‘rtacha chek oshdi', 'Kuchli brend'],
     },
-    timeline: '5 weeks',
+    timeline: '3 weeks',
     teamSize: 2,
   },
 
@@ -255,7 +255,7 @@ export const caseDetails: Record<string, {
       en: ['Brand awareness growth', 'More orders', 'Premium perception'],
       uz: ['Brend mashhurligi oshdi', 'Buyurtmalar ko‘paydi', 'Premium imidj']
     },
-    timeline: '2 weeks',
+    timeline: '7 days',
     teamSize: 2,
   },
 
@@ -328,7 +328,7 @@ export const caseDetails: Record<string, {
   karolina: {
     name: 'Karolina Beauty Room',
     image: karolinaImg,
-    url: 'https://karolina-beauty.netlify.app/',
+    url: 'https://karolinabeauty.uz',
 
     goal: {
       ru: 'Создать современный продающий сайт для салона красоты с онлайн-записью, упором на премиальный визуал и автоматизацию записи клиентов.',
