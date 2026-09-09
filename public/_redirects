@@ -1,4 +1,6 @@
 # Cloudflare Pages - SPA Routing Configuration
 # Serve index.html for all non-asset routes (allows React Router to handle client-side navigation)
 
+/public/sitemap.xml /sitemap.xml 301
+/public/* /:splat 301
 /* /index.html 200

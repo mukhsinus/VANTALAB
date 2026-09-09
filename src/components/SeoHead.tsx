@@ -123,8 +123,8 @@ export function SeoHead() {
     const htmlLang = lang === 'ru' ? 'ru' : lang === 'uz' ? 'uz' : 'en';
     document.documentElement.lang = htmlLang;
 
-    let pageTitle = t.seo.title;
-    let pageDesc = t.seo.description;
+    let pageTitle: string = t.seo.title;
+    let pageDesc: string = t.seo.description;
 
     // 1. Check direct route match
     if (routeMetadata[rawPath]) {
