@@ -7,14 +7,14 @@ import { Button } from '@/components/ui/button';
 import { LanguageSwitch } from '@/components/LanguageSwitch';
 import '../nav-panel.css';
 
-const menuBackdropTransition = { duration: 0.42, ease: [0.22, 1, 0.36, 1] as const };
-const menuPanelTransition = { type: 'spring' as const, damping: 34, stiffness: 300, mass: 0.88 };
+const menuBackdropTransition = { duration: 0.28, ease: [0.16, 1, 0.3, 1] as const };
+const menuPanelTransition = { type: 'spring' as const, damping: 30, stiffness: 320, mass: 0.8 };
 
 const pageTransition = {
-  initial: { opacity: 0, y: 14 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -10 },
-  transition: { duration: 0.42, ease: [0.22, 1, 0.36, 1] as const },
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
+  transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] as const },
 };
 
 const Layout = () => {
@@ -43,82 +43,75 @@ const Layout = () => {
   };
 
   return (
-    <div className="vanta-app-bg min-h-dvh text-foreground flex flex-col">
-      <header className="sticky top-0 z-[100] border-b border-white/[0.06] bg-[#0A0A0A]/72 backdrop-blur-xl supports-[backdrop-filter]:bg-[#0A0A0A]/52">
+    <div className="vanta-app-bg min-h-dvh text-[#F4F5F7] flex flex-col selection:bg-white/20 selection:text-white">
+      <header className="sticky top-0 z-[100] border-b border-white/[0.08] bg-[#06070A]/85 backdrop-blur-xl">
         <nav
-          className="container flex items-center justify-between h-[var(--vanta-header-h)] pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]"
+          className="container flex items-center justify-between h-[var(--vanta-header-h)]"
           aria-label="Primary"
         >
           <div className="flex items-center shrink-0">
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
-              <Link
-                to="/"
-                className="logo-mark shrink-0 min-h-[40px] inline-flex rounded-full"
-                aria-label="VANTA LAB home"
-              >
-                <span className="text-xs sm:text-sm font-semibold tracking-tight text-white whitespace-nowrap">
-                  VANTA<span className="text-white/40 mx-0.5 sm:mx-1">·</span>
-                  <span className="text-[#6C5CE7]">LAB</span>
-                </span>
-              </Link>
-            </motion.div>
+            <Link
+              to="/"
+              className="inline-flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-white/40 rounded-lg py-1 px-1.5"
+              aria-label="VANTA LAB home"
+            >
+              <span className="font-heading font-extrabold text-sm sm:text-base tracking-tight text-[#F4F5F7]">
+                VANTA LAB
+              </span>
+            </Link>
           </div>
 
           <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center justify-center">
-            <div className="flex gap-2 items-center justify-center relative">
-              {navLinks.map(link => (
-                <motion.div key={link.path} whileHover={{ y: -1 }} transition={{ type: 'spring', stiffness: 400, damping: 28 }}>
-                  <div className={`nav-item nav-panel relative ${isActive(link.path) ? 'active' : ''}`}>
-                    {isActive(link.path) && (
+            <div className="flex items-center gap-1 rounded-full border border-white/[0.08] bg-[#0D0F13]/90 p-1 backdrop-blur-md">
+              {navLinks.map(link => {
+                const active = isActive(link.path);
+                return (
+                  <div key={link.path} className="relative">
+                    {active && (
                       <motion.div
-                        layoutId="nav-active-bg"
-                        className="absolute inset-0 rounded-full bg-gradient-to-br from-[#6C5CE7] to-[#6C5CE7] border border-[#6C5CE7]/50 -z-10"
-                        transition={{ type: 'spring', stiffness: 280, damping: 28 }}
+                        layoutId="nav-active-pill"
+                        className="absolute inset-0 rounded-full bg-white/[0.08] border border-white/10"
+                        transition={{ type: 'spring', stiffness: 350, damping: 32 }}
                       />
                     )}
                     <Link
                       to={link.path}
-                      className={`w-full text-center text-[13px] font-medium transition-colors px-1 relative z-10 ${
-                        isActive(link.path) ? 'text-white' : 'text-white/55 hover:text-white/90'
+                      className={`relative z-10 block px-3.5 py-1.5 text-xs font-medium transition-colors rounded-full ${
+                        active ? 'text-[#F4F5F7] font-semibold' : 'text-[#8B8F98] hover:text-[#F4F5F7]'
                       }`}
                     >
                       {link.label}
                     </Link>
                   </div>
-                </motion.div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
-          <div className="flex items-center gap-2 md:gap-3 min-w-0 justify-end shrink-0 ml-auto">
-            <div className="hidden md:block h-7 w-px bg-white/10 mx-1" />
-            
-
-            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 450, damping: 28 }}>
-              <Button
-                variant="vanta"
-                size="sm"
-                className="hidden sm:inline-flex h-11 px-6 text-[13px] rounded-full shrink-0 shadow-lg shadow-[#6C5CE7]/20"
-                asChild
-              >
-                <Link to="/contact">{t.nav.startProject}</Link>
-              </Button>
-            </motion.div>
+          <div className="flex items-center gap-2.5 md:gap-3 min-w-0 justify-end shrink-0 ml-auto">
+            <Button
+              variant="vanta"
+              size="sm"
+              className="hidden sm:inline-flex h-9 px-4 text-xs font-semibold rounded-full"
+              asChild
+            >
+              <Link to="/contact">{t.nav.startProject}</Link>
+            </Button>
 
             <LayoutGroup id="vanta-lang">
               <LanguageSwitch className="shrink-0" />
             </LayoutGroup>
-          </div>
 
-          <button
-            type="button"
-            onClick={() => setMenuOpen(o => !o)}
-            className="nav-icon-button md:hidden shrink-0 min-h-[44px] min-w-[44px] ml-2"
-            aria-expanded={menuOpen}
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          >
-            {menuOpen ? <X size={20} strokeWidth={1.5} /> : <Menu size={20} strokeWidth={1.5} />}
-          </button>
+            <button
+              type="button"
+              onClick={() => setMenuOpen(o => !o)}
+              className="md:hidden flex items-center justify-center h-9 w-9 rounded-full border border-white/[0.08] bg-[#0D0F13] text-[#F4F5F7] hover:bg-white/[0.05] transition-colors focus-visible:ring-2 focus-visible:ring-white/40 ml-1"
+              aria-expanded={menuOpen}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            >
+              {menuOpen ? <X size={18} strokeWidth={1.75} /> : <Menu size={18} strokeWidth={1.75} />}
+            </button>
+          </div>
         </nav>
       </header>
 
@@ -127,7 +120,7 @@ const Layout = () => {
           <>
             <motion.div
               key="nav-backdrop"
-              className="fixed left-0 right-0 bottom-0 z-[85] md:hidden bg-[#050508]/72 backdrop-blur-md"
+              className="fixed inset-0 z-[85] md:hidden bg-black/70 backdrop-blur-sm"
               style={{ top: 'var(--vanta-header-h)' }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -140,55 +133,40 @@ const Layout = () => {
               key="nav-panel"
               className="fixed left-0 right-0 z-[90] md:hidden pointer-events-none"
               style={{ top: 'var(--vanta-header-h)' }}
-              initial={{ opacity: 0, y: -14 }}
+              initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
+              exit={{ opacity: 0, y: -8 }}
               transition={menuPanelTransition}
             >
               <div
-                className="pointer-events-auto mx-3 xs:mx-4 mt-2 mb-[max(0.75rem,env(safe-area-inset-bottom))] max-h-[min(calc(100dvh-var(--vanta-header-h)-1rem),520px)] overflow-y-auto overscroll-contain rounded-[1.35rem] border border-white/[0.1] bg-[#0e0e12]/92 backdrop-blur-2xl shadow-[0_28px_90px_-24px_rgba(0,0,0,0.88),0_0_0_1px_rgba(108,92,231,0.06)_inset]"
+                className="pointer-events-auto mx-4 mt-2 p-4 rounded-2xl border border-white/[0.08] bg-[#0D0F13] shadow-2xl flex flex-col gap-2"
                 role="dialog"
                 aria-modal="true"
                 aria-label="Menu"
               >
-                <div className="p-4 sm:p-5 flex flex-col gap-2.5 items-center w-full">
-                  {navLinks.map((link, i) => (
-                    <motion.div
+                {navLinks.map(link => {
+                  const active = isActive(link.path);
+                  return (
+                    <Link
                       key={link.path}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{
-                        delay: 0.06 + i * 0.05,
-                        duration: 0.42,
-                        ease: [0.22, 1, 0.36, 1],
-                      }}
-                      className="w-full"
+                      to={link.path}
+                      onClick={() => setMenuOpen(false)}
+                      className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                        active
+                          ? 'bg-white/[0.08] text-[#F4F5F7] font-semibold border border-white/10'
+                          : 'text-[#8B8F98] hover:text-[#F4F5F7] hover:bg-white/[0.03]'
+                      }`}
                     >
-                      <Link
-                        to={link.path}
-                        onClick={() => setMenuOpen(false)}
-                        className={`w-full block rounded-full border px-4 py-3.5 text-[15px] font-medium transition-colors min-h-[48px] flex items-center justify-center ${
-                          isActive(link.path)
-                            ? 'border-[#6C5CE7]/45 bg-[#6C5CE7]/12 text-white'
-                            : 'border-white/[0.09] text-white/75 hover:border-white/16 hover:bg-white/[0.04] hover:text-white'
-                        }`}
-                      >
-                        {link.label}
-                      </Link>
-                    </motion.div>
-                  ))}
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-full"
-                  >
-                    <Button variant="vanta" className="w-full h-12 rounded-full mt-1 text-[15px]" asChild>
-                      <Link to="/contact" onClick={() => setMenuOpen(false)}>
-                        {t.nav.startProject}
-                      </Link>
-                    </Button>
-                  </motion.div>
+                      {link.label}
+                    </Link>
+                  );
+                })}
+                <div className="pt-2 border-t border-white/[0.08] mt-1">
+                  <Button variant="vanta" className="w-full h-11 text-xs font-semibold rounded-xl" asChild>
+                    <Link to="/contact" onClick={() => setMenuOpen(false)}>
+                      {t.nav.startProject}
+                    </Link>
+                  </Button>
                 </div>
               </div>
             </motion.div>
@@ -197,58 +175,45 @@ const Layout = () => {
       </AnimatePresence>
 
       <main className="flex-1 w-full min-w-0 relative z-0 pb-[max(1rem,env(safe-area-inset-bottom))]">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={location.pathname}
-            initial={pageTransition.initial}
-            animate={pageTransition.animate}
-            exit={pageTransition.exit}
-            transition={pageTransition.transition}
-            className="w-full min-w-0"
-          >
-            <Outlet />
-          </motion.div>
-        </AnimatePresence>
+        <Outlet />
       </main>
 
-      <footer className="border-t border-white/[0.06] py-8 sm:py-10 md:py-14">
-          <div className="mx-auto flex max-w-lg flex-col items-center text-center">
-            <p className="text-base sm:text-lg font-semibold tracking-tight text-white">
-              VANTA<span className="text-white/35 mx-1.5">·</span>
-              <span className="text-[#6C5CE7]">LAB</span>
+      <footer className="border-t border-white/[0.08] py-10 sm:py-12 md:py-16 bg-[#06070A]">
+        <div className="container min-w-0 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div>
+            <p className="font-heading font-extrabold text-base tracking-tight text-[#F4F5F7]">
+              VANTA LAB
             </p>
-            <p className="mt-3 max-w-md text-xs sm:text-sm text-white/45 leading-relaxed text-balance">
+            <p className="mt-1.5 max-w-sm text-xs text-[#8B8F98] leading-relaxed">
               {t.footer.tagline}
             </p>
-
-            <nav
-              className="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-2 border-t border-white/[0.06]w-full max-w-md"
-              aria-label="Footer"
-            >
-              <Link
-                to="/services"
-                className="text-sm text-white/45 transition-colors hover:text-white min-h-[44px] inline-flex items-center"
-              >
-                {t.nav.services}
-              </Link>
-              <Link
-                to="/portfolio"
-                className="text-sm text-white/45 transition-colors hover:text-white min-h-[44px] inline-flex items-center"
-              >
-                {t.nav.portfolio}
-              </Link>
-              <Link
-                to="/contact"
-                className="text-sm text-white/45 transition-colors hover:text-white min-h-[44px] inline-flex items-center"
-              >
-                {t.nav.contact}
-              </Link>
-            </nav>
-
-            <p className="mt-10 max-w-sm text-[11px] sm:text-xs leading-relaxed text-white/30 text-balance">
-              {t.footer.rights}
-            </p>
           </div>
+
+          <nav className="flex flex-wrap items-center gap-6" aria-label="Footer">
+            <Link
+              to="/services"
+              className="text-xs text-[#8B8F98] transition-colors hover:text-[#F4F5F7]"
+            >
+              {t.nav.services}
+            </Link>
+            <Link
+              to="/portfolio"
+              className="text-xs text-[#8B8F98] transition-colors hover:text-[#F4F5F7]"
+            >
+              {t.nav.portfolio}
+            </Link>
+            <Link
+              to="/contact"
+              className="text-xs text-[#8B8F98] transition-colors hover:text-[#F4F5F7]"
+            >
+              {t.nav.contact}
+            </Link>
+          </nav>
+
+          <p className="text-[11px] text-[#8B8F98]/70">
+            {t.footer.rights}
+          </p>
+        </div>
       </footer>
     </div>
   );

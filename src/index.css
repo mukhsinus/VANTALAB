@@ -4,60 +4,57 @@
 
 @layer base {
   :root {
-    --vanta-purple: #6c5ce7;
-    --vanta-surface: #111111;
+    --vanta-base: #06070a;
+    --vanta-surface: #0d0f13;
+    --vanta-surface-subtle: #12151b;
+    --vanta-text: #f4f5f7;
+    --vanta-text-muted: #8b8f98;
     --vanta-border: rgba(255, 255, 255, 0.08);
+    --vanta-border-hover: rgba(255, 255, 255, 0.16);
     --vanta-header-h: 4.25rem;
-    --background: 0 0% 4%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 6%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 4%;
-    --secondary: 0 0% 11%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14%;
-    --muted-foreground: 0 0% 52%;
-    --accent: 252 73% 63%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62% 35%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14%;
-    --input: 0 0% 14%;
-    --ring: 252 73% 63%;
+
+    --background: 225 25% 3.3%; /* #06070A */
+    --foreground: 220 14% 96%; /* #F4F5F7 */
+    --card: 220 18% 6.3%; /* #0D0F13 */
+    --card-foreground: 220 14% 96%;
+    --popover: 220 18% 6.3%;
+    --popover-foreground: 220 14% 96%;
+    --primary: 220 14% 96%;
+    --primary-foreground: 225 25% 3.3%;
+    --secondary: 220 18% 9%;
+    --secondary-foreground: 220 14% 96%;
+    --muted: 220 15% 12%;
+    --muted-foreground: 220 5% 57%; /* #8B8F98 */
+    --accent: 250 84% 65%;
+    --accent-foreground: 220 14% 96%;
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 220 14% 96%;
+    --border: 0 0% 100% / 0.08;
+    --input: 0 0% 100% / 0.08;
+    --ring: 220 14% 96% / 0.35;
     --radius: 1rem;
-    --sidebar-background: 0 0% 4%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 252 73% 63%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 12%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 0 0% 14%;
-    --sidebar-ring: 252 73% 63%;
   }
 
   .dark {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 6%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 4%;
-    --secondary: 0 0% 11%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14%;
-    --muted-foreground: 0 0% 52%;
-    --accent: 252 73% 63%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62% 35%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14%;
-    --input: 0 0% 14%;
-    --ring: 252 73% 63%;
+    --background: 225 25% 3.3%;
+    --foreground: 220 14% 96%;
+    --card: 220 18% 6.3%;
+    --card-foreground: 220 14% 96%;
+    --popover: 220 18% 6.3%;
+    --popover-foreground: 220 14% 96%;
+    --primary: 220 14% 96%;
+    --primary-foreground: 225 25% 3.3%;
+    --secondary: 220 18% 9%;
+    --secondary-foreground: 220 14% 96%;
+    --muted: 220 15% 12%;
+    --muted-foreground: 220 5% 57%;
+    --accent: 250 84% 65%;
+    --accent-foreground: 220 14% 96%;
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 220 14% 96%;
+    --border: 0 0% 100% / 0.08;
+    --input: 0 0% 100% / 0.08;
+    --ring: 220 14% 96% / 0.35;
   }
 }
 
@@ -65,107 +62,114 @@
   * {
     @apply border-border;
   }
+
   html {
     scroll-behavior: smooth;
-    background-color: #08080a;
+    background-color: #06070a;
+    color: #f4f5f7;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
+
   body {
-    @apply text-foreground antialiased;
-    font-family: "Inter", system-ui, sans-serif;
+    background-color: #06070a;
+    color: #f4f5f7;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.03em;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Keyboard accessibility focus styling */
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #06070a, 0 0 0 4px rgba(244, 245, 247, 0.45);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
 @layer utilities {
-  .text-gradient-vanta {
+  /* Headings with geometric sans & tight tracking */
+  .font-heading {
+    font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.03em;
+  }
+
+  /* Signature Apple Burgundy gradient: deep violet-blue -> Apple Burgundy -> rich crimson -> warm ember */
+  .accent-gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(
-      135deg,
-      #ffffff 0%,
-      rgba(255, 255, 255, 0.72) 45%,
-      #6c5ce7 100%
-    );
+    background-image: linear-gradient(135deg, #6366f1 0%, #9f1239 36%, #e11d48 68%, #f97316 100%);
   }
+
+  .accent-gradient-bg {
+    background-image: linear-gradient(135deg, #4f46e5 0%, #881337 38%, #be123c 70%, #f97316 100%);
+  }
+
+  .accent-gradient-border {
+    border-image: linear-gradient(135deg, rgba(99, 102, 241, 0.5) 0%, rgba(190, 24, 93, 0.6) 45%, rgba(249, 115, 22, 0.5) 100%) 1;
+  }
+
+  .burgundy-tag {
+    border: 1px solid rgba(190, 24, 93, 0.28);
+    background-color: rgba(136, 19, 55, 0.16);
+    color: #fecdd3;
+  }
+
+  /* Hairline borders and dark surface treatments */
+  .hairline-border {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .hairline-border-hover {
+    transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hairline-border-hover:hover {
+    border-color: rgba(255, 255, 255, 0.16);
+    background-color: rgba(255, 255, 255, 0.035);
+  }
+
+  /* Replaces the old oversaturated purple glow with subtle, quiet depth */
   .glow-border {
-    box-shadow:
-      0 0 0 1px rgba(255, 255, 255, 0.06),
-      0 0 40px -12px rgba(108, 92, 231, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.7);
   }
+
   .glow-border-hover {
-    transition:
-      box-shadow 0.35s ease,
-      border-color 0.35s ease;
+    transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .glow-border-hover:hover {
-    box-shadow:
-      0 0 0 1px rgba(108, 92, 231, 0.35),
-      0 0 48px -8px rgba(108, 92, 231, 0.45);
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow: 0 20px 48px -18px rgba(0, 0, 0, 0.85);
   }
-  /** Full-site ambient gradient (hero adds an extra focal layer) */
+
+  /* Restrained studio background: near-black base with deep Apple Burgundy ambient depth */
   .vanta-app-bg {
     min-height: 100dvh;
-    background-color: #08080a;
+    background-color: #06070a;
     background-image:
-      radial-gradient(
-        ellipse 120% 70% at 50% -25%,
-        rgba(108, 92, 231, 0.18),
-        transparent 55%
-      ),
-      radial-gradient(
-        ellipse 90% 50% at 100% 15%,
-        rgba(108, 92, 231, 0.07),
-        transparent 50%
-      ),
-      radial-gradient(
-        ellipse 70% 45% at 0% 85%,
-        rgba(108, 92, 231, 0.05),
-        transparent 45%
-      ),
-      radial-gradient(
-        ellipse 80% 40% at 70% 100%,
-        rgba(255, 255, 255, 0.025),
-        transparent 50%
-      ),
-      linear-gradient(
-        180deg,
-        #0c0c10 0%,
-        #0a0a0c 22%,
-        #08080a 55%,
-        #0a0a0f 100%
-      );
-    background-attachment: fixed;
+      radial-gradient(ellipse 95% 55% at 50% -12%, rgba(136, 19, 55, 0.18), transparent 58%),
+      radial-gradient(ellipse 70% 45% at 90% 25%, rgba(74, 14, 28, 0.14), transparent 52%),
+      linear-gradient(180deg, #090608 0%, #06070a 35%, #06070a 100%);
   }
-  @media (max-width: 768px) {
-    .vanta-app-bg {
-      background-attachment: scroll;
-    }
-  }
-  .mesh-bg {
-    background-image:
-      radial-gradient(
-        ellipse 85% 55% at 50% -15%,
-        rgba(108, 92, 231, 0.2),
-        transparent 52%
-      ),
-      radial-gradient(
-        ellipse 55% 40% at 100% 0%,
-        rgba(108, 92, 231, 0.09),
-        transparent
-      ),
-      radial-gradient(
-        ellipse 45% 35% at 0% 95%,
-        rgba(255, 255, 255, 0.035),
-        transparent
-      );
-  }
+
+  /* Studio CTA slab: dark surface #0D0F13 with hairline border */
   .vanta-cta-slab {
-    background: linear-gradient(
-      145deg,
-      rgba(108, 92, 231, 0.14) 0%,
-      rgba(14, 14, 14, 0.96) 42%,
-      #0a0a0a 100%
-    );
+    background-color: #0d0f13;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 1.25rem;
-    box-shadow: 0 0 60px -20px rgba(108, 92, 231, 0.35);
+    box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.85);
   }
 }

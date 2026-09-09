@@ -18,13 +18,13 @@ const buttonVariants = cva(
         hero: "bg-accent text-accent-foreground hover:bg-accent/90 font-semibold shadow-lg shadow-accent/25",
         "hero-outline": "border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 font-semibold",
         vanta:
-          "rounded-2xl bg-[#6C5CE7] text-white font-semibold shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_12px_40px_-12px_rgba(108,92,231,0.55)] hover:bg-[#5b4bd4] hover:shadow-[0_0_0_1px_rgba(108,92,231,0.35),0_16px_48px_-8px_rgba(108,92,231,0.5)]",
+          "rounded-full bg-[#F4F5F7] text-[#06070A] font-semibold shadow-[0_1px_2px_rgba(0,0,0,0.4)] hover:bg-white transition-all duration-200 focus-visible:ring-2 focus-visible:ring-white/60",
         "vanta-ghost":
-          "rounded-2xl border border-white/12 bg-white/[0.03] text-white hover:bg-white/[0.06] hover:border-white/18 font-medium",
+          "rounded-full border border-white/10 bg-white/[0.02] text-[#F4F5F7] hover:bg-white/[0.05] hover:border-white/20 transition-all duration-200 font-medium focus-visible:ring-2 focus-visible:ring-white/40",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-full px-3",
+        default: "h-10 px-5 py-2",
+        sm: "h-9 rounded-full px-4",
         lg: "h-11 rounded-full px-8",
         xl: "h-14 rounded-full px-10 text-base",
         icon: "h-10 w-10",

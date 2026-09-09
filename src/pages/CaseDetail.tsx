@@ -433,20 +433,20 @@ const CaseDetail = () => {
   }
 
   return (
-    <section className="py-8 sm:py-10 md:py-12">
+    <section className="py-10 sm:py-14 md:py-16">
       <div className="container max-w-4xl min-w-0">
         <FadeIn>
-          <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm text-white/45 hover:text-[#B4A9F7] transition-colors mb-8">
+          <Link to="/portfolio" className="inline-flex items-center gap-2 text-xs font-medium text-[#8B8F98] hover:text-[#F4F5F7] transition-colors mb-6">
             <ArrowLeft size={16} /> {t.cases.backToList}
           </Link>
-          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white leading-tight">
+          <h1 className="font-heading font-bold text-3xl xs:text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#F4F5F7] leading-tight">
             {caseData.name}
           </h1>
         </FadeIn>
 
-        <div className="mt-12 space-y-12">
-          <FadeIn delay={0.1}>
-            <div className="aspect-video rounded-2xl overflow-hidden">
+        <div className="mt-10 sm:mt-12 space-y-12">
+          <FadeIn>
+            <div className="aspect-video rounded-2xl sm:rounded-3xl overflow-hidden border border-white/[0.08] bg-black/40">
               <img
                 src={caseData.image}
                 alt={caseData.name}
@@ -455,58 +455,59 @@ const CaseDetail = () => {
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.15}>
-            <h3 className="text-sm font-semibold text-accent uppercase tracking-wider">{t.cases.goal}</h3>
-            <p className="mt-2 text-lg text-muted-foreground">{caseData.goal[lang]}</p>
+          <FadeIn>
+            <p className="text-xs font-medium text-[#8B8F98]">{t.cases.goal}</p>
+            <p className="mt-2 text-base sm:text-lg text-[#F4F5F7] leading-relaxed">{caseData.goal[lang]}</p>
           </FadeIn>
 
-          <FadeIn delay={0.2}>
-            <h3 className="text-sm font-semibold text-accent uppercase tracking-wider">{t.cases.built}</h3>
-            <p className="mt-2 text-lg text-muted-foreground">{caseData.built[lang]}</p>
+          <FadeIn>
+            <p className="text-xs font-medium text-[#8B8F98]">{t.cases.built}</p>
+            <p className="mt-2 text-base sm:text-lg text-[#F4F5F7] leading-relaxed">{caseData.built[lang]}</p>
           </FadeIn>
 
-          <FadeIn delay={0.25}>
-            <h3 className="text-sm font-semibold text-accent uppercase tracking-wider">{t.cases.features}</h3>
-            <ul className="mt-3 grid md:grid-cols-2 gap-2">
+          <FadeIn>
+            <p className="text-xs font-medium text-[#8B8F98]">{t.cases.features}</p>
+            <ul className="mt-3 grid md:grid-cols-2 gap-3">
               {caseData.features[lang].map((f, i) => (
-                <li key={i} className="flex items-center gap-2 text-muted-foreground">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent" /> {f}
+                <li key={i} className="flex items-center gap-2 text-sm text-[#8B8F98] rounded-xl border border-white/[0.06] bg-[#0D0F13] px-4 py-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white/40 shrink-0" /> {f}
                 </li>
               ))}
             </ul>
           </FadeIn>
 
-          <FadeIn delay={0.3}>
-            <h3 className="text-sm font-semibold text-accent uppercase tracking-wider">{t.cases.stack}</h3>
+          <FadeIn>
+            <p className="text-xs font-medium text-[#8B8F98]">{t.cases.stack}</p>
             <div className="mt-3 flex flex-wrap gap-2">
               {caseData.stack.map(s => (
-                <span key={s} className="px-3 py-1 rounded-full border border-border text-sm">{s}</span>
+                <span key={s} className="px-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.02] text-xs text-[#8B8F98]">{s}</span>
               ))}
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.35}>
-            <h3 className="text-sm font-semibold text-accent uppercase tracking-wider">{t.cases.results}</h3>
+          <FadeIn>
+            <p className="text-xs font-medium text-[#8B8F98]">{t.cases.results}</p>
             <div className="mt-3 grid md:grid-cols-2 gap-3">
               {caseData.results[lang].map((r, i) => (
-                <div key={i} className="p-4 rounded-xl bg-accent/5 border border-accent/10 text-foreground font-medium">{r}</div>
+                <div key={i} className="p-4 rounded-xl bg-[#0D0F13] border border-white/[0.08] text-[#F4F5F7] font-medium text-sm leading-snug">{r}</div>
               ))}
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.4}>
-            <div className="flex gap-8 text-sm text-muted-foreground">
-              <div><span className="font-semibold text-foreground">{t.cases.timeline}:</span> {caseData.timeline}</div>
-              <div><span className="font-semibold text-foreground">{t.cases.teamSize}:</span> {caseData.teamSize}</div>
+          <FadeIn>
+            <div className="flex gap-8 text-xs text-[#8B8F98] pt-2 border-t border-white/[0.06]">
+              <div><span className="font-semibold text-[#F4F5F7]">{t.cases.timeline}:</span> {caseData.timeline}</div>
+              <div><span className="font-semibold text-[#F4F5F7]">{t.cases.teamSize}:</span> {caseData.teamSize}</div>
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.45}>
-            <div className="vanta-cta-slab p-10 md:p-12 text-center">
-              <h3 className="text-2xl font-semibold text-white">{t.cases.ctaTitle}</h3>
-              <Button variant="vanta" size="xl" className="mt-6 rounded-2xl" asChild>
+          <FadeIn>
+            <div className="rounded-2xl sm:rounded-3xl border border-white/[0.08] bg-[#0D0F13] p-8 sm:p-10 md:p-12 text-center relative overflow-hidden">
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#ec4899]/30 to-transparent" />
+              <h3 className="font-heading font-bold text-xl sm:text-2xl text-[#F4F5F7]">{t.cases.ctaTitle}</h3>
+              <Button variant="vanta" size="lg" className="mt-6 h-12 px-8 rounded-full text-xs font-semibold" asChild>
                 <a href="https://t.me/LLC_VANTALAB" target="_blank" rel="noopener noreferrer">
-                  <Send size={18} /> {t.cta.button}
+                  <Send size={16} /> {t.cta.button}
                 </a>
               </Button>
             </div>

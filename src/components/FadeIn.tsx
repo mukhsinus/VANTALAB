@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ReactNode } from 'react';
 
 interface FadeInProps {
@@ -8,20 +8,20 @@ interface FadeInProps {
   direction?: 'up' | 'down' | 'left' | 'right';
 }
 
-const FadeIn = ({ children, delay = 0, className = '', direction = 'up' }: FadeInProps) => {
-  const directionMap = {
-    up: { y: 30 },
-    down: { y: -30 },
-    left: { x: 30 },
-    right: { x: -30 },
-  };
+const FadeIn = ({ children, className = '' }: FadeInProps) => {
+  const shouldReduceMotion = useReducedMotion();
 
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
+  // Restrained, calm fade without heavy translation jump
   return (
     <motion.div
-      initial={{ opacity: 0, ...directionMap[direction] }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.6, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: '-20px' }}
+      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
       className={className}
     >
       {children}

@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/i18n';
 import FadeIn from '@/components/FadeIn';
 import { serviceIcons } from '@/lib/service-icons';
@@ -9,75 +8,77 @@ const Services = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-20 md:pb-28 lg:pb-32">
+    <div className="pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-20 md:pb-28">
       <div className="container min-w-0">
         <FadeIn>
-          <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6C5CE7]">
+          <p className="text-xs sm:text-sm font-medium text-[#8B8F98]">
             {t.nav.services}
           </p>
-          <h1 className="mt-3 text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-white max-w-3xl leading-[1.08]">
+          <h1 className="mt-2 font-heading font-bold text-3xl xs:text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#F4F5F7] max-w-3xl leading-[1.05]">
             {t.services.title}
           </h1>
-          <p className="mt-4 sm:mt-5 text-base sm:text-lg text-white/45 max-w-2xl leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-[#8B8F98] max-w-2xl leading-relaxed">
             {t.services.subtitle}
           </p>
         </FadeIn>
 
-        <div className="mt-12 sm:mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
+        <div className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
           {t.services.items.map((service, i) => {
             const Icon = serviceIcons[i] ?? serviceIcons[0];
             return (
-              <motion.article
+              <article
                 key={i}
-                initial={{ opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.5, delay: i * 0.06, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="group rounded-[1.25rem] border border-white/[0.08] bg-white/[0.02] p-6 sm:p-8 md:p-10 glow-border-hover min-w-0"
+                className="rounded-2xl border border-white/[0.08] bg-[#0D0F13] p-6 sm:p-8 md:p-10 transition-all duration-300 hover:border-white/[0.18] flex flex-col justify-between"
               >
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#6C5CE7]/20 bg-[#6C5CE7]/[0.08] transition-colors group-hover:border-[#6C5CE7]/35">
-                  <Icon className="size-6 text-[#B4A9F7]" strokeWidth={1.5} />
+                <div>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03]">
+                    <Icon className="size-5 text-[#F4F5F7]" strokeWidth={1.5} />
+                  </div>
+                  <h2 className="mt-6 font-heading font-bold text-lg sm:text-xl text-[#F4F5F7]">
+                    {service.name}
+                  </h2>
+                  <p className="mt-2.5 text-sm sm:text-base text-[#8B8F98] leading-relaxed max-w-md">
+                    {service.desc}
+                  </p>
                 </div>
-                <h2 className="mt-6 sm:mt-8 text-lg sm:text-xl font-semibold text-white">{service.name}</h2>
-                <p className="mt-2 sm:mt-3 text-sm md:text-base text-white/45 leading-relaxed max-w-md">
-                  {service.desc}
-                </p>
-              </motion.article>
+                <div className="mt-8 pt-6 border-t border-white/[0.06] flex items-center justify-between text-xs text-[#8B8F98]">
+                  <span>0{i + 1}</span>
+                  <span>VANTA LAB</span>
+                </div>
+              </article>
             );
           })}
         </div>
 
-        <div className="mt-16 sm:mt-20 md:mt-28 lg:mt-32">
+        <div className="mt-16 sm:mt-24 md:mt-32">
           <FadeIn>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight text-white">
+            <h2 className="font-heading font-bold text-2xl sm:text-3xl tracking-tight text-[#F4F5F7]">
               {t.process.title}
             </h2>
           </FadeIn>
-          <div className="mt-8 sm:mt-10 grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
+          <div className="mt-8 grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-5 gap-4">
             {t.process.steps.map((step, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.05 }}
-                className="rounded-[1.25rem] border border-white/[0.08] bg-[#0A0A0A]/90 p-5 sm:p-6 min-h-0 sm:min-h-[150px] flex flex-col"
+                className="rounded-2xl border border-white/[0.08] bg-[#0D0F13] p-5 sm:p-6 flex flex-col justify-between transition-all hover:border-white/[0.16]"
               >
-                <span className="text-sm font-semibold tabular-nums text-[#6C5CE7]/80">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <h3 className="mt-4 text-base font-semibold text-white">{step.name}</h3>
-                <p className="mt-2 text-sm text-white/40 leading-relaxed flex-1">{step.desc}</p>
-              </motion.div>
+                <div>
+                  <span className="font-heading text-xs font-semibold tabular-nums text-[#8B8F98]">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="mt-4 font-heading font-bold text-base text-[#F4F5F7]">{step.name}</h3>
+                  <p className="mt-2 text-xs sm:text-sm text-[#8B8F98] leading-relaxed">{step.desc}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
 
-        <FadeIn className="mt-20 flex justify-center">
-          <Button variant="vanta" size="lg" className="h-12 px-10 rounded-full" asChild>
+        <div className="mt-16 sm:mt-20 flex justify-center">
+          <Button variant="vanta" size="lg" className="h-12 px-8 rounded-full" asChild>
             <Link to="/contact">{t.nav.startProject}</Link>
           </Button>
-        </FadeIn>
+        </div>
       </div>
     </div>
   );

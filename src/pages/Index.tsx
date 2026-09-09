@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/i18n';
 import { HomeHero } from '@/components/vanta/HomeHero';
 import { FeaturedWork } from '@/components/vanta/FeaturedWork';
@@ -11,19 +10,13 @@ const Index = () => {
   return (
     <>
       <HomeHero />
-      <motion.section
-        className="border-t border-white/[0.06] py-10 md:py-12"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
+      <section className="border-t border-white/[0.08] py-8 sm:py-10 bg-[#06070A]">
         <div className="container min-w-0">
-          <p className="text-center text-xs sm:text-[13px] md:text-sm text-white/35 tracking-wide max-w-2xl mx-auto leading-relaxed px-1">
+          <p className="text-xs sm:text-sm text-[#8B8F98] max-w-2xl leading-relaxed text-left">
             {t.home.trusted}
           </p>
         </div>
-      </motion.section>
+      </section>
       <FeaturedWork />
       <ServicesPreview />
       <FinalCtaBand />

@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import * as THREE from "three";
+import { useEffect, useRef } from 'react';
+import * as THREE from 'three';
 
 export const AnimatedWireframeBg = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -12,216 +12,224 @@ export const AnimatedWireframeBg = () => {
         /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) ||
         window.innerWidth < 768;
 
-    // ---------- SCENE ----------
-    const scene = new THREE.Scene();
+      const prefersReducedMotion =
+        window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const camera = new THREE.PerspectiveCamera(
-      isMobile ? 75 : 60,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
+      // ---------- SCENE ----------
+      const scene = new THREE.Scene();
 
-    camera.position.z = isMobile ? 160 : 120;
+      const camera = new THREE.PerspectiveCamera(
+        isMobile ? 70 : 55,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
 
-    const renderer = new THREE.WebGLRenderer({
-      antialias: !isMobile,
-      alpha: true,
-    });
+      camera.position.z = isMobile ? 150 : 110;
 
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(isMobile ? 0.8 : Math.min(window.devicePixelRatio, 2));
+      const renderer = new THREE.WebGLRenderer({
+        antialias: !isMobile,
+        alpha: true,
+      });
 
-    ref.current.appendChild(renderer.domElement);
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(isMobile ? 0.9 : Math.min(window.devicePixelRatio, 2));
 
-    // ---------- DENSITY ----------
-    const LINES = isMobile ? 35 : 140;
-    const POINTS = isMobile ? 80 : 260;
+      ref.current.appendChild(renderer.domElement);
 
-    const geometry = new THREE.BufferGeometry();
-    const positions: number[] = [];
-    const indices: number[] = [];
+      // ---------- DENSITY ----------
+      const LINES = isMobile ? 32 : 120;
+      const POINTS = isMobile ? 70 : 220;
 
-    for (let i = 0; i < LINES; i++) {
-      for (let j = 0; j < POINTS; j++) {
-        const x = (j / POINTS - 0.5) * 220;
-        const y = (i / LINES - 0.5) * 220;
+      const geometry = new THREE.BufferGeometry();
+      const positions: number[] = [];
+      const indices: number[] = [];
 
-        positions.push(x, y, 0);
+      for (let i = 0; i < LINES; i++) {
+        for (let j = 0; j < POINTS; j++) {
+          const x = (j / POINTS - 0.5) * 220;
+          const y = (i / LINES - 0.5) * 220;
 
-        if (j < POINTS - 1) {
-          const a = i * POINTS + j;
-          const b = i * POINTS + j + 1;
-          indices.push(a, b);
+          positions.push(x, y, 0);
+
+          if (j < POINTS - 1) {
+            const a = i * POINTS + j;
+            const b = i * POINTS + j + 1;
+            indices.push(a, b);
+          }
         }
       }
-    }
 
-    geometry.setAttribute(
-      "position",
-      new THREE.Float32BufferAttribute(positions, 3)
-    );
-    geometry.setIndex(indices);
+      geometry.setAttribute(
+        'position',
+        new THREE.Float32BufferAttribute(positions, 3)
+      );
+      geometry.setIndex(indices);
 
-    // ---------- SHADER ----------
-    const material = new THREE.ShaderMaterial({
-      transparent: true,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-      uniforms: {
-        uTime: { value: 0 },
-        uMouse: { value: new THREE.Vector2(0, 0) },
-        uAmp: { value: isMobile ? 8.0 : 18.0 },
-      },
+      // ---------- SHADER ----------
+      // Palette: Violet-blue (#4f46e5) -> Magenta (#ec4899) -> Warm orange (#f97316)
+      const material = new THREE.ShaderMaterial({
+        transparent: true,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        uniforms: {
+          uTime: { value: 0 },
+          uMouse: { value: new THREE.Vector2(0, 0) },
+          uAmp: { value: isMobile ? 7.0 : 16.0 },
+        },
 
-      vertexShader: `
-        uniform float uTime;
-        uniform vec2 uMouse;
-        uniform float uAmp;
+        vertexShader: `
+          uniform float uTime;
+          uniform vec2 uMouse;
+          uniform float uAmp;
 
-        varying float vDepth;
-        varying float vWave;
+          varying float vDepth;
+          varying float vWave;
+          varying vec2 vUv;
 
-        float noise(vec2 p){
-          return sin(p.x)*sin(p.y);
-        }
-
-        void main() {
-          vec3 pos = position;
-
-          float t = uTime * 0.5;
-
-          // Desktop = richer pattern
-          float wave;
-          if(uAmp > 10.0){
-            float w1 = sin(pos.x * 0.025 + t);
-            float w2 = cos(pos.y * 0.03 + t * 1.2);
-            float w3 = sin((pos.x + pos.y) * 0.02 + t * 0.7);
-            float w4 = noise(pos.xy * 0.03 + t);
-
-            wave = w1 + w2 + w3 + w4;
-          } else {
-            // Mobile simpler pattern
-            float w1 = sin(pos.x * 0.03 + t);
-            float w2 = sin(pos.y * 0.05 + t * 1.2);
-            float w3 = noise(pos.xy * 0.04 + t);
-
-            wave = w1 + w2 + w3;
+          float noise(vec2 p){
+            return sin(p.x) * sin(p.y);
           }
 
-          pos.y += wave * uAmp;
-          pos.z += wave * (uAmp * 1.8);
+          void main() {
+            vec3 pos = position;
+            vUv = uv;
 
-          pos.x += uMouse.x * 6.0;
-          pos.y += uMouse.y * 6.0;
+            float t = uTime * 0.45;
 
-          vDepth = pos.z;
-          vWave = wave;
+            float wave;
+            if (uAmp > 10.0) {
+              float w1 = sin(pos.x * 0.024 + t);
+              float w2 = cos(pos.y * 0.028 + t * 1.15);
+              float w3 = sin((pos.x + pos.y) * 0.018 + t * 0.7);
+              float w4 = noise(pos.xy * 0.025 + t);
+              wave = w1 + w2 + w3 + w4;
+            } else {
+              float w1 = sin(pos.x * 0.028 + t);
+              float w2 = sin(pos.y * 0.045 + t * 1.1);
+              wave = w1 + w2;
+            }
 
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+            pos.y += wave * uAmp;
+            pos.z += wave * (uAmp * 1.6);
+
+            pos.x += uMouse.x * 5.0;
+            pos.y += uMouse.y * 5.0;
+
+            vDepth = pos.z;
+            vWave = wave;
+
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+          }
+        `,
+
+        fragmentShader: `
+          varying float vDepth;
+          varying float vWave;
+
+          void main() {
+            float d = vDepth * 0.022;
+
+            // Apple Burgundy spectrum: deep indigo -> rich Apple burgundy (#881337) -> crimson -> warm ember
+            vec3 indigo    = vec3(0.25, 0.20, 0.65);
+            vec3 burgundy  = vec3(0.58, 0.08, 0.24); // Rich Apple burgundy
+            vec3 crimson   = vec3(0.82, 0.12, 0.35); // Keynote bordeaux highlight
+            vec3 ember     = vec3(0.98, 0.45, 0.12);
+
+            vec3 color = mix(indigo, burgundy, smoothstep(-0.8, 0.0, d));
+            color = mix(color, crimson, smoothstep(-0.1, 0.65, d));
+            color = mix(color, ember, smoothstep(0.45, 1.2, d));
+
+            float intensity = 0.32 + abs(vWave) * 0.55;
+            gl_FragColor = vec4(color * intensity, intensity * 0.5);
+          }
+        `,
+      });
+
+      const lines = new THREE.LineSegments(geometry, material);
+      scene.add(lines);
+
+      // ---------- INPUT ----------
+      const target = new THREE.Vector2();
+      const smooth = new THREE.Vector2();
+
+      const update = (x: number, y: number) => {
+        target.x = (x / window.innerWidth - 0.5) * 2;
+        target.y = (y / window.innerHeight - 0.5) * 2;
+      };
+
+      const onMouse = (e: MouseEvent) => {
+        if (!isMobile) update(e.clientX, e.clientY);
+      };
+
+      const onTouch = (e: TouchEvent) => {
+        if (isMobile && e.touches.length) {
+          update(e.touches[0].clientX, e.touches[0].clientY);
         }
-      `,
+      };
 
-      fragmentShader: `
-        varying float vDepth;
-        varying float vWave;
+      window.addEventListener('mousemove', onMouse, { passive: true });
+      window.addEventListener('touchmove', onTouch, { passive: true });
 
-        void main() {
+      // ---------- RESIZE ----------
+      const onResize = () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      };
 
-          float d = vDepth * 0.02;
+      window.addEventListener('resize', onResize);
 
-          // Violet gradient (dark → light → near white)
-          vec3 darkViolet = vec3(0.15, 0.0, 0.3);
-          vec3 violet = vec3(0.6, 0.3, 1.0);
-          vec3 light = vec3(0.9, 0.8, 1.0);
+      // ---------- ANIMATION ----------
+      let frameId: number | null = null;
 
-          vec3 color = mix(darkViolet, violet, smoothstep(-1.0, 0.5, d));
-          color = mix(color, light, smoothstep(0.3, 1.2, d));
+      const renderScene = () => {
+        smooth.lerp(target, isMobile ? 0.02 : 0.04);
+        material.uniforms.uMouse.value.copy(smooth);
 
-          float glow = 0.4 + abs(vWave) * 0.7;
+        const camFactor = isMobile ? 6 : 16;
+        camera.position.x += (smooth.x * camFactor - camera.position.x) * 0.04;
+        camera.position.y += (smooth.y * camFactor - camera.position.y) * 0.04;
 
-          gl_FragColor = vec4(color * glow, glow * 0.35);
-        }
-      `,
-    });
+        renderer.render(scene, camera);
+      };
 
-    const lines = new THREE.LineSegments(geometry, material);
-    scene.add(lines);
+      const animate = () => {
+        material.uniforms.uTime.value += isMobile ? 0.005 : 0.008;
+        renderScene();
+        frameId = requestAnimationFrame(animate);
+      };
 
-    // ---------- INPUT ----------
-    const target = new THREE.Vector2();
-    const smooth = new THREE.Vector2();
-
-    const update = (x: number, y: number) => {
-      target.x = (x / window.innerWidth - 0.5) * 2;
-      target.y = (y / window.innerHeight - 0.5) * 2;
-    };
-
-    const onMouse = (e: MouseEvent) => {
-      if (!isMobile) update(e.clientX, e.clientY);
-    };
-
-    const onTouch = (e: TouchEvent) => {
-      if (isMobile && e.touches.length) {
-        update(e.touches[0].clientX, e.touches[0].clientY);
+      if (prefersReducedMotion) {
+        // Render single static frame
+        renderScene();
+      } else {
+        animate();
       }
-    };
 
-    window.addEventListener("mousemove", onMouse);
-    window.addEventListener("touchmove", onTouch);
+      // ---------- CLEANUP ----------
+      return () => {
+        try {
+          if (frameId !== null) cancelAnimationFrame(frameId);
 
-    // ---------- RESIZE ----------
-    const onResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    };
+          window.removeEventListener('mousemove', onMouse);
+          window.removeEventListener('touchmove', onTouch);
+          window.removeEventListener('resize', onResize);
 
-    window.addEventListener("resize", onResize);
+          geometry.dispose();
+          material.dispose();
+          renderer.dispose();
 
-    // ---------- ANIMATION ----------
-    let frameId: number;
-
-    const animate = () => {
-      frameId = requestAnimationFrame(animate);
-
-      material.uniforms.uTime.value += isMobile ? 0.006 : 0.01;
-
-      smooth.lerp(target, isMobile ? 0.02 : 0.05);
-      material.uniforms.uMouse.value.copy(smooth);
-
-      const camFactor = isMobile ? 8 : 20;
-
-      camera.position.x += (smooth.x * camFactor - camera.position.x) * 0.05;
-      camera.position.y += (smooth.y * camFactor - camera.position.y) * 0.05;
-
-      renderer.render(scene, camera);
-    };
-
-    animate();
-
-    // ---------- CLEANUP ----------
-    return () => {
-      try {
-        cancelAnimationFrame(frameId);
-
-        window.removeEventListener("mousemove", onMouse);
-        window.removeEventListener("touchmove", onTouch);
-        window.removeEventListener("resize", onResize);
-
-        geometry.dispose();
-        material.dispose();
-        renderer.dispose();
-
-        if (renderer.domElement.parentNode) {
-          renderer.domElement.parentNode.removeChild(renderer.domElement);
+          if (renderer.domElement.parentNode) {
+            renderer.domElement.parentNode.removeChild(renderer.domElement);
+          }
+        } catch (e) {
+          console.error('AnimatedWireframeBg cleanup error:', e);
         }
-      } catch (e) {
-        console.error("AnimatedWireframeBg cleanup error:", e);
-      }
-    };
+      };
     } catch (error) {
-      console.error("AnimatedWireframeBg initialization error:", error);
+      console.error('AnimatedWireframeBg initialization error:', error);
       return () => {};
     }
   }, []);
@@ -229,8 +237,8 @@ export const AnimatedWireframeBg = () => {
   return (
     <div
       ref={ref}
-      className="absolute inset-0 pointer-events-none"
-      style={{ overflow: "hidden" }}
+      className="absolute inset-0 pointer-events-none overflow-hidden"
+      aria-hidden="true"
     />
   );
 };
