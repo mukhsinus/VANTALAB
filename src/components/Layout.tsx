@@ -52,9 +52,14 @@ const Layout = () => {
           <div className="flex items-center shrink-0">
             <Link
               to="/"
-              className="inline-flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-white/40 rounded-lg py-1 px-1.5"
+              className="inline-flex items-center gap-2.5 focus-visible:ring-2 focus-visible:ring-white/40 rounded-lg py-1 px-1.5 transition-opacity hover:opacity-90"
               aria-label="VANTA LAB home"
             >
+              <img
+                src="/favi.png"
+                alt="VANTA LAB"
+                className="h-6 w-6 sm:h-7 sm:w-7 object-contain"
+              />
               <span className="font-heading font-extrabold text-sm sm:text-base tracking-tight text-[#F4F5F7]">
                 VANTA LAB
               </span>

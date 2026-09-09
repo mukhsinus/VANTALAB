@@ -3,7 +3,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Send } from 'lucide-react';
 import { useLanguage } from '@/lib/i18n';
 import { Button } from '@/components/ui/button';
-import { AnimatedWireframeBg } from './AnimatedWireframeBgV2';
+import { VantaSteppedSphere } from './VantaSteppedSphere';
 
 const langCopy = {
   ru: {
@@ -60,13 +60,13 @@ export const HomeHero = () => {
       id="hero"
       className="relative min-h-[calc(100svh-var(--vanta-header-h))] flex flex-col justify-between overflow-hidden pt-10 sm:pt-14 md:pt-20 pb-10 sm:pb-12"
     >
-      {/* Background Three.js wireframe ribbon strand — single deliberate motion anchor */}
+      {/* Background 3D Stepped Obsidian Sphere with crimson rim lighting */}
       <div className="absolute inset-0 z-0">
-        <AnimatedWireframeBg />
-        {/* Apple Burgundy ambient focal layer on the right visual field */}
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_65%_55%_at_78%_38%,rgba(136,19,55,0.2),transparent_65%)]" />
+        <VantaSteppedSphere />
+        {/* Apple Burgundy ambient focal glow behind the 3D shape */}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_55%_at_78%_40%,rgba(136,19,55,0.22),transparent_70%)]" />
         {/* Asymmetric vignette mask keeping left content calm and ultra-readable */}
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_0%_50%,#06070A_30%,rgba(6,7,10,0.85)_65%,transparent_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_80%_at_0%_50%,#06070A_42%,rgba(6,7,10,0.85)_72%,transparent_100%)]" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#06070A] to-transparent" />
       </div>
 
