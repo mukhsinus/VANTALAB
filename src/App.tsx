@@ -24,12 +24,12 @@ function LegacyCaseIdRedirect() {
 const App = () => (
   <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" enableSystem={false}>
     <I18nProvider>
-      <SeoHead />
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <SeoHead />
             <Routes>
               <Route element={<Layout />}>
                 <Route path="/" element={<Index />} />

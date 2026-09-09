@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Core Pages -->
+  <url>
+    <loc>https://vantalab.uz/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vantalab.uz/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vantalab.uz/" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://vantalab.uz/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vantalab.uz/" />
+    <image:image>
+      <image:loc>https://vantalab.uz/og.png</image:loc>
+      <image:title>VANTA LAB — премиальная цифровая студия</image:title>
+      <image:caption>Разработка сайтов, интернет-магазинов и веб-приложений</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://vantalab.uz/favi.png</image:loc>
+      <image:title>VANTA LAB Logo</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://vantalab.uz/services</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vantalab.uz/services" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vantalab.uz/services" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://vantalab.uz/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vantalab.uz/services" />
+  </url>
+
+  <url>
+    <loc>https://vantalab.uz/portfolio</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vantalab.uz/portfolio" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vantalab.uz/portfolio" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://vantalab.uz/portfolio" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vantalab.uz/portfolio" />
+  </url>
+
+  <url>
+    <loc>https://vantalab.uz/contact</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vantalab.uz/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vantalab.uz/contact" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://vantalab.uz/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vantalab.uz/contact" />
+  </url>
+
+  <!-- Portfolio Case Studies with Multilingual Alternates -->
+  <url>
+    <loc>https://vantalab.uz/portfolio/medicare</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vantalab.uz/portfolio/medicare" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vantalab.uz/portfolio/medicare" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://vantalab.uz/portfolio/medicare" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vantalab.uz/portfolio/medicare" />
+  </url>
+
+  <url>
+    <loc>https://vantalab.uz/portfolio/manaku</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vantalab.uz/portfolio/manaku" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vantalab.uz/portfolio/manaku" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://vantalab.uz/portfolio/manaku" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vantalab.uz/portfolio/manaku" />
+  </url>
+
+  <url>
+    <loc>https://vantalab.uz/portfolio/modulbino</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vantalab.uz/portfolio/modulbino" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vantalab.uz/portfolio/modulbino" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://vantalab.uz/portfolio/modulbino" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vantalab.uz/portfolio/modulbino" />
+  </url>
+
+  <url>
+    <loc>https://vantalab.uz/portfolio/ecolife</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vantalab.uz/portfolio/ecolife" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vantalab.uz/portfolio/ecolife" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://vantalab.uz/portfolio/ecolife" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vantalab.uz/portfolio/ecolife" />
+  </url>
+
+  <url>
+    <loc>https://vantalab.uz/portfolio/pitstop</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vantalab.uz/portfolio/pitstop" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vantalab.uz/portfolio/pitstop" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://vantalab.uz/portfolio/pitstop" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vantalab.uz/portfolio/pitstop" />
+  </url>
+
+  <url>
+    <loc>https://vantalab.uz/portfolio/mazzo</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vantalab.uz/portfolio/mazzo" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vantalab.uz/portfolio/mazzo" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://vantalab.uz/portfolio/mazzo" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vantalab.uz/portfolio/mazzo" />
+  </url>
+
+  <url>
+    <loc>https://vantalab.uz/portfolio/luxlight</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vantalab.uz/portfolio/luxlight" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vantalab.uz/portfolio/luxlight" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://vantalab.uz/portfolio/luxlight" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vantalab.uz/portfolio/luxlight" />
+  </url>
+
+  <url>
+    <loc>https://vantalab.uz/portfolio/essenza</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vantalab.uz/portfolio/essenza" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vantalab.uz/portfolio/essenza" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://vantalab.uz/portfolio/essenza" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vantalab.uz/portfolio/essenza" />
+  </url>
+
+  <url>
+    <loc>https://vantalab.uz/portfolio/bekhzod</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vantalab.uz/portfolio/bekhzod" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vantalab.uz/portfolio/bekhzod" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://vantalab.uz/portfolio/bekhzod" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vantalab.uz/portfolio/bekhzod" />
+  </url>
+
+  <url>
+    <loc>https://vantalab.uz/portfolio/karolina</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vantalab.uz/portfolio/karolina" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vantalab.uz/portfolio/karolina" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://vantalab.uz/portfolio/karolina" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vantalab.uz/portfolio/karolina" />
+  </url>
+
+</urlset>
